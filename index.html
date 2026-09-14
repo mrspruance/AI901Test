@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI-901 Practice Test | Microsoft Azure AI Fundamentals</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <span class="brand-badge">AI‑901</span>
+      <div>
+        <h1>AI-901 Practice Test</h1>
+        <p class="subtitle">Microsoft Azure AI Fundamentals · Simulador de examen</p>
+      </div>
+    </div>
+    <div class="header-stats" id="headerStats" hidden>
+      <div class="stat" id="timerStat" hidden>
+        <span class="stat-label">Tiempo</span>
+        <span class="stat-value" id="timerText">00:00</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Pregunta</span>
+        <span class="stat-value" id="progressText">0 / 0</span>
+      </div>
+      <div class="stat" id="scoreStat">
+        <span class="stat-label">Correctas</span>
+        <span class="stat-value" id="scoreText">0%</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <!-- Pantalla de inicio -->
+    <section id="startScreen" class="card start-card">
+      <h2>Practica para tu certificación AI-901</h2>
+      <p>
+        Preguntas de opción múltiple basadas en los dominios oficiales del examen AI-901
+        (actualizado al 15 de abril de 2026) y en la documentación oficial de Microsoft Azure.
+        Al confirmar cada respuesta verás de inmediato si es correcta y por qué cada alternativa
+        es o no la adecuada.
+      </p>
+
+      <div class="mode-toggle">
+        <label class="mode-card">
+          <input type="radio" name="mode" value="practice" checked />
+          <span class="mode-title">Modo práctica</span>
+          <span class="mode-desc">Feedback inmediato: al confirmar cada respuesta ves si acertaste y la explicación de cada alternativa.</span>
+        </label>
+        <label class="mode-card">
+          <input type="radio" name="mode" value="exam" />
+          <span class="mode-title">Modo examen (cronometrado)</span>
+          <span class="mode-desc">Sin feedback hasta el final. Temporizador regresivo que simula las condiciones reales del examen.</span>
+        </label>
+      </div>
+
+      <div class="options-grid">
+        <label class="field">
+          <span>Cantidad de preguntas</span>
+          <select id="questionCount">
+            <option value="10">10 preguntas</option>
+            <option value="20" selected>20 preguntas</option>
+            <option value="45">45 preguntas (como el examen real)</option>
+            <option value="0">Todas (150+)</option>
+          </select>
+        </label>
+        <label class="field" id="durationField" hidden>
+          <span>Duración del examen</span>
+          <select id="examDuration">
+            <option value="0">Automática (~2 min/pregunta)</option>
+            <option value="1800">30 minutos</option>
+            <option value="3600">60 minutos</option>
+            <option value="5400">90 minutos (examen real)</option>
+          </select>
+        </label>
+        <label class="field checkbox">
+          <input type="checkbox" id="shuffleQuestions" checked />
+          <span>Ordenar preguntas al azar</span>
+        </label>
+        <label class="field checkbox new-only-field">
+          <input type="checkbox" id="filterDomain" />
+          <span>Solo Dominio 2: Microsoft Foundry <span class="new-badge">HOT</span></span>
+        </label>
+      </div>
+
+      <button class="btn primary" id="startBtn">Comenzar test</button>
+
+      <div class="domains">
+        <h3>Dominios cubiertos — AI-901 (Actualizado Abril 2026)</h3>
+        <ul>
+          <li><strong>Dominio 1:</strong> Identificar conceptos y capacidades de IA (40–45%)
+            <ul>
+              <li>Principios de IA responsable</li>
+              <li>Componentes y configuraciones de modelos de IA</li>
+              <li>Cargas de trabajo de IA (texto, voz, visión, extracción de información)</li>
+            </ul>
+          </li>
+          <li><strong>Dominio 2:</strong> Implementar soluciones de IA con Microsoft Foundry (55–60%)
+            <ul>
+              <li>Apps y agentes de IA generativa con Foundry</li>
+              <li>Soluciones de texto y voz con Foundry</li>
+              <li>Visión por computador e imagen con Foundry</li>
+              <li>Extracción de información con Azure Content Understanding</li>
+            </ul>
+          </li>
+        </ul>
+        <p class="domains-note">Puntuación mínima para aprobar: <strong>700 / 1000</strong> · Precio: $59 USD · Proveedor: Pearson VUE / Certiport</p>
+      </div>
+    </section>
+
+    <!-- Pantalla de preguntas -->
+    <section id="quizScreen" class="card" hidden>
+      <div class="question-meta">
+        <span class="domain-tag" id="domainTag">Dominio</span>
+        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+      </div>
+
+      <h2 class="question-text" id="questionText"></h2>
+      <p class="multi-hint" id="multiHint" hidden>Selecciona todas las que correspondan.</p>
+
+      <form id="answersForm" class="answers"></form>
+
+      <div class="quiz-actions">
+        <button class="btn" id="prevBtn" hidden>Anterior</button>
+        <button class="btn primary" id="confirmBtn">Confirmar respuesta</button>
+        <button class="btn" id="nextBtn" hidden>Siguiente</button>
+        <button class="btn" id="finishBtn" hidden>Finalizar examen</button>
+      </div>
+
+      <div class="explanation" id="explanation" hidden>
+        <div class="result-banner" id="resultBanner"></div>
+        <ul class="explanation-list" id="explanationList"></ul>
+        <a class="doc-link" id="docLink" href="#" target="_blank" rel="noopener" hidden>
+          📖 Documentación oficial de Microsoft relacionada
+        </a>
+      </div>
+    </section>
+
+    <!-- Pantalla de resultados -->
+    <section id="resultScreen" class="card result-card" hidden>
+      <h2>Resultados del test</h2>
+      <div class="score-circle" id="scoreCircle">
+        <span id="finalScore">0%</span>
+      </div>
+      <p class="result-summary" id="resultSummary"></p>
+      <div class="result-actions">
+        <button class="btn primary" id="reviewBtn">Revisar respuestas</button>
+        <button class="btn" id="restartBtn">Nuevo test</button>
+      </div>
+      <div id="reviewContainer" class="review-container" hidden></div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>
+      Contenido de práctica no oficial creado con fines de estudio. Microsoft, Azure y AI-901
+      son marcas de Microsoft Corporation. Basado en la
+      <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/ai-901" target="_blank" rel="noopener">guía de estudio oficial de AI-901</a>.
+      Verifica siempre con la
+      <a href="https://learn.microsoft.com/en-us/azure/ai-services/" target="_blank" rel="noopener">documentación oficial de Azure AI</a>.
+    </p>
+  </footer>
+
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
