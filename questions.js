@@ -4,7 +4,9 @@
 
 const QUESTIONS = [
 
-  /* ── DOMINIO 1 · IA Responsable ──────────────────────────────────── */
+  /* ══════════════════════════════════════════════════════════════════
+     DOMINIO 1 · IA Responsable
+  ══════════════════════════════════════════════════════════════════ */
   {
     domain: "Dominio 1 - IA Responsable",
     text: "¿Cuál principio de IA responsable de Microsoft garantiza que los sistemas sean comprensibles y que los humanos puedan supervisar su comportamiento?",
@@ -19,1213 +21,1111 @@ const QUESTIONS = [
   },
   {
     domain: "Dominio 1 - IA Responsable",
-    text: "Una empresa usa IA para filtrar currículums y el modelo rechaza sistemáticamente candidatas mujeres. ¿Qué principio de IA responsable se viola principalmente?",
+    text: "Un banco entrena un modelo para aprobar créditos y detecta que el modelo rechaza sistemáticamente más solicitudes de un grupo étnico específico, incluso controlando por ingresos. ¿Qué principio de IA responsable se está violando?",
     multiple: false,
     options: [
-      { text: "Confiabilidad y seguridad", correct: false, explanation: "La confiabilidad trata sobre que el sistema funcione como se espera de forma segura, no sobre discriminación entre grupos." },
-      { text: "Privacidad y seguridad", correct: false, explanation: "Privacidad protege datos personales; el sesgo de género es un problema de equidad, no de privacidad." },
-      { text: "Equidad", correct: true, explanation: "La equidad exige que los sistemas de IA no discriminen por género, raza u otras características protegidas. Un modelo que rechaza mujeres sistemáticamente viola este principio." },
-      { text: "Transparencia", correct: false, explanation: "Transparencia se refiere a la comprensibilidad del sistema, no a si trata igual a distintos grupos." }
+      { text: "Fiabilidad y seguridad", correct: false, explanation: "Este principio se refiere a que el sistema funcione de forma consistente ante distintas condiciones, no al trato diferenciado entre grupos." },
+      { text: "Equidad", correct: true, explanation: "Cuando un modelo produce resultados sistemáticamente distintos para un grupo demográfico sin justificación basada en el resultado que predice, se viola el principio de equidad (fairness)." },
+      { text: "Responsabilidad (accountability)", correct: false, explanation: "La responsabilidad se refiere a quién rinde cuentas por el sistema, no al sesgo en los resultados en sí." },
+      { text: "Inclusión", correct: false, explanation: "La inclusión se centra en que la IA considere a todas las personas en su diseño, pero el problema descrito es específicamente un sesgo medible en resultados." }
     ],
     doc: "https://learn.microsoft.com/es-es/azure/machine-learning/concept-responsible-ai"
   },
   {
     domain: "Dominio 1 - IA Responsable",
-    text: "¿Qué principio de IA responsable de Microsoft garantiza que existan personas que rindan cuentas por el comportamiento de los sistemas de IA?",
-    multiple: false,
+    text: "Para cada afirmación sobre IA responsable, selecciona Yes si es verdadera. Otherwise, selecciona No.\n1) El uso de un 'red team' para intentar hacer que un modelo genere contenido dañino es una práctica recomendada antes de producción.\n2) Publicar una tarjeta de transparencia (Transparency Note) es obligatorio únicamente para modelos de visión, no para modelos de lenguaje.\n3) Un sistema de IA de alto riesgo (p. ej. usado en decisiones legales) requiere mayor supervisión humana que uno de bajo riesgo.",
+    multiple: true,
     options: [
-      { text: "Transparencia", correct: false, explanation: "Transparencia trata sobre la comprensibilidad del sistema, no sobre quién responde por sus acciones." },
-      { text: "Inclusión", correct: false, explanation: "Inclusión busca beneficiar a toda la sociedad, no asignar responsabilidades sobre el sistema." },
-      { text: "Responsabilidad", correct: true, explanation: "El principio de responsabilidad (Accountability) establece que las personas y organizaciones deben rendir cuentas por los sistemas de IA que diseñan, desarrollan e implementan." },
-      { text: "Confiabilidad y seguridad", correct: false, explanation: "Confiabilidad y seguridad se refieren al comportamiento técnico del sistema, no a la rendición de cuentas humana." }
+      { text: "1) Yes", correct: true, explanation: "El 'red teaming' es una práctica estándar de Microsoft para probar vulnerabilidades y contenido dañino antes del lanzamiento." },
+      { text: "2) No", correct: true, explanation: "Las Transparency Notes aplican a cualquier tipo de modelo o servicio de IA, no solo a visión." },
+      { text: "3) Yes", correct: true, explanation: "A mayor riesgo del caso de uso, mayor debe ser el nivel de supervisión y control humano (human-in-the-loop)." }
     ],
     doc: "https://learn.microsoft.com/es-es/azure/machine-learning/concept-responsible-ai"
   },
   {
     domain: "Dominio 1 - IA Responsable",
-    text: "¿Cuántos principios de IA responsable define Microsoft oficialmente?",
+    text: "Una aplicación de generación de texto ocasionalmente produce afirmaciones falsas presentadas como hechos. ¿Qué término describe este fenómeno?",
     multiple: false,
     options: [
-      { text: "4", correct: false, explanation: "Microsoft define más principios; 4 es un número incorrecto." },
-      { text: "5", correct: false, explanation: "5 no es el número correcto de principios oficiales de Microsoft." },
-      { text: "6", correct: true, explanation: "Microsoft define 6 principios de IA responsable: Equidad, Confiabilidad y seguridad, Privacidad y seguridad, Inclusión, Transparencia y Responsabilidad." },
-      { text: "8", correct: false, explanation: "8 excede el número real de principios definidos por Microsoft." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/machine-learning/concept-responsible-ai"
-  },
-
-  /* ── DOMINIO 1 · Modelos de IA ────────────────────────────────────── */
-  {
-    domain: "Dominio 1 - Modelos de IA",
-    text: "¿Cuál parámetro de un LLM controla directamente la aleatoriedad o creatividad de las respuestas generadas?",
-    multiple: false,
-    options: [
-      { text: "Max tokens", correct: false, explanation: "Max tokens controla la longitud máxima de la respuesta, no su aleatoriedad." },
-      { text: "Temperature", correct: true, explanation: "Temperature controla la aleatoriedad: valores bajos (0-0.3) producen respuestas más deterministas; valores altos (0.7-1) generan respuestas más creativas y variadas." },
-      { text: "Frequency penalty", correct: false, explanation: "Frequency penalty reduce la repetición de tokens ya usados; no es el control principal de aleatoriedad." },
-      { text: "Presence penalty", correct: false, explanation: "Presence penalty incentiva al modelo a hablar de temas nuevos; el control principal de aleatoriedad es Temperature." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/concepts/models"
-  },
-  {
-    domain: "Dominio 1 - Modelos de IA",
-    text: "¿Qué técnica adapta un modelo base de lenguaje a un dominio específico actualizando sus pesos con ejemplos propios, sin reentrenarlo desde cero?",
-    multiple: false,
-    options: [
-      { text: "Prompt engineering", correct: false, explanation: "El prompt engineering ajusta la entrada en inferencia, pero no modifica los pesos del modelo de forma persistente." },
-      { text: "Fine-tuning", correct: true, explanation: "El fine-tuning actualiza los pesos del modelo base con datos propios del dominio, adaptándolo de forma persistente sin entrenarlo desde cero." },
-      { text: "Grounding", correct: false, explanation: "El grounding conecta al modelo con datos externos en tiempo real, pero no modifica los pesos del modelo." },
-      { text: "Quantización", correct: false, explanation: "La quantización comprime el modelo reduciendo la precisión numérica de sus pesos; no adapta su comportamiento a un dominio." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/how-to/fine-tuning"
-  },
-  {
-    domain: "Dominio 1 - Modelos de IA",
-    text: "¿Cuál es el propósito principal de los embeddings en sistemas de IA generativa?",
-    multiple: false,
-    options: [
-      { text: "Generar imágenes a partir de texto", correct: false, explanation: "La generación de imágenes la realizan modelos como DALL-E; los embeddings son representaciones vectoriales de texto." },
-      { text: "Representar texto como vectores numéricos para medir similitud semántica", correct: true, explanation: "Los embeddings transforman texto en vectores de alta dimensión donde textos con significados similares quedan cercanos, habilitando búsqueda semántica y RAG." },
-      { text: "Ajustar los pesos del modelo durante el entrenamiento", correct: false, explanation: "Los pesos se ajustan en entrenamiento o fine-tuning; los embeddings son representaciones usadas en inferencia." },
-      { text: "Reducir el número de tokens enviados al modelo", correct: false, explanation: "Los embeddings no reducen tokens; son representaciones vectoriales densas para tareas de similitud semántica." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/concepts/understand-embeddings"
-  },
-  {
-    domain: "Dominio 1 - Modelos de IA",
-    text: "¿Qué es el system message (mensaje del sistema) en un modelo de lenguaje conversacional?",
-    multiple: false,
-    options: [
-      { text: "Un mensaje que el usuario envía al inicio de cada conversación", correct: false, explanation: "El system message lo configura el desarrollador, no el usuario final." },
-      { text: "Instrucciones configuradas por el desarrollador que definen el comportamiento y personalidad del modelo", correct: true, explanation: "El system message establece el rol, tono, restricciones y contexto del asistente antes de que el usuario interactúe, moldeando el comportamiento del modelo durante toda la sesión." },
-      { text: "El mensaje que el modelo genera automáticamente como bienvenida", correct: false, explanation: "El system message es una instrucción de configuración enviada al modelo, no una respuesta automática." },
-      { text: "Un log interno que registra errores del modelo", correct: false, explanation: "Los logs de errores son diferentes; el system message es parte del contexto de conversación enviado al modelo." }
+      { text: "Overfitting", correct: false, explanation: "Overfitting es un problema de entrenamiento de ML clásico donde el modelo memoriza datos de entrenamiento, no un fenómeno de generación de texto falso." },
+      { text: "Alucinación", correct: true, explanation: "Una alucinación ocurre cuando un modelo generativo produce contenido que suena convincente y coherente, pero es incorrecto o inventado." },
+      { text: "Data drift", correct: false, explanation: "Data drift se refiere al cambio en la distribución de los datos de entrada respecto a los datos de entrenamiento, no a respuestas falsas." },
+      { text: "Fine-tuning", correct: false, explanation: "Fine-tuning es una técnica de ajuste de modelos, no un problema relacionado con la veracidad de las respuestas." }
     ],
     doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/concepts/prompt-engineering"
   },
-
-  /* ── DOMINIO 1 · Texto (NLP) ──────────────────────────────────────── */
   {
-    domain: "Dominio 1 - Cargas de trabajo: Texto",
-    text: "¿Cuál servicio de Azure AI analiza sentimientos, detecta idioma y extrae frases clave de texto?",
+    domain: "Dominio 1 - IA Responsable",
+    text: "¿Qué acción es un ejemplo del principio de 'Responsabilidad' (accountability) aplicado a una solución de IA en producción?",
     multiple: false,
     options: [
-      { text: "Azure AI Vision", correct: false, explanation: "Azure AI Vision analiza imágenes y vídeos, no texto." },
-      { text: "Azure AI Language", correct: true, explanation: "Azure AI Language incluye análisis de sentimientos, detección de idioma, extracción de frases clave, reconocimiento de entidades y más capacidades de NLP." },
-      { text: "Azure AI Translator", correct: false, explanation: "Azure AI Translator traduce texto entre idiomas pero no analiza sentimientos ni extrae frases clave." },
-      { text: "Azure AI Content Safety", correct: false, explanation: "Content Safety detecta contenido dañino; no es el servicio principal para NLP de texto." }
+      { text: "Cifrar los datos de entrenamiento en reposo", correct: false, explanation: "El cifrado de datos corresponde al principio de privacidad y seguridad, no de responsabilidad." },
+      { text: "Designar un equipo de gobernanza que revise y apruebe los casos de uso de IA antes de su despliegue", correct: true, explanation: "La responsabilidad implica que existan personas y procesos claros que rindan cuentas sobre el diseño, despliegue y comportamiento del sistema." },
+      { text: "Aumentar la precisión del modelo con más datos", correct: false, explanation: "Esto mejora el rendimiento técnico, pero no está directamente relacionado con la gobernanza y rendición de cuentas." },
+      { text: "Usar streaming para reducir la latencia de respuesta", correct: false, explanation: "Es una optimización técnica de experiencia de usuario, no un mecanismo de responsabilidad organizacional." }
     ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/language-service/overview"
+    doc: "https://learn.microsoft.com/es-es/azure/machine-learning/concept-responsible-ai"
   },
   {
-    domain: "Dominio 1 - Cargas de trabajo: Texto",
-    text: "¿Qué técnica de NLP identifica y clasifica nombres de personas, organizaciones y lugares dentro de un texto?",
+    domain: "Dominio 1 - IA Responsable",
+    text: "En Microsoft Foundry, ¿cuál es el propósito principal de Content Safety al construir una aplicación generativa?",
     multiple: false,
     options: [
-      { text: "Análisis de sentimientos", correct: false, explanation: "El análisis de sentimientos determina si el texto es positivo, negativo o neutro; no identifica entidades." },
-      { text: "Reconocimiento de entidades nombradas (NER)", correct: true, explanation: "NER identifica y clasifica entidades como personas, organizaciones, ubicaciones, fechas y valores monetarios dentro del texto." },
-      { text: "Clasificación de texto", correct: false, explanation: "La clasificación asigna categorías a documentos completos, no identifica entidades específicas dentro del texto." },
-      { text: "Resumen automático", correct: false, explanation: "El resumen condensa el texto; no extrae entidades nombradas." }
+      { text: "Reducir el costo por token del modelo", correct: false, explanation: "Content Safety no afecta el costo de los tokens; su función es moderación de contenido." },
+      { text: "Detectar y filtrar contenido dañino, tanto en las entradas del usuario como en las salidas del modelo", correct: true, explanation: "Content Safety analiza texto e imágenes para detectar categorías de daño (odio, violencia, contenido sexual, autolesión) tanto en prompts como en respuestas." },
+      { text: "Aumentar automáticamente la longitud del contexto del modelo", correct: false, explanation: "La ventana de contexto es una característica del modelo, no una función de Content Safety." },
+      { text: "Entrenar un modelo personalizado desde cero", correct: false, explanation: "Content Safety es un servicio de moderación, no una herramienta de entrenamiento de modelos." }
     ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/language-service/named-entity-recognition/overview"
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/content-safety/overview"
   },
   {
-    domain: "Dominio 1 - Cargas de trabajo: Texto",
-    text: "¿Cuál es la diferencia principal entre un modelo de lenguaje generativo y un modelo de clasificación de texto?",
-    multiple: false,
+    domain: "Dominio 1 - IA Responsable",
+    text: "Para cada afirmación sobre el principio de Privacidad y Seguridad en IA, selecciona Yes si es verdadera.\n1) Los datos personales usados para personalizar un modelo deben manejarse conforme a regulaciones de protección de datos.\n2) Un sistema de IA responsable no necesita informar a los usuarios cuando están interactuando con un chatbot en lugar de un humano.\n3) La minimización de datos (usar solo los datos necesarios) reduce el riesgo de exposición de información sensible.",
+    multiple: true,
     options: [
-      { text: "Los modelos generativos solo trabajan con imágenes; los clasificadores solo con texto", correct: false, explanation: "Ambos tipos trabajan con texto. Los modelos generativos también pueden procesar imágenes, pero esa no es la diferencia definitoria." },
-      { text: "Los modelos generativos producen texto nuevo; los clasificadores asignan etiquetas predefinidas", correct: true, explanation: "Los modelos generativos crean contenido nuevo (respuestas, resúmenes, código). Los clasificadores asignan el texto a categorías ya definidas como positivo/negativo o spam/no-spam." },
-      { text: "Los clasificadores requieren más datos de entrenamiento que los modelos generativos", correct: false, explanation: "Los LLMs generativos suelen requerir enormes volúmenes de datos; esta no es la diferencia definitoria." },
-      { text: "Los clasificadores no pueden usarse en Azure", correct: false, explanation: "Azure AI Language ofrece capacidades de clasificación de texto personalizadas." }
+      { text: "1) Yes", correct: true, explanation: "El manejo de datos personales debe cumplir regulaciones como GDPR y buenas prácticas de privacidad." },
+      { text: "2) No", correct: true, explanation: "La transparencia con el usuario, incluyendo informar que interactúa con un bot, es una práctica recomendada de IA responsable." },
+      { text: "3) Yes", correct: true, explanation: "El principio de minimización de datos reduce la superficie de exposición y el riesgo ante brechas de seguridad." }
     ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/language-service/text-classification/overview"
-  },
-
-  /* ── DOMINIO 1 · Voz ──────────────────────────────────────────────── */
-  {
-    domain: "Dominio 1 - Cargas de trabajo: Voz",
-    text: "¿Qué servicio de Azure AI convierte audio hablado en texto escrito (transcripción)?",
-    multiple: false,
-    options: [
-      { text: "Azure AI Translator", correct: false, explanation: "Translator traduce texto entre idiomas; no convierte audio a texto." },
-      { text: "Azure AI Language", correct: false, explanation: "Language procesa texto ya escrito; no realiza reconocimiento de voz." },
-      { text: "Azure AI Speech - Speech-to-Text", correct: true, explanation: "Azure AI Speech incluye el servicio Speech-to-Text que transcribe audio en tiempo real o por lotes a texto escrito en múltiples idiomas." },
-      { text: "Azure AI Vision", correct: false, explanation: "Vision analiza imágenes y vídeo, no audio." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/speech-service/speech-to-text"
+    doc: "https://learn.microsoft.com/es-es/azure/machine-learning/concept-responsible-ai"
   },
   {
-    domain: "Dominio 1 - Cargas de trabajo: Voz",
-    text: "Una empresa quiere crear un asistente de voz con una voz sintética que suene exactamente como su marca. ¿Qué característica de Azure AI Speech debe usar?",
+    domain: "Dominio 1 - IA Responsable",
+    text: "Una empresa despliega un asistente de IA para atención al cliente y agrega un mensaje que aclara: 'Estás hablando con un asistente virtual'. ¿Qué principio de IA responsable ejemplifica mejor esta práctica?",
     multiple: false,
     options: [
-      { text: "Neural text-to-speech (TTS) estándar", correct: false, explanation: "El TTS estándar ofrece voces preconfiguradas de alta calidad, pero no permite crear una voz completamente personalizada de marca." },
-      { text: "Custom Neural Voice", correct: true, explanation: "Custom Neural Voice permite crear una voz sintética única a partir de grabaciones de audio propias, ideal para identidad de marca corporativa." },
-      { text: "Speech translation", correct: false, explanation: "Speech translation traduce audio de un idioma a otro; no crea voces personalizadas." },
-      { text: "Speaker recognition", correct: false, explanation: "Speaker recognition identifica quién está hablando; no crea voces de marca." }
+      { text: "Transparencia", correct: true, explanation: "Informar claramente que se trata de un sistema de IA y no de un humano es una manifestación directa del principio de transparencia." },
+      { text: "Fiabilidad y seguridad", correct: false, explanation: "Este principio se relaciona con el desempeño consistente del sistema ante distintos escenarios, no con revelar su naturaleza." },
+      { text: "Inclusión", correct: false, explanation: "La inclusión busca que el sistema sea accesible y útil para diversos grupos, no informar sobre la naturaleza del sistema." },
+      { text: "Equidad", correct: false, explanation: "La equidad trata sobre el trato justo entre grupos, no sobre revelar la identidad del sistema." }
     ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/speech-service/custom-neural-voice"
+    doc: "https://learn.microsoft.com/es-es/azure/machine-learning/concept-responsible-ai"
   },
   {
-    domain: "Dominio 1 - Cargas de trabajo: Voz",
-    text: "¿Qué capacidad de Azure AI Speech permite traducir audio hablado de un idioma directamente a texto en otro idioma diferente?",
+    domain: "Dominio 1 - IA Responsable",
+    text: "¿Cuál de las siguientes es la mejor práctica para mitigar sesgos en un modelo de clasificación antes de su despliegue?",
     multiple: false,
     options: [
-      { text: "Text-to-Speech", correct: false, explanation: "Text-to-Speech convierte texto escrito a voz; no traduce entre idiomas." },
-      { text: "Speaker recognition", correct: false, explanation: "Speaker recognition identifica al hablante; no realiza traducción." },
-      { text: "Speech translation", correct: true, explanation: "Speech translation de Azure AI Speech convierte audio hablado en un idioma directamente a texto traducido en otro idioma, combinando reconocimiento de voz y traducción." },
-      { text: "Custom Speech", correct: false, explanation: "Custom Speech mejora el reconocimiento en vocabularios especializados; no traduce entre idiomas." }
+      { text: "Evaluar las métricas de desempeño (precisión, recall) desglosadas por subgrupos demográficos relevantes", correct: true, explanation: "Analizar el desempeño por subgrupos permite detectar disparidades que una métrica global agregada podría ocultar." },
+      { text: "Aumentar el número de épocas de entrenamiento", correct: false, explanation: "Más épocas de entrenamiento pueden mejorar la precisión general, pero no detectan ni corrigen sesgos entre grupos." },
+      { text: "Reducir el tamaño del conjunto de datos de prueba", correct: false, explanation: "Reducir el conjunto de prueba disminuye la confiabilidad estadística de la evaluación, no ayuda a detectar sesgos." },
+      { text: "Eliminar todas las variables categóricas del dataset", correct: false, explanation: "Eliminar variables categóricas no garantiza equidad, ya que el sesgo puede persistir mediante variables correlacionadas (proxies)." }
     ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/speech-service/speech-translation"
+    doc: "https://learn.microsoft.com/es-es/azure/machine-learning/concept-fairness-ml"
+  },
+  {
+    domain: "Dominio 1 - IA Responsable",
+    text: "¿Qué mecanismo permite a un usuario final apelar o cuestionar una decisión automatizada tomada por un sistema de IA, en línea con el principio de responsabilidad (accountability)?",
+    multiple: false,
+    options: [
+      { text: "Un proceso de revisión humana (human-in-the-loop) para decisiones de alto impacto", correct: true, explanation: "Permitir que un humano revise o revierta decisiones automatizadas de alto impacto es un mecanismo clave de accountability." },
+      { text: "Aumentar la temperatura del modelo generativo", correct: false, explanation: "La temperatura controla la aleatoriedad de las respuestas del modelo, no un mecanismo de apelación." },
+      { text: "Reducir el número de parámetros del modelo", correct: false, explanation: "El tamaño del modelo no está relacionado con la posibilidad de apelar decisiones." },
+      { text: "Desactivar el registro (logging) de las solicitudes", correct: false, explanation: "Desactivar el logging reduce la trazabilidad, lo cual va en contra del principio de responsabilidad." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/machine-learning/concept-responsible-ai"
   },
 
-  /* ── DOMINIO 1 · Visión ───────────────────────────────────────────── */
+  /* ══════════════════════════════════════════════════════════════════
+     DOMINIO 1 · Fundamentos de Machine Learning
+  ══════════════════════════════════════════════════════════════════ */
   {
-    domain: "Dominio 1 - Cargas de trabajo: Visión",
-    text: "¿Qué tarea de visión por computador devuelve las coordenadas de un rectángulo delimitador (bounding box) alrededor de cada objeto detectado?",
+    domain: "Dominio 1 - Fundamentos de ML",
+    text: "Tienes un conjunto de datos histórico de casas con características (metros cuadrados, ubicación, número de habitaciones) y su precio de venta real. Necesitas predecir el precio de una casa nueva. ¿Qué tipo de tarea de machine learning es esta?",
     multiple: false,
     options: [
-      { text: "Clasificación de imágenes", correct: false, explanation: "La clasificación asigna una etiqueta a la imagen completa, sin indicar dónde está el objeto." },
-      { text: "Detección de objetos", correct: true, explanation: "La detección de objetos localiza y clasifica múltiples objetos en una imagen, devolviendo las coordenadas del bounding box y la etiqueta de cada uno." },
-      { text: "Segmentación semántica", correct: false, explanation: "La segmentación semántica asigna una clase a cada píxel, pero no se expresa como coordenadas de rectángulo." },
-      { text: "OCR (reconocimiento óptico de caracteres)", correct: false, explanation: "OCR extrae texto de imágenes; no detecta objetos genéricos con bounding boxes." }
+      { text: "Clasificación", correct: false, explanation: "La clasificación predice una categoría discreta (p. ej. sí/no), no un valor numérico continuo como el precio." },
+      { text: "Regresión", correct: true, explanation: "Predecir un valor numérico continuo, como el precio de una casa, a partir de características es un problema de regresión." },
+      { text: "Agrupación (clustering)", correct: false, explanation: "El clustering agrupa datos sin etiquetas por similitud; aquí ya se cuenta con la etiqueta real (precio), por lo que es aprendizaje supervisado." },
+      { text: "Detección de anomalías", correct: false, explanation: "La detección de anomalías identifica valores atípicos, no predice un valor numérico específico." }
     ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/computer-vision/concept-object-detection"
+    doc: "https://learn.microsoft.com/es-es/training/modules/fundamentals-machine-learning/"
   },
   {
-    domain: "Dominio 1 - Cargas de trabajo: Visión",
-    text: "¿Cuál servicio de Azure AI está especializado en detectar, analizar y verificar rostros en imágenes?",
+    domain: "Dominio 1 - Fundamentos de ML",
+    text: "Un equipo de marketing quiere segmentar a sus clientes en grupos según su comportamiento de compra, sin tener etiquetas predefinidas de a qué segmento pertenece cada cliente. ¿Qué tipo de aprendizaje automático es el más apropiado?",
     multiple: false,
     options: [
-      { text: "Azure AI Vision", correct: false, explanation: "Azure AI Vision tiene capacidades básicas de detección facial, pero Azure AI Face es el servicio especializado con funcionalidades avanzadas." },
-      { text: "Azure AI Custom Vision", correct: false, explanation: "Custom Vision entrena modelos personalizados de clasificación y detección; no está especializado en análisis facial." },
-      { text: "Azure AI Face", correct: true, explanation: "Azure AI Face es el servicio especializado para detección facial, análisis de atributos, verificación de identidad y comparación de rostros." },
-      { text: "Azure AI Content Safety", correct: false, explanation: "Content Safety detecta contenido inapropiado; no está especializado en análisis facial." }
+      { text: "Aprendizaje supervisado", correct: false, explanation: "El aprendizaje supervisado requiere datos etiquetados; en este caso no existen etiquetas de segmento predefinidas." },
+      { text: "Aprendizaje no supervisado (clustering)", correct: true, explanation: "Al no existir etiquetas, el algoritmo debe descubrir patrones y agrupar clientes similares por sí mismo: esto es clustering." },
+      { text: "Aprendizaje por refuerzo", correct: false, explanation: "El aprendizaje por refuerzo se basa en recompensas y penalizaciones a través de acciones en un entorno, no en segmentar datos estáticos." },
+      { text: "Regresión lineal", correct: false, explanation: "La regresión lineal es un método supervisado para predecir valores numéricos continuos, no para descubrir grupos sin etiquetas." }
     ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/computer-vision/overview-identity"
+    doc: "https://learn.microsoft.com/es-es/training/modules/fundamentals-machine-learning/"
   },
   {
-    domain: "Dominio 1 - Cargas de trabajo: Visión",
-    text: "¿Qué servicio de Azure permite entrenar un modelo de clasificación de imágenes personalizado con fotos propias sin escribir código de entrenamiento?",
+    domain: "Dominio 1 - Fundamentos de ML",
+    text: "Al evaluar un modelo de clasificación binaria para detectar fraude, el equipo observa que el modelo tiene alta 'precisión' (precision) pero bajo 'recall'. ¿Qué implica esto en la práctica?",
     multiple: false,
     options: [
-      { text: "Azure Machine Learning Studio", correct: false, explanation: "AML Studio es una plataforma completa de ML; para visión personalizada de bajo código, Custom Vision es la opción más directa." },
-      { text: "Azure AI Vision", correct: false, explanation: "Azure AI Vision es un servicio preentrenado general; para modelos personalizados se usa Azure AI Custom Vision." },
-      { text: "Azure AI Custom Vision", correct: true, explanation: "Azure AI Custom Vision permite subir imágenes, etiquetarlas y entrenar un modelo de clasificación o detección personalizado desde una interfaz web sin código." },
-      { text: "Azure AI Document Intelligence", correct: false, explanation: "Document Intelligence extrae información de documentos; no está orientado al entrenamiento de modelos de visión personalizados." }
+      { text: "El modelo identifica correctamente la mayoría de los fraudes reales, aunque también genera muchas falsas alarmas", correct: false, explanation: "Esto describe alto recall y baja precisión, exactamente lo contrario de lo indicado en el escenario." },
+      { text: "Cuando el modelo predice fraude, casi siempre acierta, pero está dejando pasar muchos casos de fraude reales sin detectar", correct: true, explanation: "Alta precisión significa pocas falsas alarmas entre las predicciones positivas; bajo recall significa que muchos fraudes reales no son detectados (falsos negativos)." },
+      { text: "El modelo tiene un desempeño perfecto en ambas métricas", correct: false, explanation: "El escenario indica explícitamente que el recall es bajo, por lo que no hay desempeño perfecto." },
+      { text: "El modelo no puede usarse para tareas de clasificación binaria", correct: false, explanation: "El modelo sí puede usarse, pero requiere ajustar el umbral de decisión o técnica de balanceo según el objetivo de negocio." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/training/modules/fundamentals-machine-learning/"
+  },
+  {
+    domain: "Dominio 1 - Fundamentos de ML",
+    text: "Para cada afirmación sobre el ciclo de vida de un proyecto de machine learning, selecciona Yes si es verdadera.\n1) Dividir los datos en conjuntos de entrenamiento y prueba ayuda a evaluar qué tan bien generaliza el modelo a datos nuevos.\n2) Un modelo que obtiene 99% de precisión en el conjunto de entrenamiento pero 60% en el conjunto de prueba probablemente sufre overfitting.\n3) Los datos de entrenamiento y de prueba deben ser exactamente el mismo conjunto para maximizar la precisión reportada.",
+    multiple: true,
+    options: [
+      { text: "1) Yes", correct: true, explanation: "Separar entrenamiento y prueba permite medir el desempeño del modelo en datos que no ha visto, simulando el uso real." },
+      { text: "2) Yes", correct: true, explanation: "Una gran diferencia entre el desempeño en entrenamiento y en prueba es un indicador clásico de overfitting (memorización en vez de generalización)." },
+      { text: "3) No", correct: true, explanation: "Usar el mismo conjunto para entrenar y evaluar produce una métrica engañosamente alta y no mide la capacidad real de generalización." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/training/modules/fundamentals-machine-learning/"
+  },
+  {
+    domain: "Dominio 1 - Fundamentos de ML",
+    text: "¿Qué componente de Microsoft Foundry (antes Azure Machine Learning) permite construir flujos visuales de entrenamiento de modelos arrastrando y conectando módulos, sin escribir código?",
+    multiple: false,
+    options: [
+      { text: "Designer (diseñador visual de pipelines)", correct: true, explanation: "El Designer ofrece una interfaz de arrastrar y soltar para crear y ejecutar pipelines de entrenamiento de ML sin necesidad de código." },
+      { text: "Notebooks de Python", correct: false, explanation: "Los notebooks requieren escribir código; no son la herramienta 'sin código' descrita en la pregunta." },
+      { text: "El SDK de OpenAI", correct: false, explanation: "El SDK de OpenAI se usa para interactuar con modelos generativos vía código, no para construir pipelines visuales de ML clásico." },
+      { text: "Content Safety Studio", correct: false, explanation: "Content Safety Studio se usa para configurar moderación de contenido, no para entrenar modelos de ML." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/machine-learning/concept-designer"
+  },
+  {
+    domain: "Dominio 1 - Fundamentos de ML",
+    text: "Un data scientist entrena un modelo de árbol de decisión y luego quiere entender qué características (features) influyeron más en las predicciones del modelo. ¿Qué concepto describe esta necesidad?",
+    multiple: false,
+    options: [
+      { text: "Interpretabilidad / importancia de características (feature importance)", correct: true, explanation: "La importancia de características cuantifica cuánto contribuye cada variable a las predicciones del modelo, apoyando la interpretabilidad." },
+      { text: "Normalización de datos", correct: false, explanation: "La normalización escala los valores numéricos de las características, pero no explica su influencia en las predicciones." },
+      { text: "Aumento de datos (data augmentation)", correct: false, explanation: "El aumento de datos genera variaciones sintéticas de los datos de entrenamiento; no se relaciona con explicar el modelo." },
+      { text: "Validación cruzada (cross-validation)", correct: false, explanation: "La validación cruzada evalúa la estabilidad del rendimiento del modelo, no la importancia de las variables individuales." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/machine-learning/how-to-machine-learning-interpretability"
+  },
+  {
+    domain: "Dominio 1 - Fundamentos de ML",
+    text: "¿Cuál es la principal diferencia entre un modelo de aprendizaje profundo (deep learning) y un modelo de machine learning clásico como la regresión logística?",
+    multiple: false,
+    options: [
+      { text: "El deep learning usa redes neuronales con múltiples capas que pueden aprender automáticamente representaciones complejas de los datos, mientras que los modelos clásicos suelen requerir ingeniería manual de características", correct: true, explanation: "Las redes neuronales profundas aprenden jerarquías de representaciones automáticamente a partir de datos crudos, a diferencia de los modelos clásicos que dependen más de features diseñadas manualmente." },
+      { text: "El deep learning nunca requiere datos etiquetados", correct: false, explanation: "El deep learning puede ser supervisado, no supervisado o de refuerzo; no está limitado a datos sin etiquetas." },
+      { text: "Los modelos clásicos solo pueden ejecutarse en la nube, mientras que el deep learning solo se ejecuta localmente", correct: false, explanation: "Ambos tipos de modelos pueden desplegarse tanto en la nube como localmente." },
+      { text: "El deep learning es exclusivamente para tareas de texto", correct: false, explanation: "El deep learning se aplica en visión, audio, texto, series de tiempo y muchos otros dominios." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/training/modules/fundamentals-machine-learning/"
+  },
+  {
+    domain: "Dominio 1 - Fundamentos de ML",
+    text: "Un equipo entrena un modelo para predecir si un cliente cancelará su suscripción (churn). Después de desplegarlo, observan que su precisión disminuye con el tiempo a medida que cambian los hábitos de los clientes. ¿Qué fenómeno describe esta situación?",
+    multiple: false,
+    options: [
+      { text: "Data drift (deriva de datos)", correct: true, explanation: "Cuando la distribución de los datos de entrada en producción cambia respecto a los datos con los que se entrenó el modelo, el rendimiento se degrada; esto se conoce como data drift." },
+      { text: "Underfitting", correct: false, explanation: "El underfitting ocurre cuando el modelo es demasiado simple desde el inicio del entrenamiento, no describe la degradación con el tiempo en producción." },
+      { text: "Data leakage", correct: false, explanation: "El data leakage ocurre cuando información del conjunto de prueba se filtra al entrenamiento, inflando artificialmente la precisión inicial." },
+      { text: "One-hot encoding", correct: false, explanation: "One-hot encoding es una técnica de preprocesamiento de variables categóricas, no un fenómeno relacionado con el rendimiento en producción." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/machine-learning/how-to-monitor-datasets"
+  },
+
+  /* ══════════════════════════════════════════════════════════════════
+     DOMINIO 1 · Computer Vision
+  ══════════════════════════════════════════════════════════════════ */
+  {
+    domain: "Dominio 1 - Computer Vision",
+    text: "Una fábrica necesita identificar y dibujar un cuadro delimitador (bounding box) alrededor de cada pieza defectuosa en una imagen de la línea de producción, incluyendo la posición exacta de cada una. ¿Qué capacidad de visión por computadora se requiere?",
+    multiple: false,
+    options: [
+      { text: "Clasificación de imágenes", correct: false, explanation: "La clasificación de imágenes asigna una sola etiqueta a toda la imagen, sin indicar la ubicación de los objetos." },
+      { text: "Detección de objetos (object detection)", correct: true, explanation: "La detección de objetos identifica múltiples objetos en una imagen y proporciona un cuadro delimitador con la ubicación de cada uno." },
+      { text: "OCR (reconocimiento óptico de caracteres)", correct: false, explanation: "OCR extrae texto de las imágenes, no identifica ubicaciones de piezas físicas defectuosas." },
+      { text: "Análisis de sentimiento", correct: false, explanation: "El análisis de sentimiento es una capacidad de procesamiento de lenguaje natural, no de visión por computadora." }
     ],
     doc: "https://learn.microsoft.com/es-es/azure/ai-services/custom-vision-service/overview"
   },
-
-  /* ── DOMINIO 1 · Extracción de información ───────────────────────── */
   {
-    domain: "Dominio 1 - Extracción de información",
-    text: "¿Qué servicio de Azure AI extrae campos estructurados como fecha, importe total y número de factura de documentos escaneados?",
+    domain: "Dominio 1 - Computer Vision",
+    text: "¿Qué servicio de Azure AI debes usar para entrenar un modelo que clasifique fotos de productos en categorías personalizadas específicas de tu catálogo, sin necesidad de conocimientos profundos de machine learning?",
     multiple: false,
     options: [
-      { text: "Azure AI Language", correct: false, explanation: "Language procesa texto no estructurado; no está optimizado para extraer campos de formularios con formato específico." },
-      { text: "Azure AI Document Intelligence", correct: true, explanation: "Azure AI Document Intelligence (antes Form Recognizer) extrae campos estructurados de formularios, facturas, recibos, tarjetas y documentos personalizados." },
-      { text: "Azure AI Vision (OCR)", correct: false, explanation: "OCR extrae todo el texto de una imagen sin clasificar ni estructurar los campos del documento." },
-      { text: "Azure AI Search", correct: false, explanation: "Azure AI Search indexa y busca contenido; no extrae campos estructurados de documentos directamente." }
+      { text: "Azure AI Custom Vision", correct: true, explanation: "Custom Vision permite entrenar modelos de clasificación de imágenes y detección de objetos personalizados mediante una interfaz sencilla, sin requerir experiencia avanzada en ML." },
+      { text: "Azure AI Document Intelligence", correct: false, explanation: "Document Intelligence extrae datos estructurados de documentos, no clasifica imágenes de productos generales." },
+      { text: "Azure AI Language", correct: false, explanation: "Azure AI Language procesa texto (sentimiento, entidades, etc.), no imágenes." },
+      { text: "Azure AI Speech", correct: false, explanation: "Azure AI Speech procesa audio (voz), no es relevante para clasificación de imágenes." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/custom-vision-service/overview"
+  },
+  {
+    domain: "Dominio 1 - Computer Vision",
+    text: "Para cada afirmación sobre Azure AI Vision, selecciona Yes si es verdadera.\n1) La función de OCR puede extraer texto impreso y manuscrito de una imagen.\n2) La detección facial en Azure AI Vision puede usarse, por defecto y sin restricciones adicionales, para identificar la identidad de cualquier persona en una base de datos pública.\n3) El análisis de imágenes puede generar automáticamente una descripción en lenguaje natural del contenido de una foto.",
+    multiple: true,
+    options: [
+      { text: "1) Yes", correct: true, explanation: "El OCR de Azure AI Vision (Read API) soporta tanto texto impreso como manuscrito en muchos idiomas." },
+      { text: "2) No", correct: true, explanation: "El reconocimiento facial de identificación (identificación 1:N) está sujeto a acceso limitado y controles de uso responsable; no está disponible libremente para cualquier escenario sin aprobación." },
+      { text: "3) Yes", correct: true, explanation: "La función de 'image captioning' de Azure AI Vision puede generar una descripción textual del contenido general de una imagen." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/computer-vision/overview"
+  },
+  {
+    domain: "Dominio 1 - Computer Vision",
+    text: "Una app médica necesita extraer automáticamente el texto de recetas manuscritas y estructurarlo en campos como 'medicamento', 'dosis' y 'fecha'. ¿Qué servicio de Azure es el más adecuado?",
+    multiple: false,
+    options: [
+      { text: "Azure AI Vision (OCR simple)", correct: false, explanation: "El OCR simple extrae texto plano, pero no estructura automáticamente la información en campos clave-valor específicos de un documento." },
+      { text: "Azure AI Document Intelligence con un modelo personalizado", correct: true, explanation: "Document Intelligence permite entrenar modelos personalizados que extraen y estructuran campos específicos (como medicamento, dosis, fecha) de documentos, incluidos los manuscritos." },
+      { text: "Azure AI Custom Vision", correct: false, explanation: "Custom Vision se usa para clasificación y detección de objetos en imágenes, no para extracción estructurada de texto de documentos." },
+      { text: "Face API", correct: false, explanation: "Face API se especializa en detección y análisis de rostros, no en extracción de texto de documentos." }
     ],
     doc: "https://learn.microsoft.com/es-es/azure/ai-services/document-intelligence/overview"
   },
   {
-    domain: "Dominio 1 - Extracción de información",
-    text: "¿Cuál es la función principal de Azure AI Search con AI enrichment (enriquecimiento de IA)?",
+    domain: "Dominio 1 - Computer Vision",
+    text: "¿Qué escenario describe mejor un caso de uso de 'segmentación semántica' en visión por computadora?",
     multiple: false,
     options: [
-      { text: "Entrenar modelos de clasificación de texto personalizados", correct: false, explanation: "Azure AI Search no entrena modelos de clasificación; para eso se usa Azure AI Language o Azure Machine Learning." },
-      { text: "Indexar contenido extrayendo conocimiento de texto, imágenes y documentos para habilitar búsquedas inteligentes", correct: true, explanation: "AI enrichment usa habilidades cognitivas (OCR, NER, traducción, etc.) durante la indexación para extraer metadatos y habilitar búsquedas semánticas e inteligentes." },
-      { text: "Crear alertas cuando se detecta contenido inapropiado en documentos", correct: false, explanation: "Eso es función de Azure AI Content Safety, no de Azure AI Search." },
-      { text: "Reemplazar a Azure AI Document Intelligence en la extracción de formularios", correct: false, explanation: "Son servicios complementarios; AI Search indexa y busca, Document Intelligence extrae campos estructurados." }
+      { text: "Clasificar una imagen completa como 'gato' o 'perro'", correct: false, explanation: "Esto es clasificación de imágenes a nivel de imagen completa, no segmentación a nivel de píxel." },
+      { text: "Etiquetar cada píxel de una imagen de una calle como 'carretera', 'peatón', 'vehículo' o 'cielo'", correct: true, explanation: "La segmentación semántica asigna una clase a cada píxel de la imagen, lo que permite distinguir con precisión las regiones que pertenecen a cada categoría." },
+      { text: "Transcribir el texto visible en una señal de tráfico", correct: false, explanation: "Esto corresponde a OCR, no a segmentación semántica." },
+      { text: "Detectar si dos fotos pertenecen a la misma persona", correct: false, explanation: "Esto es un caso de verificación facial, no de segmentación semántica." }
     ],
-    doc: "https://learn.microsoft.com/es-es/azure/search/cognitive-search-concept-intro"
+    doc: "https://learn.microsoft.com/es-es/training/modules/analyze-images-computer-vision/"
+  },
+  {
+    domain: "Dominio 1 - Computer Vision",
+    text: "Tu aplicación necesita saber si dos fotografías distintas corresponden a la misma persona (por ejemplo, para verificar identidad al iniciar sesión). ¿Qué funcionalidad de Azure AI Face debes usar?",
+    multiple: false,
+    options: [
+      { text: "Detección de rostros (face detection)", correct: false, explanation: "La detección de rostros solo identifica que hay una cara presente y sus atributos, pero no compara dos imágenes entre sí." },
+      { text: "Verificación facial (face verification)", correct: true, explanation: "La verificación facial compara dos imágenes de rostros y determina la probabilidad de que pertenezcan a la misma persona, ideal para autenticación 1:1." },
+      { text: "Detección de objetos", correct: false, explanation: "La detección de objetos identifica objetos genéricos en una imagen, no está especializada en comparar identidades faciales." },
+      { text: "Generación de miniaturas inteligentes (smart cropping)", correct: false, explanation: "El recorte inteligente ajusta el encuadre de una imagen, no compara identidades entre fotos." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/computer-vision/overview-identity"
   },
 
-  /* ── DOMINIO 1 · IA Generativa – Conceptos ───────────────────────── */
+  /* ══════════════════════════════════════════════════════════════════
+     DOMINIO 1 · Procesamiento de Lenguaje Natural (NLP)
+  ══════════════════════════════════════════════════════════════════ */
   {
-    domain: "Dominio 1 - IA Generativa",
-    text: "¿Qué es la Generación Aumentada por Recuperación (RAG)?",
+    domain: "Dominio 1 - NLP",
+    text: "Un chatbot de reservas de vuelos necesita entender que en la frase 'quiero volar de Santiago a Madrid el 5 de mayo', 'Santiago' y 'Madrid' son ciudades, y '5 de mayo' es una fecha. ¿Qué capacidad de NLP se necesita?",
     multiple: false,
     options: [
-      { text: "Un método de entrenamiento que actualiza los pesos del modelo con datos nuevos en tiempo real", correct: false, explanation: "RAG no modifica los pesos del modelo; combina recuperación de información con generación en tiempo de inferencia." },
-      { text: "Una técnica que combina la búsqueda de información relevante en una base de datos con la generación del LLM para responder con datos actuales y verificables", correct: true, explanation: "RAG recupera fragmentos relevantes de una base de conocimiento (vectorial o de búsqueda) y los incluye en el contexto del LLM, reduciendo alucinaciones y permitiendo respuestas basadas en datos actualizados." },
-      { text: "Un tipo de modelo de lenguaje pequeño (SLM) optimizado para dispositivos móviles", correct: false, explanation: "RAG es una arquitectura de sistema, no un tipo de modelo; los SLMs son una categoría de tamaño de modelo." },
-      { text: "Una técnica de compresión que reduce el tamaño de los modelos sin perder precisión", correct: false, explanation: "Eso describe cuantización o destilación, no RAG." }
+      { text: "Reconocimiento de entidades con nombre (NER)", correct: true, explanation: "El NER identifica y clasifica elementos específicos del texto (lugares, fechas, personas, organizaciones) como entidades con un tipo definido." },
+      { text: "Análisis de sentimiento", correct: false, explanation: "El análisis de sentimiento determina si un texto es positivo, negativo o neutral, no identifica entidades específicas." },
+      { text: "Traducción automática", correct: false, explanation: "La traducción convierte texto de un idioma a otro, no identifica entidades dentro de una frase." },
+      { text: "Resumen de texto (summarization)", correct: false, explanation: "El resumen condensa un texto largo en uno más corto, no extrae entidades nombradas específicas." }
     ],
-    doc: "https://learn.microsoft.com/es-es/azure/search/retrieval-augmented-generation-overview"
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/language-service/named-entity-recognition/overview"
   },
   {
-    domain: "Dominio 1 - IA Generativa",
-    text: "¿Qué son las 'alucinaciones' en el contexto de los LLMs?",
+    domain: "Dominio 1 - NLP",
+    text: "¿Qué es 'tokenización' en el contexto del procesamiento de lenguaje natural?",
     multiple: false,
     options: [
-      { text: "Errores de hardware que causan respuestas incorrectas del servidor", correct: false, explanation: "Las alucinaciones son un fenómeno del modelo lingüístico, no del hardware." },
-      { text: "Cuando el modelo genera información que parece plausible pero es factualmente incorrecta o inventada", correct: true, explanation: "Las alucinaciones ocurren cuando el LLM produce texto coherente y confiado pero factualmente incorrecto, al no tener acceso a información actualizada o al interpolar incorrectamente." },
-      { text: "Imágenes distorsionadas generadas por modelos de visión", correct: false, explanation: "El término alucinación en IA se refiere a texto incorrecto de LLMs, no a artefactos visuales." },
-      { text: "Respuestas repetitivas cuando el parámetro temperature está en 0", correct: false, explanation: "La repetición es un fenómeno distinto; las alucinaciones son invenciones de hechos, no repeticiones." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/concepts/hallucinations"
-  },
-  {
-    domain: "Dominio 1 - IA Generativa",
-    text: "¿Qué describe el término 'prompt injection'?",
-    multiple: false,
-    options: [
-      { text: "Un ataque que sobrecarga el modelo enviando prompts muy largos", correct: false, explanation: "Sobrecargar el contexto con tokens es un ataque de tipo token flooding, no prompt injection." },
-      { text: "Instrucciones maliciosas ocultas en contenido que el modelo procesa, que anulan las instrucciones originales del sistema", correct: true, explanation: "El prompt injection ocurre cuando datos externos (páginas web, documentos, emails) contienen instrucciones que el modelo interpreta como comandos, anulando el system message original." },
-      { text: "El proceso de inyectar ejemplos en el prompt para guiar al modelo (few-shot prompting)", correct: false, explanation: "Few-shot prompting es una técnica legítima de diseño de prompts, no un ataque de seguridad." },
-      { text: "Un método para insertar variables dinámicas en las plantillas de prompts", correct: false, explanation: "La interpolación de variables en prompts es una práctica normal de desarrollo; no es prompt injection malicioso." }
+      { text: "El proceso de dividir el texto en unidades más pequeñas (palabras, subpalabras o caracteres) que el modelo puede procesar", correct: true, explanation: "La tokenización descompone el texto en tokens, que son las unidades básicas que los modelos de lenguaje usan para procesar y generar texto." },
+      { text: "El proceso de cifrar el texto para protegerlo", correct: false, explanation: "Esto describe cifrado o seguridad de datos, no tokenización lingüística." },
+      { text: "El proceso de traducir texto entre idiomas", correct: false, explanation: "La traducción es una tarea de NLP distinta que ocurre después de la tokenización, no la define." },
+      { text: "El proceso de eliminar todas las palabras vacías (stopwords) de un texto", correct: false, explanation: "La eliminación de stopwords es una técnica de preprocesamiento diferente y opcional, no equivale a tokenización." }
     ],
     doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/concepts/prompt-engineering"
   },
   {
-    domain: "Dominio 1 - IA Generativa",
-    text: "¿Cuál es la diferencia entre un modelo de lenguaje grande (LLM) y un modelo de lenguaje pequeño (SLM)?",
-    multiple: false,
-    options: [
-      { text: "Los LLMs solo pueden usarse en la nube; los SLMs solo en dispositivos locales", correct: false, explanation: "Ambos pueden usarse en la nube y en local; el despliegue no es la diferencia definitoria." },
-      { text: "Los LLMs tienen más parámetros y mayor capacidad general; los SLMs son más eficientes y adecuados para tareas específicas con recursos limitados", correct: true, explanation: "Los LLMs (como GPT-4) tienen miles de millones de parámetros y gran versatilidad. Los SLMs (como Phi-3) tienen menos parámetros, consumen menos recursos y son ideales para dispositivos edge o tareas específicas." },
-      { text: "Los SLMs son siempre más precisos que los LLMs en cualquier tarea", correct: false, explanation: "Los LLMs suelen superar a los SLMs en tareas generales; los SLMs pueden ser más eficientes en tareas específicas para las que fueron optimizados." },
-      { text: "Los LLMs no pueden hacer fine-tuning; los SLMs sí", correct: false, explanation: "Ambos tipos de modelos admiten fine-tuning; esta no es la diferencia entre ellos." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-studio/how-to/model-catalog-overview"
-  },
-
-  /* ── DOMINIO 2 · Microsoft Foundry – Conceptos ───────────────────── */
-  {
-    domain: "Dominio 2 - Microsoft Foundry",
-    text: "¿Qué es Microsoft Azure AI Foundry (anteriormente Azure AI Studio)?",
-    multiple: false,
-    options: [
-      { text: "Un servicio exclusivo para entrenar modelos de visión por computador", correct: false, explanation: "Foundry no está limitado a visión; es una plataforma completa para desarrollar soluciones de IA generativa." },
-      { text: "Una plataforma unificada para explorar, construir, evaluar y desplegar aplicaciones de IA generativa en Azure", correct: true, explanation: "Azure AI Foundry es la plataforma central de Microsoft que integra el catálogo de modelos, herramientas de desarrollo, evaluación de seguridad y despliegue de aplicaciones de IA generativa." },
-      { text: "Una herramienta de análisis de datos similar a Power BI pero con capacidades de IA", correct: false, explanation: "Foundry está enfocado en desarrollo de IA generativa, no en análisis y visualización de datos empresariales." },
-      { text: "Un servicio de almacenamiento de modelos entrenados por los clientes", correct: false, explanation: "Aunque Foundry puede gestionar modelos, su propósito principal es el desarrollo y despliegue de aplicaciones de IA." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-studio/what-is-ai-studio"
-  },
-  {
-    domain: "Dominio 2 - Microsoft Foundry",
-    text: "¿Qué es el catálogo de modelos (Model Catalog) de Azure AI Foundry?",
-    multiple: false,
-    options: [
-      { text: "Un repositorio de datasets listos para entrenar modelos de machine learning", correct: false, explanation: "El catálogo de modelos contiene modelos, no datasets de entrenamiento." },
-      { text: "Un repositorio centralizado con modelos de Microsoft, OpenAI, Meta, Mistral y otros proveedores, listo para explorar y desplegar", correct: true, explanation: "El Model Catalog de Foundry ofrece cientos de modelos de distintos proveedores (GPT, Phi, Llama, Mistral, etc.) que pueden explorarse, probarse y desplegarse directamente desde la plataforma." },
-      { text: "Una lista de los servicios cognitivos disponibles en Azure AI Services", correct: false, explanation: "Azure AI Services es un conjunto separado de servicios; el Model Catalog está específicamente en Foundry y contiene modelos de lenguaje y multimodales." },
-      { text: "Un almacén de versiones anteriores de modelos para rollback", correct: false, explanation: "El catálogo es para descubrir y desplegar modelos actuales, no para gestión de versiones anteriores." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-studio/how-to/model-catalog-overview"
-  },
-  {
-    domain: "Dominio 2 - Microsoft Foundry",
-    text: "¿Para qué se usa el Azure AI Foundry Playground?",
-    multiple: false,
-    options: [
-      { text: "Para entrenar modelos de clasificación de imágenes desde cero", correct: false, explanation: "El Playground es para probar modelos interactivamente, no para entrenar modelos desde cero." },
-      { text: "Para probar modelos de IA de forma interactiva con prompts y configuraciones antes de integrarlos en una aplicación", correct: true, explanation: "El Playground de Foundry permite experimentar con distintos modelos, ajustar parámetros como temperature y max tokens, y probar system messages de forma interactiva sin escribir código." },
-      { text: "Para monitorizar el uso y los costos de los modelos desplegados en producción", correct: false, explanation: "El monitoreo de costos se hace en Azure Cost Management; el Playground es una herramienta de experimentación." },
-      { text: "Para crear pipelines de datos de entrenamiento", correct: false, explanation: "Los pipelines de datos se crean en Azure Machine Learning; el Playground es para experimentación con modelos." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-studio/quickstarts/get-started-playground"
-  },
-  {
-    domain: "Dominio 2 - Microsoft Foundry",
-    text: "¿Qué es un proyecto (Project) dentro de Azure AI Foundry?",
-    multiple: false,
-    options: [
-      { text: "Un contenedor de facturación independiente para controlar los costos de IA por equipo", correct: false, explanation: "Los proyectos organizan recursos de desarrollo; la facturación se gestiona principalmente a nivel de suscripción y hub." },
-      { text: "Un espacio de trabajo colaborativo dentro de un hub donde se organizan recursos, conexiones y experimentos de IA", correct: true, explanation: "Un proyecto en Foundry es el espacio de trabajo donde los equipos organizan modelos, conexiones a servicios, flujos de prompts y experimentos, todo dentro del contexto de un hub." },
-      { text: "Una instancia de modelo desplegada lista para recibir llamadas de API", correct: false, explanation: "Las instancias desplegadas son deployments o endpoints; los proyectos son espacios de trabajo de desarrollo." },
-      { text: "Una plantilla predefinida de aplicación de IA que se puede clonar", correct: false, explanation: "Las plantillas existen en Foundry, pero un proyecto es el espacio de trabajo colaborativo, no una plantilla." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-studio/concepts/ai-resources"
-  },
-
-  /* ── DOMINIO 2 · Agentes de IA con Foundry ───────────────────────── */
-  {
-    domain: "Dominio 2 - Agentes de IA",
-    text: "¿Qué es Azure AI Agent Service?",
-    multiple: false,
-    options: [
-      { text: "Un servicio para monitorizar el rendimiento de modelos de IA en producción", correct: false, explanation: "El monitoreo de modelos se hace con Azure Monitor; Agent Service es para crear agentes autónomos." },
-      { text: "Un servicio administrado que permite crear agentes de IA capaces de razonar y ejecutar acciones usando herramientas y datos propios", correct: true, explanation: "Azure AI Agent Service permite construir agentes autónomos que pueden planificar tareas, usar herramientas (búsqueda, código, APIs), acceder a datos propios y completar objetivos complejos de varios pasos." },
-      { text: "Un servicio de mensajería para conectar microservicios de IA entre sí", correct: false, explanation: "Azure Service Bus es para mensajería entre servicios; Agent Service crea agentes de IA autónomos." },
-      { text: "Una herramienta para versionar y registrar modelos de machine learning", correct: false, explanation: "El registro de modelos se hace en Azure ML Model Registry; Agent Service crea agentes autónomos." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/agents/overview"
-  },
-  {
-    domain: "Dominio 2 - Agentes de IA",
-    text: "En el contexto de los agentes de IA, ¿qué son las 'herramientas' (tools)?",
-    multiple: false,
-    options: [
-      { text: "Las GPU o CPU que el agente usa para ejecutar inferencia", correct: false, explanation: "Las herramientas en el contexto de agentes son capacidades funcionales, no hardware de cómputo." },
-      { text: "Capacidades que el agente puede invocar para interactuar con el mundo externo, como búsqueda web, ejecución de código o llamadas a APIs", correct: true, explanation: "Las herramientas amplían las capacidades del agente más allá del texto: puede buscar información actualizada, ejecutar código Python, leer archivos o llamar a servicios externos." },
-      { text: "Los parámetros de configuración como temperature y max tokens", correct: false, explanation: "Temperature y max tokens son hiperparámetros de inferencia del LLM; las herramientas son capacidades funcionales del agente." },
-      { text: "Los datos de entrenamiento usados para hacer fine-tuning del agente", correct: false, explanation: "Los datos de entrenamiento son para ajustar el modelo base; las herramientas son capacidades en tiempo de ejecución." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/agents/concepts/tools"
-  },
-  {
-    domain: "Dominio 2 - Agentes de IA",
-    text: "¿Qué framework de orquestación de agentes de IA es desarrollado y soportado directamente por Microsoft e integrado en Azure AI Foundry?",
-    multiple: false,
-    options: [
-      { text: "LangChain", correct: false, explanation: "LangChain es un framework popular de terceros, no desarrollado por Microsoft." },
-      { text: "Semantic Kernel", correct: true, explanation: "Semantic Kernel es el framework de orquestación de IA de Microsoft, compatible con Python, C# y Java, e integrado directamente en Azure AI Foundry para construir agentes y flujos de IA." },
-      { text: "AutoGen", correct: false, explanation: "AutoGen es un framework de Microsoft Research para agentes multi-agente, pero Semantic Kernel es el framework principal de orquestación integrado en Foundry." },
-      { text: "Haystack", correct: false, explanation: "Haystack es un framework de terceros (deepset) para pipelines de NLP; no es el framework oficial de Microsoft." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/semantic-kernel/overview/"
-  },
-
-  /* ── DOMINIO 2 · Texto y Voz con Foundry ─────────────────────────── */
-  {
-    domain: "Dominio 2 - Texto y Voz con Foundry",
-    text: "¿Cómo se habilita el acceso a los modelos de Azure OpenAI (GPT-4, GPT-4o, etc.) desde Azure AI Foundry?",
-    multiple: false,
-    options: [
-      { text: "Instalando un paquete de pip en el entorno de desarrollo local", correct: false, explanation: "Los modelos se acceden vía API; la instalación de paquetes cliente no equivale a habilitar el acceso al modelo en Foundry." },
-      { text: "Creando un deployment del modelo deseado dentro de un proyecto de Foundry y usando el endpoint generado", correct: true, explanation: "En Foundry se crea un deployment del modelo (ej. GPT-4o), que genera un endpoint y una clave API. Las aplicaciones llaman a ese endpoint para usar el modelo." },
-      { text: "Descargando los pesos del modelo a un blob storage de Azure", correct: false, explanation: "Los modelos de Azure OpenAI son servicios gestionados; no se descargan pesos a un storage propio." },
-      { text: "Solicitando acceso al modelo mediante un ticket de soporte de Azure", correct: false, explanation: "Algunos modelos requieren acceso controlado, pero el mecanismo de uso es siempre a través de deployments en Foundry, no tickets de soporte para uso ordinario." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/how-to/create-resource"
-  },
-  {
-    domain: "Dominio 2 - Texto y Voz con Foundry",
-    text: "¿Qué es Prompt Flow en Azure AI Foundry?",
-    multiple: false,
-    options: [
-      { text: "Una herramienta de análisis de costos de tokens consumidos por los modelos", correct: false, explanation: "Prompt Flow es una herramienta de desarrollo de flujos de IA, no de análisis de costos." },
-      { text: "Una herramienta visual para diseñar, probar y desplegar flujos de trabajo de IA que encadenan llamadas a LLMs, herramientas y código", correct: true, explanation: "Prompt Flow permite construir pipelines de IA de forma visual o por código, encadenando nodos de LLM, Python, búsqueda y más, facilitando el desarrollo y la evaluación de aplicaciones de IA." },
-      { text: "Un servicio de cola de mensajes para gestionar solicitudes concurrentes a los modelos", correct: false, explanation: "La gestión de colas se hace con Azure Service Bus o Event Hubs; Prompt Flow es una herramienta de orquestación de IA." },
-      { text: "Un dashboard para monitorizar la latencia y disponibilidad de los endpoints de IA", correct: false, explanation: "El monitoreo de endpoints se hace con Azure Monitor; Prompt Flow es para diseñar y desplegar flujos de IA." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-studio/how-to/prompt-flow"
-  },
-  {
-    domain: "Dominio 2 - Texto y Voz con Foundry",
-    text: "¿Para qué se usa Azure AI Speech dentro de una solución construida con Azure AI Foundry?",
-    multiple: false,
-    options: [
-      { text: "Solo para transcribir reuniones de Teams", correct: false, explanation: "Azure AI Speech es un servicio general de voz; no está limitado a Teams." },
-      { text: "Para agregar capacidades de voz a las aplicaciones: reconocimiento de voz, síntesis, traducción de audio y análisis de conversaciones", correct: true, explanation: "Azure AI Speech se integra en Foundry para habilitar entrada y salida de voz, transcripción en tiempo real, traducción de audio y análisis de interacciones de voz en aplicaciones de IA." },
-      { text: "Exclusivamente para crear voces personalizadas de marca (Custom Neural Voice)", correct: false, explanation: "Custom Neural Voice es una funcionalidad dentro de Speech; el servicio incluye muchas otras capacidades como STT, TTS y traducción." },
-      { text: "Para convertir texto en tablas de datos estructurados", correct: false, explanation: "La conversión de texto a datos estructurados es tarea de Document Intelligence o Language; Speech procesa audio." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/speech-service/overview"
-  },
-
-  /* ── DOMINIO 2 · Visión con Foundry ──────────────────────────────── */
-  {
-    domain: "Dominio 2 - Visión con Foundry",
-    text: "¿Qué capacidad de Azure AI Vision permite generar automáticamente una descripción textual del contenido de una imagen?",
-    multiple: false,
-    options: [
-      { text: "OCR (reconocimiento óptico de caracteres)", correct: false, explanation: "OCR extrae texto escrito presente en la imagen; no genera descripciones del contenido visual." },
-      { text: "Image captioning (subtitulado de imágenes)", correct: true, explanation: "Image captioning de Azure AI Vision analiza el contenido visual de una imagen y genera automáticamente una descripción en lenguaje natural, útil para accesibilidad y búsqueda de imágenes." },
-      { text: "Detección de objetos", correct: false, explanation: "La detección de objetos identifica y localiza objetos con bounding boxes, pero no genera descripciones narrativas de la imagen." },
-      { text: "Background removal", correct: false, explanation: "Background removal elimina el fondo de una imagen; no genera descripciones textuales." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/computer-vision/concept-describe-images-40"
-  },
-  {
-    domain: "Dominio 2 - Visión con Foundry",
-    text: "¿Qué modelo multimodal de Azure AI permite analizar imágenes y texto de forma conjunta en una sola llamada?",
-    multiple: false,
-    options: [
-      { text: "GPT-4 (solo texto)", correct: false, explanation: "GPT-4 base es solo texto; la variante multimodal es GPT-4o o GPT-4 con visión (GPT-4V)." },
-      { text: "GPT-4o o GPT-4 Vision", correct: true, explanation: "GPT-4o y GPT-4V son modelos multimodales que aceptan imágenes y texto como entrada, permitiendo analizar imágenes, responder preguntas sobre ellas y generar descripciones en una sola llamada." },
-      { text: "DALL-E 3", correct: false, explanation: "DALL-E 3 genera imágenes a partir de texto; no analiza imágenes existentes." },
-      { text: "Whisper", correct: false, explanation: "Whisper es el modelo de reconocimiento de voz de OpenAI; no analiza imágenes." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/concepts/models"
-  },
-  {
-    domain: "Dominio 2 - Visión con Foundry",
-    text: "¿Qué servicio de Azure genera imágenes originales a partir de una descripción en texto?",
-    multiple: false,
-    options: [
-      { text: "Azure AI Vision", correct: false, explanation: "Azure AI Vision analiza imágenes existentes; no genera imágenes nuevas." },
-      { text: "Azure AI Custom Vision", correct: false, explanation: "Custom Vision entrena modelos de clasificación y detección; no genera imágenes." },
-      { text: "Azure OpenAI Service - DALL-E", correct: true, explanation: "DALL-E, disponible a través de Azure OpenAI Service en Foundry, genera imágenes originales y realistas a partir de descripciones en lenguaje natural." },
-      { text: "Azure AI Face", correct: false, explanation: "Azure AI Face detecta y analiza rostros; no genera imágenes." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/concepts/models#dall-e"
-  },
-
-  /* ── DOMINIO 2 · Content Understanding / Document Intelligence ────── */
-  {
-    domain: "Dominio 2 - Azure Content Understanding",
-    text: "¿Qué es Azure AI Content Understanding?",
-    multiple: false,
-    options: [
-      { text: "Un servicio para moderar contenido inapropiado en redes sociales", correct: false, explanation: "La moderación de contenido inapropiado es función de Azure AI Content Safety; Content Understanding extrae información estructurada de documentos multimedia." },
-      { text: "Un servicio que extrae información estructurada y comprende el contenido de documentos, imágenes, audio y vídeo de forma multimodal", correct: true, explanation: "Azure AI Content Understanding (parte de la familia de Azure AI Services) extrae conocimiento estructurado de contenido multimedia complejo, combinando capacidades de visión, voz y lenguaje para entender documentos en múltiples formatos." },
-      { text: "Una herramienta de análisis de sentimientos para contenido de redes sociales", correct: false, explanation: "El análisis de sentimientos en redes sociales lo hace Azure AI Language; Content Understanding se enfoca en extracción estructurada de documentos multimedia." },
-      { text: "Un servicio de traducción de documentos multiidioma", correct: false, explanation: "La traducción de documentos la hace Azure AI Translator; Content Understanding extrae información estructurada." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/content-understanding/overview"
-  },
-  {
-    domain: "Dominio 2 - Azure Content Understanding",
-    text: "¿Cuál es la ventaja principal de Azure AI Content Understanding frente al OCR tradicional al procesar documentos complejos?",
-    multiple: false,
-    options: [
-      { text: "Es más rápido porque procesa los documentos en paralelo", correct: false, explanation: "La velocidad no es la ventaja diferenciadora; la ventaja es la comprensión semántica del contenido." },
-      { text: "Entiende el contexto y la estructura semántica del documento, no solo extrae texto sin formato", correct: true, explanation: "Mientras que el OCR solo extrae texto plano, Content Understanding comprende el significado, la jerarquía y las relaciones entre campos, tablas y elementos visuales del documento." },
-      { text: "Solo procesa documentos PDF; el OCR puede procesar cualquier formato de imagen", correct: false, explanation: "Content Understanding soporta múltiples formatos incluyendo imágenes; esta no es la diferencia clave con el OCR." },
-      { text: "Es más barato por página procesada que el OCR estándar de Azure", correct: false, explanation: "El costo no es la diferencia principal; la ventaja es la comprensión semántica y estructural." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/content-understanding/overview"
-  },
-  {
-    domain: "Dominio 2 - Azure Content Understanding",
-    text: "¿Qué tipo de contenido puede procesar Azure AI Content Understanding además de documentos de texto?",
+    domain: "Dominio 1 - NLP",
+    text: "Para cada afirmación sobre Azure AI Language, selecciona Yes si es verdadera.\n1) La función de detección de PII (información personal identificable) puede identificar y redactar números de tarjetas de crédito en un texto.\n2) La extracción de frases clave (key phrase extraction) devuelve un puntaje de sentimiento numérico para cada frase.\n3) El servicio de detección de idioma puede identificar el idioma predominante de un texto de entrada.",
     multiple: true,
     options: [
-      { text: "Archivos de audio y transcripciones", correct: true, explanation: "Content Understanding puede analizar audio para extraer información estructurada de conversaciones, llamadas y grabaciones." },
-      { text: "Imágenes y documentos escaneados", correct: true, explanation: "Content Understanding procesa imágenes y documentos escaneados, extrayendo estructura y significado del contenido visual." },
-      { text: "Vídeos", correct: true, explanation: "Content Understanding puede analizar vídeos para extraer información estructurada de las escenas, diálogos y elementos visuales." },
-      { text: "Bases de datos SQL", correct: false, explanation: "Content Understanding procesa contenido no estructurado y semiestructurado; no se conecta directamente a bases de datos SQL relacionales." }
+      { text: "1) Yes", correct: true, explanation: "La detección de PII de Azure AI Language identifica categorías sensibles como números de tarjetas de crédito, números de identificación y puede redactarlos automáticamente." },
+      { text: "2) No", correct: true, explanation: "La extracción de frases clave solo identifica los conceptos principales del texto; no calcula puntajes de sentimiento, eso corresponde a la función de análisis de sentimiento." },
+      { text: "3) Yes", correct: true, explanation: "La detección de idioma analiza el texto de entrada y devuelve el idioma predominante junto con un puntaje de confianza." }
     ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/content-understanding/overview"
-  },
-
-  /* ── DOMINIO 2 · Seguridad y evaluación ──────────────────────────── */
-  {
-    domain: "Dominio 2 - Seguridad en Foundry",
-    text: "¿Qué es Azure AI Content Safety?",
-    multiple: false,
-    options: [
-      { text: "Un firewall de red para proteger los endpoints de los modelos de IA", correct: false, explanation: "La protección de red es función de Azure Firewall o Network Security Groups; Content Safety analiza el contenido." },
-      { text: "Un servicio que detecta y filtra contenido dañino (odio, violencia, autolesiones, contenido sexual) en texto e imágenes", correct: true, explanation: "Azure AI Content Safety analiza texto e imágenes para detectar contenido potencialmente dañino en categorías como odio, violencia, autolesiones y contenido sexual, con niveles de severidad configurables." },
-      { text: "Un servicio de backup que protege los modelos contra pérdida de datos", correct: false, explanation: "La protección de datos se gestiona con Azure Backup; Content Safety analiza el contenido generado por IA." },
-      { text: "Una herramienta de auditoría que registra todas las llamadas a la API de los modelos", correct: false, explanation: "El registro de llamadas a API se hace con Azure Monitor y Log Analytics; Content Safety filtra contenido dañino." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/content-safety/overview"
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/language-service/overview"
   },
   {
-    domain: "Dominio 2 - Seguridad en Foundry",
-    text: "¿Qué característica de Azure AI Foundry permite evaluar si las respuestas de un modelo son relevantes, coherentes y fundamentadas en las fuentes?",
+    domain: "Dominio 1 - NLP",
+    text: "Un equipo legal necesita identificar automáticamente cláusulas específicas (como 'fecha de vencimiento' o 'parte responsable') dentro de miles de contratos, sin usar categorías predefinidas genéricas del servicio estándar. ¿Qué enfoque de Azure AI Language deben usar?",
     multiple: false,
     options: [
-      { text: "Azure Monitor", correct: false, explanation: "Azure Monitor supervisa métricas de infraestructura y disponibilidad; no evalúa la calidad de respuestas de IA." },
-      { text: "Evaluaciones (Evaluations) en Foundry", correct: true, explanation: "La funcionalidad de Evaluations en Foundry permite medir métricas de calidad como relevancia, coherencia, fundamentación (groundedness) y seguridad de las respuestas del modelo usando jueces de IA." },
-      { text: "Azure AI Content Safety", correct: false, explanation: "Content Safety detecta contenido dañino; no evalúa la calidad o relevancia de las respuestas." },
-      { text: "Azure Application Insights", correct: false, explanation: "Application Insights monitoriza aplicaciones web; no evalúa la calidad de respuestas de LLMs." }
+      { text: "Extracción de frases clave estándar", correct: false, explanation: "La extracción de frases clave estándar identifica conceptos generales del texto, pero no permite definir categorías legales personalizadas específicas." },
+      { text: "Reconocimiento de entidades personalizado (Custom Named Entity Recognition)", correct: true, explanation: "El NER personalizado permite entrenar un modelo para reconocer entidades específicas del dominio (como cláusulas legales concretas) que no están cubiertas por el modelo genérico." },
+      { text: "Traductor de Azure", correct: false, explanation: "El Traductor convierte texto entre idiomas, no está diseñado para identificar cláusulas contractuales específicas." },
+      { text: "Detección de idioma", correct: false, explanation: "La detección de idioma solo identifica en qué idioma está escrito el texto, no extrae entidades legales." }
     ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-studio/how-to/evaluate-generative-ai-app"
-  },
-
-  /* ── DOMINIO 2 · Casos de uso combinados ─────────────────────────── */
-  {
-    domain: "Dominio 2 - Microsoft Foundry",
-    text: "Una empresa quiere crear un chatbot de atención al cliente que responda preguntas usando solo la información de su base de conocimiento interna. ¿Qué arquitectura es la más adecuada?",
-    multiple: false,
-    options: [
-      { text: "Fine-tuning del modelo con los documentos de la empresa", correct: false, explanation: "El fine-tuning adapta el estilo y el comportamiento del modelo, pero no es la mejor solución para mantener respuestas actualizadas basadas en documentos específicos. RAG es más adecuado para este caso." },
-      { text: "RAG: conectar el LLM a Azure AI Search indexado con los documentos de la empresa", correct: true, explanation: "RAG con Azure AI Search permite al LLM recuperar fragmentos relevantes de la base de conocimiento en tiempo real, garantizando respuestas fundamentadas en los documentos de la empresa y fácilmente actualizables." },
-      { text: "Usar un modelo preentrenado sin modificaciones adicionales", correct: false, explanation: "Un modelo preentrenado no tiene acceso a la base de conocimiento interna de la empresa y podría alucinar información incorrecta." },
-      { text: "Reentrenar el modelo desde cero con todos los documentos de la empresa", correct: false, explanation: "Reentrenar un LLM desde cero es extremadamente costoso y no es práctico para la mayoría de las empresas; RAG es la solución estándar para este caso." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/search/retrieval-augmented-generation-overview"
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/language-service/custom-named-entity-recognition/overview"
   },
   {
-    domain: "Dominio 2 - Microsoft Foundry",
-    text: "¿Qué componente de Azure AI Foundry se usa para conectar el proyecto a recursos externos como Azure AI Search, Azure Storage o Azure OpenAI?",
+    domain: "Dominio 1 - NLP",
+    text: "¿Qué describe mejor un modelo de lenguaje grande (LLM, Large Language Model)?",
     multiple: false,
     options: [
-      { text: "Deployments", correct: false, explanation: "Los deployments son instancias de modelos desplegados para inferencia; las conexiones a recursos externos se gestionan con Connections." },
-      { text: "Connections (conexiones)", correct: true, explanation: "Las Connections en Foundry permiten al proyecto conectarse a recursos externos como Azure AI Search, Azure OpenAI, Azure Blob Storage y otros servicios, gestionando las credenciales de forma segura." },
-      { text: "Compute instances", correct: false, explanation: "Las compute instances son recursos de cómputo para entrenamiento o notebooks; no son el mecanismo de conexión a servicios externos." },
-      { text: "Evaluations", correct: false, explanation: "Evaluations mide la calidad de los modelos; no gestiona conexiones a recursos externos." }
+      { text: "Un modelo entrenado con enormes cantidades de texto que puede generar y comprender lenguaje natural para una amplia variedad de tareas", correct: true, explanation: "Los LLM se entrenan con grandes volúmenes de datos textuales y pueden generalizar a múltiples tareas de lenguaje sin necesidad de un modelo específico por tarea." },
+      { text: "Un modelo entrenado exclusivamente para traducir un único par de idiomas", correct: false, explanation: "Esto describe un modelo de traducción especializado, no la definición general de un LLM." },
+      { text: "Un modelo que solo puede clasificar imágenes en categorías fijas", correct: false, explanation: "Esto corresponde a un modelo de visión por computadora, no a un modelo de lenguaje." },
+      { text: "Un modelo que requiere reentrenamiento completo para cada nueva pregunta del usuario", correct: false, explanation: "Los LLM pueden responder preguntas nuevas mediante inferencia, sin necesidad de reentrenarse por cada consulta." }
     ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-studio/how-to/connections-add"
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/overview"
   },
   {
-    domain: "Dominio 2 - Microsoft Foundry",
-    text: "¿Qué modelo de lenguaje pequeño (SLM) de la familia Phi de Microsoft está disponible en el catálogo de Azure AI Foundry y es conocido por su alta eficiencia con pocos parámetros?",
+    domain: "Dominio 1 - NLP",
+    text: "Una empresa de e-commerce quiere resumir automáticamente miles de reseñas largas de productos en 2-3 oraciones clave por producto. ¿Qué capacidad de Azure AI Language deben utilizar?",
     multiple: false,
     options: [
-      { text: "GPT-4o mini", correct: false, explanation: "GPT-4o mini es un modelo de OpenAI, no de la familia Phi de Microsoft." },
-      { text: "Phi-3 / Phi-4", correct: true, explanation: "La familia Phi de Microsoft (Phi-3, Phi-3.5, Phi-4) son SLMs altamente eficientes disponibles en el catálogo de Foundry, que demuestran capacidades sorprendentes dado su pequeño tamaño de parámetros." },
-      { text: "Llama 3", correct: false, explanation: "Llama 3 es de Meta, no de Microsoft; aunque está disponible en el catálogo de Foundry, no pertenece a la familia Phi." },
-      { text: "Mistral Large", correct: false, explanation: "Mistral Large es de Mistral AI, no de Microsoft; también está en el catálogo de Foundry pero no es de la familia Phi." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-studio/how-to/model-catalog-overview"
-  },
-  {
-    domain: "Dominio 2 - Microsoft Foundry",
-    text: "¿Cuál es la función del Azure AI Foundry SDK?",
-    multiple: false,
-    options: [
-      { text: "Un framework de interfaz de usuario para crear aplicaciones web de IA con React", correct: false, explanation: "El Foundry SDK es para integración de IA en aplicaciones, no un framework de UI para React." },
-      { text: "Un conjunto de bibliotecas de Python y otros lenguajes para interactuar programáticamente con los servicios y modelos de Azure AI Foundry", correct: true, explanation: "El Azure AI Foundry SDK (azure-ai-projects, azure-ai-inference, etc.) permite a los desarrolladores interactuar con proyectos, modelos, agentes y herramientas de Foundry desde sus aplicaciones en Python, JavaScript y otros lenguajes." },
-      { text: "Una herramienta de línea de comandos exclusiva para desplegar modelos en producción", correct: false, explanation: "El despliegue puede hacerse con el SDK, pero también desde el portal; el SDK no es exclusivo para despliegues." },
-      { text: "Una extensión de VS Code para visualizar métricas de modelos en tiempo real", correct: false, explanation: "Existe una extensión de VS Code para Foundry, pero el SDK es una biblioteca de programación, no una extensión de IDE." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-studio/how-to/develop/sdk-overview"
-  },
-  {
-    domain: "Dominio 2 - Microsoft Foundry",
-    text: "¿Qué son los 'guardrails' en el contexto de Azure AI y los sistemas de IA generativa?",
-    multiple: false,
-    options: [
-      { text: "Límites de velocidad (rate limits) que controlan cuántas solicitudes por minuto puede recibir un endpoint", correct: false, explanation: "Los rate limits son controles de uso de API; los guardrails son salvaguardas de comportamiento y seguridad del modelo." },
-      { text: "Mecanismos de seguridad que controlan el comportamiento del modelo para evitar respuestas dañinas, sesgadas o fuera de los límites definidos", correct: true, explanation: "Los guardrails son las capas de protección (como Azure AI Content Safety, metaprompts de seguridad y filtros de contenido) que aseguran que el modelo se comporte dentro de los límites aceptables establecidos." },
-      { text: "Reglas de infraestructura que definen en qué región de Azure se despliega el modelo", correct: false, explanation: "La selección de región es una configuración de despliegue; los guardrails son controles de comportamiento del modelo." },
-      { text: "Políticas de backup automático de los datos de conversación", correct: false, explanation: "El backup de datos es una función de almacenamiento; los guardrails son controles de seguridad del comportamiento del modelo." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/content-safety/overview"
-  },
-
-  /* ── DOMINIO 2 · Fundamentos adicionales de Foundry ─────────────────── */
-  {
-    domain: "Dominio 2 - Microsoft Foundry",
-    text: "¿Qué es un 'hub' en Azure AI Foundry?",
-    multiple: false,
-    options: [
-      { text: "Un servidor de cómputo dedicado para entrenar modelos grandes", correct: false, explanation: "Los hubs no son servidores de cómputo; son unidades organizativas que agrupan proyectos y recursos compartidos." },
-      { text: "La unidad organizativa de nivel superior en Foundry que centraliza recursos compartidos, conexiones y políticas de seguridad para varios proyectos", correct: true, explanation: "El hub actúa como contenedor padre de los proyectos en Foundry. Centraliza conexiones a servicios, configuraciones de red, identidades administradas y políticas de seguridad que todos los proyectos bajo ese hub comparten." },
-      { text: "Un endpoint público que expone los modelos desplegados a internet", correct: false, explanation: "Los endpoints se crean dentro de los proyectos; el hub es la unidad organizativa superior." },
-      { text: "Un cuaderno de Jupyter preconfigurado para experimentos de IA", correct: false, explanation: "Los notebooks se ejecutan dentro de proyectos; el hub no es un cuaderno de experimentación." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-studio/concepts/ai-resources"
-  },
-  {
-    domain: "Dominio 2 - Microsoft Foundry",
-    text: "¿Cuál de las siguientes opciones describe correctamente el flujo para desplegar una aplicación de chat RAG con Azure AI Foundry?",
-    multiple: false,
-    options: [
-      { text: "Crear un modelo → entrenarlo con documentos → desplegarlo como API", correct: false, explanation: "RAG no requiere entrenar el modelo con los documentos; usa búsqueda en tiempo de inferencia para recuperar fragmentos relevantes." },
-      { text: "Indexar documentos en Azure AI Search → conectar el índice al LLM en Foundry → desplegar el flujo de chat como endpoint", correct: true, explanation: "El flujo RAG estándar en Foundry es: indexar la base de conocimiento en Azure AI Search, crear un flujo (Prompt Flow) que recupera fragmentos del índice y los pasa al LLM, y desplegar el flujo completo como endpoint." },
-      { text: "Subir documentos a Blob Storage → llamar directamente al LLM con los documentos completos como contexto", correct: false, explanation: "Pasar documentos completos como contexto es ineficiente y tiene límites de tokens. La arquitectura correcta es indexar y recuperar solo los fragmentos relevantes." },
-      { text: "Hacer fine-tuning del modelo con los documentos y desplegarlo sin necesidad de búsqueda", correct: false, explanation: "Fine-tuning adapta el estilo del modelo pero no garantiza respuestas basadas en los documentos actualizados; RAG es la solución estándar para este caso de uso." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-studio/tutorials/deploy-chat-web-app"
-  },
-  {
-    domain: "Dominio 2 - Microsoft Foundry",
-    text: "¿Qué herramienta de Azure AI Foundry permite comparar el rendimiento de diferentes modelos en el mismo conjunto de datos de evaluación?",
-    multiple: false,
-    options: [
-      { text: "Prompt Flow", correct: false, explanation: "Prompt Flow diseña y despliega flujos de IA; la comparación de modelos se hace con la funcionalidad de Evaluations." },
-      { text: "Model benchmarks / Evaluations", correct: true, explanation: "Foundry incluye benchmarks de modelos y la funcionalidad de Evaluations que permite comparar varios modelos con los mismos datos de prueba, midiendo métricas de calidad, seguridad y rendimiento." },
-      { text: "Azure Cost Management", correct: false, explanation: "Cost Management mide costos financieros; no compara el rendimiento técnico de modelos." },
-      { text: "Azure DevOps Pipelines", correct: false, explanation: "DevOps Pipelines automatiza CI/CD; no es la herramienta para comparar modelos de IA en Foundry." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-studio/how-to/evaluate-generative-ai-app"
-  },
-
-  /* ── DOMINIO 2 · Agentes avanzados ───────────────────────────────── */
-  {
-    domain: "Dominio 2 - Agentes de IA",
-    text: "¿Qué patrón de diseño de agentes permite que múltiples agentes de IA especializados colaboren para resolver una tarea compleja?",
-    multiple: false,
-    options: [
-      { text: "Single-agent (agente único con todas las herramientas)", correct: false, explanation: "Un agente único puede ser menos eficiente para tareas muy complejas que requieren especialización; los sistemas multi-agente permiten mayor especialización y paralelismo." },
-      { text: "Multi-agent (sistema multi-agente)", correct: true, explanation: "En sistemas multi-agente, cada agente se especializa en una subtarea (ej. un agente de investigación, otro de redacción, otro de revisión) y se coordinan entre sí para completar objetivos complejos." },
-      { text: "Chain-of-thought (cadena de pensamiento)", correct: false, explanation: "Chain-of-thought es una técnica de prompting que mejora el razonamiento de un solo modelo; no es un patrón de colaboración entre múltiples agentes." },
-      { text: "Few-shot prompting", correct: false, explanation: "Few-shot proporciona ejemplos al modelo para guiar su respuesta; no es un patrón de colaboración entre agentes." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/agents/concepts/agents"
-  },
-  {
-    domain: "Dominio 2 - Agentes de IA",
-    text: "¿Qué herramienta integrada de Azure AI Agent Service permite al agente ejecutar código Python para realizar cálculos o análisis de datos?",
-    multiple: false,
-    options: [
-      { text: "Function calling", correct: false, explanation: "Function calling permite al modelo invocar funciones externas definidas por el desarrollador; Code Interpreter es la herramienta específica para ejecutar código." },
-      { text: "Code Interpreter", correct: true, explanation: "Code Interpreter es una herramienta integrada en Azure AI Agent Service que permite al agente escribir y ejecutar código Python en un entorno seguro y aislado para realizar cálculos, análisis de datos y generar visualizaciones." },
-      { text: "Bing Search", correct: false, explanation: "Bing Search permite al agente buscar información en internet; Code Interpreter es la herramienta específica para ejecutar código." },
-      { text: "Azure AI Search", correct: false, explanation: "Azure AI Search permite al agente buscar en bases de conocimiento propias; Code Interpreter ejecuta código Python." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/agents/how-to/tools/code-interpreter"
-  },
-  {
-    domain: "Dominio 2 - Agentes de IA",
-    text: "¿Qué es el 'function calling' en el contexto de los modelos de lenguaje de Azure OpenAI?",
-    multiple: false,
-    options: [
-      { text: "Una función de Python que llama a la API de Azure OpenAI", correct: false, explanation: "Function calling es una capacidad del modelo, no el código del desarrollador que llama a la API." },
-      { text: "La capacidad del modelo de identificar cuándo debe invocar una función externa y generar los parámetros correctos para hacerlo", correct: true, explanation: "Function calling permite al LLM detectar que necesita información o acción externa, y generar un JSON estructurado con el nombre de la función y sus parámetros. El desarrollador ejecuta la función y devuelve el resultado al modelo." },
-      { text: "Un método para llamar a múltiples modelos en secuencia dentro de un flujo", correct: false, explanation: "Llamar a múltiples modelos en secuencia es un patrón de Prompt Flow; function calling es la capacidad de un modelo de invocar funciones externas." },
-      { text: "La configuración que define cuántas llamadas por minuto puede hacer un deployment", correct: false, explanation: "Las llamadas por minuto son rate limits de la API; function calling es una capacidad funcional del modelo para invocar herramientas externas." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/how-to/function-calling"
-  },
-
-  /* ── DOMINIO 2 · Texto avanzado con Foundry ──────────────────────── */
-  {
-    domain: "Dominio 2 - Texto y Voz con Foundry",
-    text: "¿Qué técnica de prompting incluye ejemplos de entrada y salida esperada dentro del mismo prompt para guiar al modelo?",
-    multiple: false,
-    options: [
-      { text: "Zero-shot prompting", correct: false, explanation: "Zero-shot no incluye ejemplos; le pide al modelo que realice la tarea sin demostración previa." },
-      { text: "Few-shot prompting", correct: true, explanation: "Few-shot prompting incluye entre 2 y 5 pares de ejemplo (pregunta + respuesta esperada) dentro del prompt para mostrarle al modelo el formato y estilo de respuesta deseados." },
-      { text: "Chain-of-thought prompting", correct: false, explanation: "Chain-of-thought pide al modelo que razone paso a paso, pero no necesariamente incluye múltiples ejemplos completos de entrada-salida." },
-      { text: "System prompting", correct: false, explanation: "System prompting define el rol y comportamiento general del modelo; few-shot es la técnica que usa ejemplos de demostración." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/concepts/prompt-engineering"
-  },
-  {
-    domain: "Dominio 2 - Texto y Voz con Foundry",
-    text: "¿Cuál modelo de Azure AI Services permite traducir texto entre más de 100 idiomas con una sola llamada a API?",
-    multiple: false,
-    options: [
-      { text: "Azure AI Language", correct: false, explanation: "Azure AI Language tiene detección de idioma, pero no es el servicio de traducción multiidioma." },
-      { text: "Azure AI Translator", correct: true, explanation: "Azure AI Translator soporta traducción entre más de 100 idiomas y dialectos, transliteración, detección de idioma y traducción de documentos completos con una API unificada." },
-      { text: "Azure AI Speech - Speech Translation", correct: false, explanation: "Speech Translation traduce audio hablado; Azure AI Translator es el servicio para traducir texto escrito entre idiomas." },
-      { text: "Azure OpenAI GPT-4o", correct: false, explanation: "GPT-4o puede traducir texto, pero Azure AI Translator es el servicio dedicado y optimizado para traducción masiva entre más de 100 idiomas." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/translator/overview"
-  },
-  {
-    domain: "Dominio 2 - Texto y Voz con Foundry",
-    text: "¿Qué característica del servicio Azure AI Language permite crear y entrenar modelos de comprensión del lenguaje natural personalizados para reconocer intenciones y entidades específicas del dominio?",
-    multiple: false,
-    options: [
-      { text: "Análisis de sentimientos personalizado", correct: false, explanation: "El análisis de sentimientos personalizado clasifica texto en categorías; no está diseñado para reconocer intenciones y entidades de dominio." },
-      { text: "Conversational Language Understanding (CLU)", correct: true, explanation: "CLU permite entrenar modelos personalizados que reconocen intenciones (qué quiere hacer el usuario) y entidades (qué elementos menciona) en texto conversacional, ideal para chatbots y asistentes de voz." },
-      { text: "Question Answering (QnA)", correct: false, explanation: "QnA Maker / Question Answering extrae respuestas de una base de conocimiento; CLU es para reconocimiento de intenciones y entidades." },
-      { text: "Text Analytics for Health", correct: false, explanation: "Text Analytics for Health extrae entidades médicas de texto clínico; CLU es el servicio de comprensión conversacional personalizable." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/language-service/conversational-language-understanding/overview"
-  },
-  {
-    domain: "Dominio 2 - Texto y Voz con Foundry",
-    text: "¿Qué servicio de Azure AI permite crear un chatbot de preguntas y respuestas a partir de una base de conocimiento en formato FAQ, documentos Word o páginas web?",
-    multiple: false,
-    options: [
-      { text: "Azure Bot Service con QnA Maker / Question Answering", correct: true, explanation: "Azure AI Language - Question Answering (sucesor de QnA Maker) permite crear una base de conocimiento a partir de FAQs, documentos y URLs, y responder preguntas en lenguaje natural. Se integra con Azure Bot Service para crear chatbots." },
-      { text: "Azure AI Agent Service", correct: false, explanation: "Agent Service crea agentes autónomos de múltiples pasos; para un chatbot de FAQ directo, Question Answering es más simple y específico." },
-      { text: "Conversational Language Understanding (CLU)", correct: false, explanation: "CLU reconoce intenciones y entidades; Question Answering extrae respuestas directas de documentos." },
-      { text: "Azure AI Content Safety", correct: false, explanation: "Content Safety filtra contenido dañino; no crea bases de conocimiento ni responde preguntas." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/language-service/question-answering/overview"
-  },
-
-  /* ── DOMINIO 2 · Visión avanzada con Foundry ─────────────────────── */
-  {
-    domain: "Dominio 2 - Visión con Foundry",
-    text: "¿Qué es Azure AI Vision - Image Analysis 4.0 y qué lo diferencia de versiones anteriores?",
-    multiple: false,
-    options: [
-      { text: "Es exactamente igual que versiones anteriores, solo con un número de versión actualizado", correct: false, explanation: "Image Analysis 4.0 incorpora capacidades multimodales significativamente más avanzadas que las versiones anteriores." },
-      { text: "Incorpora modelos de visión-lenguaje (Florence) que permiten búsqueda de imágenes por texto, subtitulado denso y análisis multimodal más avanzado", correct: true, explanation: "Image Analysis 4.0 usa el modelo Florence de Microsoft, habilitando búsqueda vectorial de imágenes, subtitulado denso (describir regiones específicas), segmentación y consultas en lenguaje natural sobre imágenes." },
-      { text: "Solo agrega soporte para más formatos de imagen como AVIF y HEIC", correct: false, explanation: "Los formatos adicionales son una mejora menor; la diferencia principal es la incorporación de modelos de visión-lenguaje." },
-      { text: "Elimina la detección de objetos para enfocarse solo en OCR", correct: false, explanation: "Image Analysis 4.0 mantiene todas las capacidades anteriores y añade nuevas; no elimina funcionalidades." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/computer-vision/overview-image-analysis"
-  },
-  {
-    domain: "Dominio 2 - Visión con Foundry",
-    text: "¿Qué capacidad de Azure AI Vision permite leer texto manuscrito e impreso de imágenes y documentos PDF con alta precisión?",
-    multiple: false,
-    options: [
-      { text: "Image captioning", correct: false, explanation: "Image captioning genera descripciones narrativas de imágenes; no extrae texto específico." },
-      { text: "OCR (Read API)", correct: true, explanation: "La Read API de Azure AI Vision usa OCR de última generación para extraer texto impreso y manuscrito de imágenes, PDF y archivos TIFF de múltiples páginas con alta precisión y soporte para más de 150 idiomas." },
-      { text: "Object detection", correct: false, explanation: "Object detection localiza objetos con bounding boxes; no extrae texto de documentos." },
-      { text: "Spatial analysis", correct: false, explanation: "Spatial analysis analiza el movimiento y posición de personas en un espacio físico; no extrae texto." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/computer-vision/overview-ocr"
-  },
-  {
-    domain: "Dominio 2 - Visión con Foundry",
-    text: "¿Para qué se usa Azure AI Vision - Spatial Analysis?",
-    multiple: false,
-    options: [
-      { text: "Para extraer texto de imágenes tomadas en espacios físicos como tiendas o almacenes", correct: false, explanation: "La extracción de texto es OCR; Spatial Analysis analiza el movimiento de personas." },
-      { text: "Para analizar vídeo en tiempo real y comprender el movimiento y comportamiento de personas en espacios físicos", correct: true, explanation: "Spatial Analysis procesa transmisiones de vídeo para contar personas, detectar distancias entre ellas, identificar zonas de permanencia y analizar el flujo de movimiento en espacios como tiendas, fábricas u hospitales." },
-      { text: "Para crear mapas 3D de entornos a partir de imágenes 2D", correct: false, explanation: "La reconstrucción 3D no es una función de Spatial Analysis; analiza movimiento y comportamiento en vídeo." },
-      { text: "Para detectar defectos de fabricación en líneas de producción industrial", correct: false, explanation: "La detección de defectos se puede lograr con Custom Vision; Spatial Analysis está orientado al análisis de personas en espacios." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/computer-vision/intro-to-spatial-analysis-public-preview"
-  },
-
-  /* ── DOMINIO 2 · Document Intelligence avanzado ──────────────────── */
-  {
-    domain: "Dominio 2 - Azure Content Understanding",
-    text: "¿Qué modelo precompilado de Azure AI Document Intelligence extrae automáticamente los campos clave de una factura comercial (número de factura, fecha, líneas de pedido, totales)?",
-    multiple: false,
-    options: [
-      { text: "Modelo de recibo (Receipt model)", correct: false, explanation: "El modelo de recibo está optimizado para tickets de compra de retail; el modelo de factura es el adecuado para facturas comerciales B2B." },
-      { text: "Modelo de factura (Invoice model)", correct: true, explanation: "El Invoice model de Document Intelligence está preentrenado para extraer campos estándar de facturas comerciales: número, fecha, proveedor, cliente, líneas de pedido, subtotales, impuestos y totales." },
-      { text: "Modelo de diseño (Layout model)", correct: false, explanation: "El Layout model extrae la estructura del documento (tablas, párrafos, títulos) pero no campos semánticos específicos de facturas." },
-      { text: "Modelo general (General Document model)", correct: false, explanation: "El General Document model extrae pares clave-valor genéricos; el Invoice model es el especializado para facturas." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/document-intelligence/concept-invoice"
-  },
-  {
-    domain: "Dominio 2 - Azure Content Understanding",
-    text: "¿Cuántos documentos de ejemplo se necesitan mínimamente para entrenar un modelo personalizado de Azure AI Document Intelligence?",
-    multiple: false,
-    options: [
-      { text: "1 documento", correct: false, explanation: "Un solo documento no es suficiente para entrenar un modelo personalizado con precisión acceptable." },
-      { text: "5 documentos etiquetados", correct: true, explanation: "Azure AI Document Intelligence permite comenzar a entrenar un modelo personalizado con un mínimo de 5 documentos etiquetados, aunque se recomienda usar más para mayor precisión." },
-      { text: "100 documentos", correct: false, explanation: "100 documentos no es el mínimo requerido; se puede comenzar con 5, aunque más documentos mejoran la precisión." },
-      { text: "1000 documentos", correct: false, explanation: "1000 documentos es un número muy alto; el mínimo real es 5 documentos etiquetados." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/document-intelligence/concept-custom"
-  },
-
-  /* ── DOMINIO 1 · Conceptos adicionales de ML ─────────────────────── */
-  {
-    domain: "Dominio 1 - Modelos de IA",
-    text: "¿Qué es el aprendizaje automático supervisado?",
-    multiple: false,
-    options: [
-      { text: "Un tipo de aprendizaje donde el modelo aprende explorando el entorno y recibiendo recompensas o penalizaciones", correct: false, explanation: "Eso describe el aprendizaje por refuerzo (reinforcement learning), no el supervisado." },
-      { text: "Un tipo de aprendizaje donde el modelo se entrena con datos etiquetados (pares entrada-salida correcta)", correct: true, explanation: "En el aprendizaje supervisado, el modelo aprende la relación entre entradas y salidas a partir de ejemplos etiquetados. Las tareas típicas son clasificación y regresión." },
-      { text: "Un tipo de aprendizaje donde el modelo descubre patrones en datos sin etiquetas", correct: false, explanation: "Eso describe el aprendizaje no supervisado (clustering, reducción de dimensionalidad)." },
-      { text: "Un proceso donde un humano revisa y corrige cada predicción del modelo en tiempo real", correct: false, explanation: "La revisión humana en tiempo real no es la definición de aprendizaje supervisado; el término hace referencia al tipo de datos usados para entrenar el modelo." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/machine-learning/concept-automated-ml"
-  },
-  {
-    domain: "Dominio 1 - Modelos de IA",
-    text: "¿Qué es AutoML (Automated Machine Learning) en Azure Machine Learning?",
-    multiple: false,
-    options: [
-      { text: "Un servicio que genera código Python automáticamente para machine learning", correct: false, explanation: "AutoML no genera código; automatiza el proceso de selección de algoritmos y ajuste de hiperparámetros." },
-      { text: "Una funcionalidad que automatiza la selección de algoritmos, ingeniería de características y ajuste de hiperparámetros para encontrar el mejor modelo", correct: true, explanation: "AutoML de Azure Machine Learning prueba automáticamente múltiples algoritmos y configuraciones, seleccionando el modelo con mejor rendimiento sin que el usuario necesite experiencia profunda en ML." },
-      { text: "Un servicio de despliegue automático de modelos a producción sin intervención humana", correct: false, explanation: "El despliegue automático es parte de MLOps; AutoML se enfoca en el entrenamiento y selección del mejor modelo." },
-      { text: "Una herramienta para etiquetar automáticamente los datos de entrenamiento", correct: false, explanation: "El etiquetado automático es una función separada en Azure ML (Data Labeling); AutoML automatiza la selección de algoritmos." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/machine-learning/concept-automated-ml"
-  },
-  {
-    domain: "Dominio 1 - Modelos de IA",
-    text: "¿Cuál es la diferencia entre regresión y clasificación en machine learning?",
-    multiple: false,
-    options: [
-      { text: "La regresión usa redes neuronales; la clasificación usa árboles de decisión", correct: false, explanation: "Ambas tareas pueden realizarse con redes neuronales, árboles de decisión u otros algoritmos; la diferencia está en el tipo de salida." },
-      { text: "La regresión predice un valor numérico continuo; la clasificación predice una categoría discreta", correct: true, explanation: "Regresión: predice valores como precio de una casa o temperatura. Clasificación: predice categorías como 'spam/no spam', 'positivo/negativo' o 'perro/gato/pájaro'." },
-      { text: "La clasificación es más precisa que la regresión en todos los casos", correct: false, explanation: "La precisión depende del problema y los datos; ninguna es inherentemente más precisa que la otra." },
-      { text: "La regresión solo funciona con imágenes; la clasificación solo con texto", correct: false, explanation: "Ambas técnicas funcionan con cualquier tipo de datos estructurados; no están limitadas a un tipo de dato." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/machine-learning/concept-automated-ml"
-  },
-  {
-    domain: "Dominio 1 - Modelos de IA",
-    text: "¿Qué es el clustering en machine learning no supervisado?",
-    multiple: false,
-    options: [
-      { text: "Predecir a qué grupo pertenecerá un nuevo elemento usando etiquetas predefinidas", correct: false, explanation: "Predecir con etiquetas predefinidas es clasificación (supervisada); el clustering agrupa sin etiquetas previas." },
-      { text: "Agrupar automáticamente elementos similares en conjuntos (clusters) sin etiquetas predefinidas", correct: true, explanation: "El clustering identifica grupos naturales en los datos basándose en similitudes, sin necesitar etiquetas. Se usa para segmentar clientes, detectar anomalías o explorar datos." },
-      { text: "Un proceso de limpieza de datos que elimina valores atípicos (outliers)", correct: false, explanation: "La limpieza de datos es una etapa de preprocesamiento; el clustering es un algoritmo de aprendizaje no supervisado." },
-      { text: "El proceso de dividir el dataset en conjuntos de entrenamiento y prueba", correct: false, explanation: "Dividir el dataset en train/test es una práctica de evaluación; el clustering es un algoritmo de agrupamiento." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/machine-learning/concept-automated-ml"
-  },
-
-  /* ── DOMINIO 2 · Seguridad y Gobernanza avanzadas ────────────────── */
-  {
-    domain: "Dominio 2 - Seguridad en Foundry",
-    text: "¿Qué es el 'groundedness detection' en Azure AI Content Safety?",
-    multiple: false,
-    options: [
-      { text: "Una función que verifica si el usuario está conectado a internet antes de enviar una solicitud", correct: false, explanation: "Groundedness detection no tiene relación con la conectividad de red." },
-      { text: "Una función que detecta si la respuesta de un LLM está fundamentada en las fuentes de contexto proporcionadas o si contiene información inventada", correct: true, explanation: "Groundedness detection analiza si las afirmaciones en la respuesta del modelo están respaldadas por los documentos de contexto, identificando alucinaciones o información no fundamentada." },
-      { text: "Una herramienta que verifica si el modelo está usando la versión más reciente de sus pesos", correct: false, explanation: "Las actualizaciones de pesos son gestionadas por Microsoft; groundedness detection evalúa la calidad de las respuestas." },
-      { text: "Un sistema de autenticación que verifica la identidad del usuario antes de cada llamada a la API", correct: false, explanation: "La autenticación se gestiona con Azure Active Directory y claves de API; groundedness detection evalúa la veracidad de las respuestas." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/content-safety/concepts/groundedness"
-  },
-  {
-    domain: "Dominio 2 - Seguridad en Foundry",
-    text: "¿Qué mecanismo de Azure AI Foundry ayuda a detectar vulnerabilidades de seguridad en aplicaciones de IA generativa antes del despliegue?",
-    multiple: false,
-    options: [
-      { text: "Azure Security Center", correct: false, explanation: "Azure Security Center protege la infraestructura de nube; para vulnerabilidades específicas de IA generativa, Foundry ofrece evaluaciones de seguridad." },
-      { text: "Safety evaluations y red teaming con IA en Foundry", correct: true, explanation: "Foundry incluye evaluaciones de seguridad automatizadas y capacidades de red teaming con IA que simulan ataques como prompt injection, jailbreaking y generación de contenido dañino para detectar vulnerabilidades antes del despliegue." },
-      { text: "Azure DDoS Protection", correct: false, explanation: "DDoS Protection protege contra ataques de denegación de servicio en la red; no evalúa vulnerabilidades de comportamiento de modelos de IA." },
-      { text: "Azure Key Vault", correct: false, explanation: "Key Vault protege secretos y claves de cifrado; no evalúa la seguridad del comportamiento de los modelos de IA." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-studio/concepts/evaluation-approach-gen-ai"
-  },
-  {
-    domain: "Dominio 2 - Seguridad en Foundry",
-    text: "¿Qué es el 'jailbreaking' en el contexto de los modelos de IA?",
-    multiple: false,
-    options: [
-      { text: "Un proceso para desbloquear capacidades de hardware en servidores de IA", correct: false, explanation: "Jailbreaking en IA no tiene relación con hardware; es un ataque a las restricciones de comportamiento del modelo." },
-      { text: "Intentar manipular al modelo para que ignore sus restricciones de seguridad y genere contenido que normalmente rechazaría", correct: true, explanation: "El jailbreaking intenta mediante prompts ingeniosos hacer que el modelo ignore su system message y sus filtros de seguridad, generando contenido dañino, privado o restringido." },
-      { text: "El proceso de extraer los pesos del modelo para copiarlos sin licencia", correct: false, explanation: "Extraer pesos es robo de modelo (model extraction); jailbreaking es manipular el comportamiento del modelo en inferencia." },
-      { text: "Una técnica de optimización que acelera la inferencia del modelo en dispositivos con recursos limitados", correct: false, explanation: "La optimización para inferencia rápida es quantización o pruning; jailbreaking es un ataque de seguridad." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/content-safety/overview"
-  },
-
-  /* ── DOMINIO 1 · IA Responsable avanzado ─────────────────────────── */
-  {
-    domain: "Dominio 1 - IA Responsable",
-    text: "¿Qué herramienta de Microsoft ayuda a los equipos a evaluar y mitigar el sesgo en los modelos de machine learning?",
-    multiple: false,
-    options: [
-      { text: "Azure Monitor", correct: false, explanation: "Azure Monitor supervisa el rendimiento e infraestructura; no evalúa el sesgo en modelos de ML." },
-      { text: "Responsible AI Dashboard en Azure Machine Learning", correct: true, explanation: "El Responsible AI Dashboard de Azure ML integra herramientas como Error Analysis, Fairness, Interpretability y Causal Analysis para identificar, diagnosticar y mitigar problemas de sesgo y equidad en los modelos." },
-      { text: "Azure Policy", correct: false, explanation: "Azure Policy aplica reglas de gobernanza de infraestructura; no evalúa el sesgo en modelos de ML." },
-      { text: "Azure AI Content Safety", correct: false, explanation: "Content Safety filtra contenido dañino en tiempo de inferencia; no analiza el sesgo estructural del modelo." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/machine-learning/concept-responsible-ai-dashboard"
-  },
-  {
-    domain: "Dominio 1 - IA Responsable",
-    text: "¿Qué principio de IA responsable se aplica cuando una empresa diseña su sistema de IA de reconocimiento facial garantizando que funcione con igual precisión para personas de todos los grupos étnicos?",
-    multiple: false,
-    options: [
-      { text: "Confiabilidad y seguridad", correct: false, explanation: "Confiabilidad trata sobre que el sistema funcione como se espera técnicamente; garantizar igual precisión para todos los grupos étnicos es una cuestión de equidad." },
-      { text: "Equidad", correct: true, explanation: "La equidad (Fairness) exige que los sistemas de IA traten a todas las personas de manera justa, con igual rendimiento entre grupos demográficos, sin discriminar por etnia, género u otras características." },
-      { text: "Transparencia", correct: false, explanation: "Transparencia trata sobre la comprensibilidad del sistema; garantizar igual rendimiento entre grupos es equidad." },
-      { text: "Privacidad y seguridad", correct: false, explanation: "Privacidad protege los datos biométricos; la igualdad de rendimiento entre grupos étnicos es equidad." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/machine-learning/concept-responsible-ai"
-  },
-
-  /* ── DOMINIO 2 · Preguntas de escenario ──────────────────────────── */
-  {
-    domain: "Dominio 2 - Microsoft Foundry",
-    text: "Una empresa de e-commerce quiere agregar búsqueda por imagen a su tienda (el usuario sube foto de un producto y encuentra artículos similares). ¿Qué combinación de servicios de Azure es más adecuada?",
-    multiple: false,
-    options: [
-      { text: "Azure AI Custom Vision + Azure SQL Database", correct: false, explanation: "Custom Vision clasifica imágenes en categorías predefinidas; para búsqueda por similitud visual se necesitan embeddings de imágenes y búsqueda vectorial." },
-      { text: "Azure AI Vision (embeddings de imágenes) + Azure AI Search (búsqueda vectorial)", correct: true, explanation: "Azure AI Vision genera embeddings vectoriales de imágenes, y Azure AI Search con índice vectorial permite encontrar imágenes similares por distancia coseno, habilitando búsqueda visual semántica." },
-      { text: "Azure AI Face + Azure Cosmos DB", correct: false, explanation: "Azure AI Face analiza rostros; no está diseñado para búsqueda de productos por similitud visual." },
-      { text: "DALL-E + Azure Blob Storage", correct: false, explanation: "DALL-E genera imágenes; no hace búsqueda por similitud visual de imágenes existentes." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/computer-vision/concept-image-retrieval"
-  },
-  {
-    domain: "Dominio 2 - Microsoft Foundry",
-    text: "Un hospital quiere automatizar la extracción de diagnósticos, medicamentos y fechas de notas clínicas no estructuradas. ¿Qué servicio de Azure AI es el más apropiado?",
-    multiple: false,
-    options: [
-      { text: "Azure AI Vision OCR", correct: false, explanation: "OCR extrae todo el texto sin analizar el significado médico; Text Analytics for Health comprende el contexto clínico." },
-      { text: "Azure AI Language - Text Analytics for Health", correct: true, explanation: "Text Analytics for Health extrae y estructura entidades clínicas como diagnósticos, medicamentos, dosificaciones, síntomas y relaciones entre ellos de texto médico no estructurado." },
-      { text: "Azure AI Document Intelligence - modelo de factura", correct: false, explanation: "El modelo de factura está optimizado para documentos financieros; Text Analytics for Health es el servicio especializado en texto médico." },
-      { text: "Azure AI Custom Vision", correct: false, explanation: "Custom Vision analiza imágenes; para texto médico no estructurado se usa Text Analytics for Health." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/language-service/text-analytics-for-health/overview"
-  },
-  {
-    domain: "Dominio 2 - Microsoft Foundry",
-    text: "¿Cuál es la forma recomendada de almacenar y gestionar de forma segura las claves de API y cadenas de conexión usadas por una aplicación de Azure AI en producción?",
-    multiple: false,
-    options: [
-      { text: "Incluirlas directamente en el código fuente del repositorio", correct: false, explanation: "Incluir credenciales en el código es una práctica de seguridad muy peligrosa; compromete las claves si el repositorio es accesible." },
-      { text: "Almacenarlas en variables de entorno del servidor de producción sin cifrado adicional", correct: false, explanation: "Las variables de entorno sin cifrado adicional son mejor que el código fuente, pero no es la práctica recomendada de Azure para producción." },
-      { text: "Usar Azure Key Vault para almacenar secretos y acceder a ellos con Managed Identity", correct: true, explanation: "Azure Key Vault almacena secretos, claves y certificados con cifrado y auditoría. Managed Identity permite a la aplicación acceder a Key Vault sin manejar credenciales explícitas, eliminando el riesgo de filtración." },
-      { text: "Compartirlas por correo electrónico cifrado con los desarrolladores del equipo", correct: false, explanation: "Compartir claves por email, aunque cifrado, no es la práctica de gestión de secretos recomendada para producción en Azure." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/key-vault/general/overview"
-  },
-  {
-    domain: "Dominio 2 - Microsoft Foundry",
-    text: "¿Qué es un 'deployment' de modelo en Azure AI Foundry y qué proporciona?",
-    multiple: false,
-    options: [
-      { text: "Un proceso de entrenamiento del modelo en los datos del usuario", correct: false, explanation: "El entrenamiento/fine-tuning es diferente al deployment; un deployment hace el modelo disponible para inferencia." },
-      { text: "Una instancia del modelo alojada en Azure que expone un endpoint de API REST para realizar inferencias", correct: true, explanation: "Un deployment en Foundry provisiona el modelo seleccionado, genera un endpoint HTTPS con una clave de API y define la cuota de tokens por minuto, permitiendo a las aplicaciones llamar al modelo vía REST." },
-      { text: "Un contenedor Docker que se descarga al servidor local del cliente", correct: false, explanation: "Los modelos de Azure OpenAI no se descargan a servidores locales; son servicios gestionados que exponen endpoints de API." },
-      { text: "Una copia de seguridad del modelo para recuperación ante desastres", correct: false, explanation: "Las copias de seguridad de modelos las gestiona Microsoft; un deployment es una instancia activa del modelo lista para inferencia." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/how-to/create-resource"
-  },
-
-  /* ── DOMINIO 2 · Azure OpenAI avanzado ───────────────────────────── */
-  {
-    domain: "Dominio 2 - Microsoft Foundry",
-    text: "¿Qué es el contexto (context window) de un modelo de lenguaje y por qué importa?",
-    multiple: false,
-    options: [
-      { text: "La velocidad en tokens por segundo con la que el modelo genera respuestas", correct: false, explanation: "La velocidad de generación es la latencia/throughput; el contexto es la cantidad de texto que el modelo puede 'ver' a la vez." },
-      { text: "La cantidad máxima de tokens (texto de entrada + salida) que el modelo puede procesar en una sola llamada", correct: true, explanation: "El context window define cuánto texto puede considerar el modelo simultáneamente. Un contexto más grande permite conversaciones más largas y documentos más extensos, pero aumenta el costo y la latencia." },
-      { text: "El tamaño del dataset con el que fue entrenado el modelo", correct: false, explanation: "El dataset de entrenamiento es independiente del context window; este define el límite de inferencia, no de entrenamiento." },
-      { text: "La cantidad de idiomas que el modelo puede procesar en una sola sesión", correct: false, explanation: "El soporte multiidioma es independiente del context window; este mide tokens, no idiomas." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/concepts/models"
-  },
-  {
-    domain: "Dominio 2 - Microsoft Foundry",
-    text: "¿Cuál es el propósito del parámetro 'max_tokens' al llamar a un modelo de Azure OpenAI?",
-    multiple: false,
-    options: [
-      { text: "Limitar el número de solicitudes por minuto a la API", correct: false, explanation: "El límite de solicitudes por minuto es el rate limit, no max_tokens." },
-      { text: "Establecer el número máximo de tokens que el modelo puede generar en su respuesta", correct: true, explanation: "max_tokens controla la longitud máxima de la respuesta generada. Si el modelo alcanza ese límite, la respuesta se trunca. Permite controlar costos y evitar respuestas excesivamente largas." },
-      { text: "Definir el tamaño del dataset de contexto que se pasa al modelo", correct: false, explanation: "El contexto completo (prompt + historial) se envía en el cuerpo de la solicitud; max_tokens solo controla la longitud de la respuesta." },
-      { text: "Configurar el número máximo de usuarios simultáneos que pueden usar el deployment", correct: false, explanation: "La concurrencia se gestiona con la cuota del deployment; max_tokens es un parámetro de la llamada individual al modelo." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/reference"
-  },
-  {
-    domain: "Dominio 2 - Microsoft Foundry",
-    text: "¿Qué modelo de Azure OpenAI está optimizado para tareas de razonamiento complejo con mayor tiempo de 'pensamiento' antes de responder?",
-    multiple: false,
-    options: [
-      { text: "GPT-4o", correct: false, explanation: "GPT-4o está optimizado para velocidad y eficiencia multimodal; los modelos de razonamiento profundo son la serie o1." },
-      { text: "GPT-3.5 Turbo", correct: false, explanation: "GPT-3.5 Turbo es un modelo de menor capacidad; los modelos de razonamiento complejo son la serie o1." },
-      { text: "o1 / o3 (modelos de razonamiento)", correct: true, explanation: "La serie o1/o3 de OpenAI usa razonamiento encadenado interno (chain-of-thought interno) para resolver problemas complejos de matemáticas, ciencias y codificación, a costa de mayor latencia." },
-      { text: "DALL-E 3", correct: false, explanation: "DALL-E 3 es un modelo de generación de imágenes; no realiza razonamiento complejo de texto." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/concepts/models"
-  },
-
-  /* ── DOMINIO 2 · Voz avanzada con Foundry ────────────────────────── */
-  {
-    domain: "Dominio 2 - Texto y Voz con Foundry",
-    text: "¿Qué es Azure AI Speech - Custom Speech y para qué se usa?",
-    multiple: false,
-    options: [
-      { text: "Un servicio para crear voces sintéticas personalizadas de marca", correct: false, explanation: "Crear voces de marca es Custom Neural Voice; Custom Speech mejora el reconocimiento de voz." },
-      { text: "Una funcionalidad que mejora la precisión del reconocimiento de voz para vocabularios técnicos, marcas o acentos específicos", correct: true, explanation: "Custom Speech permite adaptar el modelo de Speech-to-Text a términos técnicos, nombres de productos, jerga del sector o acentos regionales específicos, mejorando la precisión en esos contextos." },
-      { text: "Un modelo que convierte texto en voz con entonación personalizable", correct: false, explanation: "Convertir texto en voz es Text-to-Speech; Custom Speech mejora el reconocimiento (voz a texto)." },
-      { text: "Un servicio para transcribir reuniones de múltiples hablantes con identificación de quién habla", correct: false, explanation: "La transcripción con identificación de hablantes es Speaker Diarization; Custom Speech mejora el vocabulario reconocido." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/speech-service/custom-speech-overview"
-  },
-  {
-    domain: "Dominio 2 - Texto y Voz con Foundry",
-    text: "¿Qué capacidad de Azure AI Speech permite identificar y separar las voces de diferentes hablantes en una grabación de audio?",
-    multiple: false,
-    options: [
-      { text: "Speech translation", correct: false, explanation: "Speech translation traduce entre idiomas; no identifica quién habla en cada momento." },
-      { text: "Speaker diarization", correct: true, explanation: "Speaker diarization segmenta una grabación de audio identificando qué partes corresponden a cada hablante diferente, útil para transcribir reuniones, entrevistas o llamadas con múltiples participantes." },
-      { text: "Custom Neural Voice", correct: false, explanation: "Custom Neural Voice crea voces sintéticas; no identifica hablantes en grabaciones." },
-      { text: "Keyword recognition", correct: false, explanation: "Keyword recognition detecta palabras de activación específicas; no distingue entre hablantes." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/speech-service/get-started-stt-diarization"
-  },
-
-  /* ── DOMINIO 1 · Conceptos de IA Generativa adicionales ──────────── */
-  {
-    domain: "Dominio 1 - IA Generativa",
-    text: "¿Qué es el 'token' en el contexto de los modelos de lenguaje?",
-    multiple: false,
-    options: [
-      { text: "Una clave de autenticación usada para llamar a la API del modelo", correct: false, explanation: "Las claves de autenticación son API keys; en el contexto de LLMs, token se refiere a la unidad de texto." },
-      { text: "La unidad básica de texto que procesa el modelo, que puede ser una palabra, parte de una palabra o un carácter", correct: true, explanation: "Los LLMs no procesan palabras enteras sino tokens, que son fragmentos de texto (subpalabras). En inglés, 1 token ≈ 4 caracteres. Los costos de los modelos se calculan por número de tokens procesados." },
-      { text: "Un identificador numérico único asignado a cada solicitud a la API", correct: false, explanation: "Los identificadores de solicitud son IDs de traza; los tokens son las unidades de texto del modelo." },
-      { text: "El límite de velocidad máxima de solicitudes por segundo a la API", correct: false, explanation: "El límite de velocidad es el rate limit (TPM/RPM); los tokens son unidades de texto del modelo." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/concepts/prompt-engineering"
-  },
-  {
-    domain: "Dominio 1 - IA Generativa",
-    text: "¿Cuál es la función principal de un 'agente de IA' en comparación con un chatbot tradicional?",
-    multiple: false,
-    options: [
-      { text: "Los agentes son más rápidos que los chatbots porque usan modelos más pequeños", correct: false, explanation: "La velocidad no es la diferencia definitoria; los agentes pueden usar modelos de cualquier tamaño." },
-      { text: "Los agentes pueden planificar, tomar decisiones y ejecutar acciones de múltiples pasos de forma autónoma; los chatbots solo responden turno a turno", correct: true, explanation: "Un agente de IA tiene objetivos, puede descomponerlos en pasos, usar herramientas (búsqueda, código, APIs) y persistir en tareas complejas. Un chatbot tradicional solo responde a la entrada inmediata del usuario." },
-      { text: "Los agentes solo funcionan con texto; los chatbots pueden manejar voz e imágenes", correct: false, explanation: "Los agentes modernos pueden ser multimodales; la diferencia clave es su capacidad de planificación y acción autónoma." },
-      { text: "Los agentes requieren supervisión humana en cada paso; los chatbots son completamente autónomos", correct: false, explanation: "Es al contrario: los agentes tienen mayor autonomía; los chatbots son más lineales y reactivos." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/agents/overview"
-  },
-  {
-    domain: "Dominio 1 - IA Generativa",
-    text: "¿Qué significa que un modelo de IA sea 'multimodal'?",
-    multiple: false,
-    options: [
-      { text: "Que el modelo puede ejecutarse en múltiples regiones de Azure simultáneamente", correct: false, explanation: "La disponibilidad multirregional es una característica de despliegue; multimodal se refiere a los tipos de datos que el modelo puede procesar." },
-      { text: "Que el modelo puede procesar y generar múltiples tipos de datos como texto, imágenes, audio o vídeo", correct: true, explanation: "Un modelo multimodal acepta diferentes tipos de entrada (texto + imágenes, audio + texto, etc.) y puede generar diferentes tipos de salida. Ejemplo: GPT-4o procesa texto e imágenes y genera texto." },
-      { text: "Que el modelo fue entrenado con datos de múltiples idiomas", correct: false, explanation: "El soporte multiidioma describe las capacidades lingüísticas; multimodal se refiere a los tipos de datos (texto, imagen, audio)." },
-      { text: "Que el modelo puede ser usado tanto en modo práctica como en modo examen", correct: false, explanation: "Los modos de uso son una característica de la aplicación; multimodal es una propiedad arquitectónica del modelo." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/concepts/models"
-  },
-
-  /* ── DOMINIO 2 · Preguntas de escenario adicionales ──────────────── */
-  {
-    domain: "Dominio 2 - Microsoft Foundry",
-    text: "Una aseguradora quiere procesar miles de formularios de reclamación en PDF diariamente, extrayendo campos como número de póliza, fecha del siniestro e importe. ¿Qué servicio es el más adecuado?",
-    multiple: false,
-    options: [
-      { text: "Azure AI Language con NER", correct: false, explanation: "NER extrae entidades de texto libre; para formularios estructurados con campos específicos, Document Intelligence es más preciso y eficiente." },
-      { text: "Azure AI Document Intelligence con un modelo personalizado entrenado con los formularios de la aseguradora", correct: true, explanation: "Document Intelligence con modelo personalizado se entrena con los formularios específicos de la empresa, extrayendo con precisión los campos exactos del negocio a escala, ideal para procesamiento masivo de documentos estructurados." },
-      { text: "Azure AI Vision OCR + análisis manual de los textos extraídos", correct: false, explanation: "OCR extrae todo el texto sin estructura; Document Intelligence extrae directamente los campos estructurados sin post-procesamiento manual." },
-      { text: "Azure OpenAI GPT-4o procesando cada PDF como imagen", correct: false, explanation: "GPT-4o puede analizar imágenes de documentos, pero Document Intelligence está optimizado para extracción estructurada masiva con mayor precisión y menor costo a escala." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/document-intelligence/concept-custom"
-  },
-  {
-    domain: "Dominio 2 - Microsoft Foundry",
-    text: "Un equipo de desarrollo quiere asegurarse de que su aplicación de IA generativa no genere contenido ofensivo o violento. ¿Qué servicio deben integrar?",
-    multiple: false,
-    options: [
-      { text: "Azure AI Language - análisis de sentimientos", correct: false, explanation: "El análisis de sentimientos clasifica texto como positivo/negativo; no detecta contenido ofensivo o violento de forma específica." },
-      { text: "Azure AI Content Safety", correct: true, explanation: "Azure AI Content Safety detecta y filtra contenido dañino en texto e imágenes en categorías de odio, violencia, autolesiones y contenido sexual, con niveles de severidad configurables para la aplicación." },
-      { text: "Azure AD Conditional Access", correct: false, explanation: "Conditional Access controla el acceso de usuarios; no filtra el contenido generado por modelos de IA." },
-      { text: "Azure API Management con throttling", correct: false, explanation: "API Management gestiona el tráfico de API; no filtra el contenido dañino generado por modelos." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/content-safety/overview"
-  },
-  {
-    domain: "Dominio 2 - Microsoft Foundry",
-    text: "¿Cuál de las siguientes es una ventaja clave de usar Managed Identity con Azure AI Services en lugar de claves de API?",
-    multiple: false,
-    options: [
-      { text: "Las Managed Identities son gratuitas; las claves de API tienen costo adicional", correct: false, explanation: "El costo no es la ventaja diferenciadora; ambos mecanismos de autenticación no tienen costo separado." },
-      { text: "Elimina la necesidad de almacenar y rotar credenciales manualmente, reduciendo el riesgo de filtración de secretos", correct: true, explanation: "Con Managed Identity, la aplicación se autentica automáticamente con Azure AD sin manejar claves explícitas. No hay secretos que almacenar, rotar ni que puedan filtrarse accidentalmente en el código." },
-      { text: "Las Managed Identities ofrecen menor latencia que las claves de API", correct: false, explanation: "La latencia de inferencia no está determinada por el mecanismo de autenticación; ambos tienen latencia de autenticación negligible." },
-      { text: "Solo las Managed Identities permiten acceder a modelos GPT-4; las claves API están restringidas a modelos más pequeños", correct: false, explanation: "El acceso a los modelos no depende del mecanismo de autenticación; tanto las claves API como las Managed Identities dan acceso a los mismos modelos." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/authentication"
-  },
-  {
-    domain: "Dominio 2 - Microsoft Foundry",
-    text: "¿Qué herramienta de Azure AI Foundry permite crear un flujo de IA de forma visual conectando nodos de LLM, búsqueda, Python y herramientas externas?",
-    multiple: false,
-    options: [
-      { text: "Azure Machine Learning Designer", correct: false, explanation: "ML Designer crea pipelines de machine learning clásico; Prompt Flow es la herramienta visual de Foundry para flujos de IA generativa." },
-      { text: "Prompt Flow", correct: true, explanation: "Prompt Flow en Azure AI Foundry permite diseñar visualmente flujos de IA conectando nodos (LLM, Python, búsqueda, herramientas), probarlos, evaluarlos y desplegarlos como endpoints en producción." },
-      { text: "Azure Logic Apps", correct: false, explanation: "Logic Apps orquesta flujos de negocio y conectores SaaS; Prompt Flow está especializado en flujos de IA generativa con LLMs." },
-      { text: "Azure Data Factory", correct: false, explanation: "Data Factory orquesta pipelines de datos ETL; Prompt Flow es para flujos de IA generativa." }
-    ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-studio/how-to/prompt-flow"
-  },
-
-  /* ── DOMINIO 1 · Casos de uso de IA ─────────────────────────────── */
-  {
-    domain: "Dominio 1 - Cargas de trabajo: Texto",
-    text: "¿Qué tipo de tarea de NLP resume documentos largos en párrafos cortos que capturan las ideas principales?",
-    multiple: false,
-    options: [
-      { text: "Clasificación de texto", correct: false, explanation: "La clasificación asigna etiquetas a documentos; no genera resúmenes en texto." },
-      { text: "Extracción de frases clave", correct: false, explanation: "La extracción de frases clave identifica términos importantes, no genera resúmenes coherentes en prosa." },
-      { text: "Resumen automático (summarization)", correct: true, explanation: "El resumen automático puede ser extractivo (selecciona frases del original) o abstractivo (genera nuevo texto). Azure AI Language y los LLMs de Azure OpenAI soportan ambos tipos." },
-      { text: "Análisis de sentimientos", correct: false, explanation: "El análisis de sentimientos determina la polaridad emocional del texto; no produce resúmenes." }
+      { text: "Resumen de texto (text summarization)", correct: true, explanation: "La función de resumen de texto de Azure AI Language condensa documentos largos en un conjunto reducido de oraciones que capturan la idea principal." },
+      { text: "Detección de PII", correct: false, explanation: "La detección de PII identifica información personal sensible, no genera resúmenes del contenido." },
+      { text: "Traducción de documentos", correct: false, explanation: "La traducción convierte el texto a otro idioma, pero no reduce su longitud ni genera un resumen." },
+      { text: "Clasificación de texto personalizada", correct: false, explanation: "La clasificación asigna categorías al texto, no produce un resumen condensado del contenido." }
     ],
     doc: "https://learn.microsoft.com/es-es/azure/ai-services/language-service/summarization/overview"
   },
+
+  /* ══════════════════════════════════════════════════════════════════
+     DOMINIO 1 · Conceptos de IA Generativa
+  ══════════════════════════════════════════════════════════════════ */
   {
-    domain: "Dominio 1 - Cargas de trabajo: Texto",
-    text: "¿Cuál es el uso principal de Azure AI Language - Question Answering (antes QnA Maker)?",
+    domain: "Dominio 1 - IA Generativa",
+    text: "En el contexto de modelos generativos, ¿qué controla principalmente el parámetro 'temperature' al generar una respuesta?",
     multiple: false,
     options: [
-      { text: "Entrenar modelos de clasificación de texto con datos personalizados", correct: false, explanation: "La clasificación personalizada usa Custom Text Classification de Language; Question Answering responde preguntas desde una base de conocimiento." },
-      { text: "Construir bases de conocimiento que responden preguntas en lenguaje natural a partir de documentos, FAQs o URLs", correct: true, explanation: "Question Answering permite crear una base de conocimiento (pares pregunta-respuesta) desde documentos existentes y responder preguntas de usuarios con las respuestas más relevantes encontradas en esa base." },
-      { text: "Analizar el sentimiento de preguntas enviadas por los clientes", correct: false, explanation: "El análisis de sentimientos es una función diferente de Azure AI Language; Question Answering extrae respuestas de una base de conocimiento." },
-      { text: "Traducir preguntas de clientes al idioma del agente de soporte", correct: false, explanation: "La traducción es función de Azure AI Translator; Question Answering busca respuestas en la base de conocimiento." }
+      { text: "La cantidad máxima de tokens que puede generar el modelo", correct: false, explanation: "Ese límite lo controla el parámetro 'max_tokens', no 'temperature'." },
+      { text: "El grado de aleatoriedad/creatividad en las respuestas generadas: valores más altos producen respuestas más diversas y menos predecibles", correct: true, explanation: "Temperature ajusta la distribución de probabilidad al elegir el siguiente token; valores bajos generan respuestas más deterministas y valores altos, más variadas." },
+      { text: "El idioma en el que responde el modelo", correct: false, explanation: "El idioma de respuesta lo determina principalmente el prompt/instrucción, no el parámetro temperature." },
+      { text: "El costo por token de la solicitud", correct: false, explanation: "El costo depende del modelo y del número de tokens, no del valor de temperature." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/concepts/prompt-engineering"
+  },
+  {
+    domain: "Dominio 1 - IA Generativa",
+    text: "¿Qué es 'prompt engineering'?",
+    multiple: false,
+    options: [
+      { text: "El proceso de diseñar y refinar las instrucciones de entrada dadas a un modelo generativo para obtener las respuestas deseadas", correct: true, explanation: "Prompt engineering consiste en estructurar cuidadosamente las instrucciones, ejemplos y contexto en el prompt para guiar el comportamiento del modelo sin reentrenarlo." },
+      { text: "El proceso de reentrenar completamente un modelo con nuevos datos", correct: false, explanation: "Eso describe fine-tuning o reentrenamiento, no prompt engineering, que no modifica los pesos del modelo." },
+      { text: "El proceso de comprimir un modelo para reducir su tamaño", correct: false, explanation: "Eso corresponde a técnicas como cuantización o destilación de modelos, no a prompt engineering." },
+      { text: "El proceso de cifrar las solicitudes enviadas a la API", correct: false, explanation: "El cifrado es una medida de seguridad de transporte de datos, no relacionada con el diseño de prompts." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/concepts/prompt-engineering"
+  },
+  {
+    domain: "Dominio 1 - IA Generativa",
+    text: "Para cada afirmación sobre modelos generativos, selecciona Yes si es verdadera.\n1) Un modelo multimodal puede aceptar tanto texto como imágenes en una misma solicitud.\n2) El 'grounding' (fundamentación) mediante RAG ayuda a reducir las alucinaciones al basar las respuestas en datos reales recuperados.\n3) Aumentar el valor de 'top_p' y 'temperature' al mismo tiempo siempre garantiza respuestas más precisas y factuales.",
+    multiple: true,
+    options: [
+      { text: "1) Yes", correct: true, explanation: "Los modelos multimodales, como los desplegados en Foundry con capacidades de visión, pueden procesar entradas combinadas de texto e imagen en una sola solicitud." },
+      { text: "2) Yes", correct: true, explanation: "RAG (Retrieval-Augmented Generation) fundamenta las respuestas del modelo en información recuperada de una fuente confiable, reduciendo el riesgo de alucinaciones." },
+      { text: "3) No", correct: true, explanation: "Aumentar temperature y top_p incrementa la aleatoriedad y diversidad de las respuestas, lo cual generalmente reduce la precisión factual, no la garantiza." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/concepts/prompt-engineering"
+  },
+  {
+    domain: "Dominio 1 - IA Generativa",
+    text: "¿Cuál es la diferencia clave entre un modelo de 'embeddings' y un modelo de generación de texto (chat/completions)?",
+    multiple: false,
+    options: [
+      { text: "El modelo de embeddings convierte texto en un vector numérico que representa su significado semántico, mientras que un modelo de generación produce texto nuevo como salida", correct: true, explanation: "Los embeddings representan el significado del texto en un espacio vectorial, útil para búsqueda semántica, mientras que los modelos de generación producen texto en lenguaje natural como respuesta." },
+      { text: "Ambos modelos generan siempre exactamente el mismo tipo de salida: texto en lenguaje natural", correct: false, explanation: "El modelo de embeddings genera vectores numéricos, no texto en lenguaje natural, a diferencia de un modelo de chat/completions." },
+      { text: "El modelo de embeddings solo puede usarse con imágenes, nunca con texto", correct: false, explanation: "Los modelos de embeddings de texto son ampliamente usados para representar texto; existen también embeddings de imágenes, pero no es una limitación exclusiva a imágenes." },
+      { text: "No existe diferencia real entre ambos tipos de modelos", correct: false, explanation: "Sí existe una diferencia fundamental en el tipo de salida y el propósito de uso de cada modelo." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/concepts/understand-embeddings"
+  },
+  {
+    domain: "Dominio 1 - IA Generativa",
+    text: "Un desarrollador quiere que un modelo generativo responda siempre en el mismo tono profesional y nunca revele información confidencial de la empresa, sin importar cómo el usuario formule sus preguntas. ¿Qué mecanismo es el más apropiado para establecer este comportamiento base?",
+    multiple: false,
+    options: [
+      { text: "Un mensaje de sistema (system message) que defina claramente el rol, tono y restricciones del asistente", correct: true, explanation: "El system message se usa para establecer el comportamiento, tono y límites del asistente antes de procesar los mensajes del usuario, guiando la conversación de forma consistente." },
+      { text: "Incrementar el valor de 'max_tokens'", correct: false, explanation: "Max_tokens solo limita la longitud de la respuesta, no controla el tono ni las restricciones de contenido." },
+      { text: "Reducir el número de modelos desplegados en el proyecto", correct: false, explanation: "El número de modelos desplegados no tiene relación con el comportamiento o tono de las respuestas." },
+      { text: "Usar únicamente el endpoint de embeddings", correct: false, explanation: "El endpoint de embeddings no genera texto conversacional, por lo que no es aplicable a este escenario." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/concepts/system-message"
+  },
+  {
+    domain: "Dominio 1 - IA Generativa",
+    text: "¿Qué escenario es un ejemplo apropiado de 'fine-tuning' de un modelo generativo, en lugar de simplemente usar prompt engineering?",
+    multiple: false,
+    options: [
+      { text: "Ajustar el prompt para pedir respuestas más breves en una sola solicitud puntual", correct: false, explanation: "Este es un ajuste simple de instrucciones (prompt engineering), no requiere modificar los pesos del modelo." },
+      { text: "Adaptar el modelo para que consistentemente replique el estilo de escritura y terminología específica de miles de documentos legales de la empresa, con un comportamiento estable en todas las solicitudes", correct: true, explanation: "Cuando se requiere un cambio de comportamiento consistente y profundo, basado en grandes volúmenes de ejemplos específicos del dominio, el fine-tuning ajusta los pesos del modelo para lograr ese comportamiento de forma más confiable que solo con prompts." },
+      { text: "Agregar una sola instrucción adicional en el system message", correct: false, explanation: "Esto sigue siendo prompt engineering, ya que no involucra reentrenar ni ajustar los parámetros del modelo." },
+      { text: "Cambiar el valor de 'temperature' de 0.7 a 0.2", correct: false, explanation: "Modificar un parámetro de inferencia como temperature no constituye fine-tuning del modelo." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/how-to/fine-tuning"
+  },
+  {
+    domain: "Dominio 1 - IA Generativa",
+    text: "¿Qué es la 'ventana de contexto' (context window) de un modelo de lenguaje grande?",
+    multiple: false,
+    options: [
+      { text: "La cantidad máxima de tokens (entre el prompt y la respuesta) que el modelo puede procesar en una sola solicitud", correct: true, explanation: "La ventana de contexto define cuántos tokens combinados de entrada y salida puede manejar el modelo en una interacción; superar este límite provoca truncamiento o errores." },
+      { text: "El número de modelos que se pueden desplegar simultáneamente en un proyecto", correct: false, explanation: "Eso se relaciona con cuotas de despliegue, no con la ventana de contexto del modelo." },
+      { text: "El tiempo máximo que el servicio conserva el historial de conversación entre sesiones", correct: false, explanation: "La retención del historial de conversación es una decisión de la aplicación, no una propiedad intrínseca de 'ventana de contexto' del modelo." },
+      { text: "La cantidad de idiomas que soporta el modelo", correct: false, explanation: "El soporte de idiomas es una capacidad distinta del modelo, no está relacionado con la ventana de contexto." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/concepts/models"
+  },
+
+  /* ══════════════════════════════════════════════════════════════════
+     DOMINIO 2 · Microsoft Foundry - Fundamentos y despliegue
+  ══════════════════════════════════════════════════════════════════ */
+  {
+    domain: "Dominio 2 - Foundry Fundamentos",
+    text: "En Microsoft Foundry, ¿qué recurso debes crear primero antes de poder desplegar e interactuar con un modelo del catálogo?",
+    multiple: false,
+    options: [
+      { text: "Un proyecto de Foundry (Foundry project), asociado a un hub/recurso de Azure AI", correct: true, explanation: "Un proyecto de Foundry es el contenedor de trabajo donde se gestionan los despliegues de modelos, conexiones a datos y configuraciones antes de poder interactuar con cualquier modelo." },
+      { text: "Un modelo de Custom Vision entrenado", correct: false, explanation: "Custom Vision es un servicio independiente para modelos de visión; no es un requisito previo para usar el catálogo de modelos de Foundry." },
+      { text: "Una cuenta de Azure AI Search con un índice ya poblado", correct: false, explanation: "Azure AI Search es necesario únicamente para escenarios de RAG, no como prerrequisito general para desplegar cualquier modelo." },
+      { text: "Una suscripción de OpenAI directamente con OpenAI (fuera de Azure)", correct: false, explanation: "Foundry aloja los modelos dentro de Azure; no requiere una suscripción directa con OpenAI fuera de la plataforma." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-foundry/what-is-azure-ai-foundry"
+  },
+  {
+    domain: "Dominio 2 - Foundry Fundamentos",
+    text: "Para cada afirmación sobre el catálogo de modelos de Microsoft Foundry, selecciona Yes si es verdadera.\n1) El catálogo incluye únicamente modelos desarrollados por OpenAI.\n2) Algunos modelos del catálogo se pueden desplegar como 'serverless API' sin gestionar infraestructura de cómputo dedicada.\n3) Es posible comparar el rendimiento de distintos modelos del catálogo usando un playground o benchmarks antes de elegir cuál desplegar.",
+    multiple: true,
+    options: [
+      { text: "1) No", correct: true, explanation: "El catálogo de Foundry incluye modelos de múltiples proveedores (OpenAI, Meta, Mistral, Cohere, Microsoft, entre otros), no solo de OpenAI." },
+      { text: "2) Yes", correct: true, explanation: "Muchos modelos se pueden desplegar mediante 'serverless API' (pago por token) sin necesidad de aprovisionar y gestionar VMs dedicadas." },
+      { text: "3) Yes", correct: true, explanation: "Foundry ofrece herramientas para comparar modelos, probarlos en un playground y revisar benchmarks de rendimiento antes de la decisión de despliegue." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-foundry/how-to/model-catalog-overview"
+  },
+  {
+    domain: "Dominio 2 - Foundry Fundamentos",
+    text: "Tu aplicación necesita llamar a un modelo desplegado en Microsoft Foundry usando el SDK de OpenAI para Python. ¿Qué valor debe usarse en el parámetro 'model' de la solicitud?",
+    multiple: false,
+    options: [
+      { text: "El nombre del modelo base original del catálogo (p. ej. 'gpt-4o')", correct: false, explanation: "Usar el nombre del modelo base directamente puede no coincidir con el identificador configurado en el despliegue específico del recurso Foundry." },
+      { text: "El nombre de despliegue (deployment name) que se configuró al desplegar el modelo en el recurso de Foundry", correct: true, explanation: "En Foundry, al desplegar un modelo se le asigna un nombre de despliegue, y ese es el identificador que debe usarse como valor de 'model' en las llamadas a la API." },
+      { text: "El ID de la suscripción de Azure", correct: false, explanation: "El ID de suscripción identifica la cuenta de facturación de Azure, no el modelo a invocar en la solicitud." },
+      { text: "La región de Azure donde está desplegado el recurso", correct: false, explanation: "La región se especifica en el endpoint de la solicitud, no como valor del parámetro 'model'." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/how-to/switching-endpoints"
+  },
+  {
+    domain: "Dominio 2 - Foundry Fundamentos",
+    text: "¿Qué opción de despliegue en Microsoft Foundry es la más adecuada para una aplicación empresarial que requiere rendimiento garantizado (capacidad reservada) y predecible, independientemente del tráfico de otros clientes en la región?",
+    multiple: false,
+    options: [
+      { text: "Standard (pago por token, capacidad compartida)", correct: false, explanation: "El modelo estándar comparte capacidad con otros clientes de la región, por lo que el rendimiento puede variar según la demanda general." },
+      { text: "Provisioned Throughput Units (PTU)", correct: true, explanation: "Las PTU reservan una cantidad fija de capacidad de cómputo dedicada, ofreciendo latencia y rendimiento predecibles independientemente de la carga de otros clientes." },
+      { text: "Batch (procesamiento asíncrono de baja prioridad)", correct: false, explanation: "El modo batch está optimizado para cargas masivas no urgentes con menor costo, no garantiza baja latencia ni rendimiento dedicado en tiempo real." },
+      { text: "Free tier de evaluación", correct: false, explanation: "Los niveles gratuitos de evaluación tienen límites de uso y no ofrecen garantías de capacidad dedicada para producción." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/concepts/provisioned-throughput"
+  },
+  {
+    domain: "Dominio 2 - Foundry Fundamentos",
+    text: "Un equipo de desarrollo quiere probar rápidamente distintos prompts contra un modelo desplegado en Foundry, ajustando parámetros como temperature y system message, antes de escribir código de integración. ¿Qué herramienta de Foundry deben usar?",
+    multiple: false,
+    options: [
+      { text: "El Playground de chat", correct: true, explanation: "El Playground de Foundry permite experimentar de forma interactiva con prompts, parámetros del modelo y mensajes de sistema sin necesidad de escribir código." },
+      { text: "Azure DevOps Pipelines", correct: false, explanation: "Azure DevOps se usa para CI/CD de aplicaciones, no para experimentar de forma interactiva con prompts." },
+      { text: "El panel de facturación de Azure", correct: false, explanation: "El panel de facturación muestra costos y consumo, no es una herramienta de experimentación con modelos." },
+      { text: "Azure Key Vault", correct: false, explanation: "Key Vault se usa para almacenar secretos y claves de forma segura, no para probar prompts contra un modelo." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-foundry/how-to/quickstart-play-with-model"
+  },
+
+  /* ══════════════════════════════════════════════════════════════════
+     DOMINIO 2 · OpenAI Responses API / Multimodalidad
+  ══════════════════════════════════════════════════════════════════ */
+  {
+    domain: "Dominio 2 - Responses API / Multimodal",
+    text: "Tienes una app en Python que usa la OpenAI Responses API en Microsoft Foundry con un modelo multimodal desplegado. Un usuario sube una imagen y pregunta '¿qué hay en esta foto?'. ¿Qué debe incluir la solicitud para procesar correctamente texto e imagen juntos?",
+    multiple: false,
+    options: [
+      { text: "Dos solicitudes separadas: una solo con la imagen y otra solo con el texto", correct: false, explanation: "La Responses API permite combinar texto e imagen en una sola solicitud; separar las solicitudes no permite que el modelo relacione ambos elementos en un mismo contexto." },
+      { text: "Un único mensaje de entrada ('input') que contenga tanto un content part de tipo texto como uno de tipo 'input_image' con la imagen", correct: true, explanation: "La Responses API soporta contenido multimodal combinando en un mismo mensaje partes de tipo texto ('input_text') y de tipo imagen ('input_image'), procesadas juntas en una sola solicitud." },
+      { text: "Un parámetro 'stream=True' obligatorio", correct: false, explanation: "El streaming controla cómo se recibe la respuesta (incremental), pero no es un requisito para combinar texto e imagen en la entrada." },
+      { text: "Codificar la imagen como texto plano dentro del campo 'input_text'", correct: false, explanation: "Las imágenes no se envían como texto plano; deben incluirse como un content part específico de tipo imagen (URL o base64)." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/how-to/responses"
+  },
+  {
+    domain: "Dominio 2 - Responses API / Multimodal",
+    text: "Para cada afirmación sobre la OpenAI Responses API en Microsoft Foundry, selecciona Yes si es verdadera.\n1) Las imágenes enviadas a un modelo con capacidad de visión pueden proporcionarse como URLs públicamente accesibles o como datos de imagen codificados en base64.\n2) La Responses API mantiene automáticamente, sin ninguna configuración, el historial completo de todas las conversaciones anteriores del usuario en cada nueva solicitud.\n3) Un modelo desplegado sin capacidades de visión rechazará una solicitud que incluya un content part de tipo imagen.",
+    multiple: true,
+    options: [
+      { text: "1) Yes", correct: true, explanation: "La Responses API acepta imágenes tanto mediante URLs accesibles públicamente como mediante datos base64 incluidos directamente en la solicitud." },
+      { text: "2) No", correct: true, explanation: "El historial de conversación no se mantiene automáticamente sin configuración; el desarrollador debe gestionar el estado o usar mecanismos explícitos (como el parámetro de respuesta previa) para conservar contexto entre turnos." },
+      { text: "3) Yes", correct: true, explanation: "Si el modelo desplegado no soporta capacidades de visión, una solicitud que incluya contenido de imagen resultará en un error, ya que el modelo no está habilitado para procesar ese tipo de entrada." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/how-to/responses"
+  },
+  {
+    domain: "Dominio 2 - Responses API / Multimodal",
+    text: "Necesitas que tu aplicación reciba la respuesta del modelo de forma incremental, mostrando el texto a medida que se va generando (similar a un efecto de 'escritura en vivo'). ¿Qué debes configurar en la solicitud a la Responses API?",
+    multiple: false,
+    options: [
+      { text: "Establecer el parámetro 'stream' en true", correct: true, explanation: "Activar 'stream=True' hace que la API entregue la respuesta como una serie de eventos incrementales (chunks), permitiendo mostrar el texto progresivamente en la interfaz." },
+      { text: "Aumentar 'max_output_tokens' al máximo permitido", correct: false, explanation: "Aumentar el límite de tokens no cambia la forma en que se entrega la respuesta; solo permite respuestas más largas." },
+      { text: "Usar un modelo de embeddings en lugar de un modelo de chat", correct: false, explanation: "Los modelos de embeddings no generan texto conversacional ni soportan streaming de este tipo." },
+      { text: "Desactivar Content Safety", correct: false, explanation: "Content Safety es un mecanismo de moderación independiente; desactivarlo no habilita ni afecta el comportamiento de streaming." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/how-to/responses"
+  },
+  {
+    domain: "Dominio 2 - Responses API / Multimodal",
+    text: "Estás migrando código que anteriormente usaba Chat Completions y ahora quieres usar function calling (llamado a herramientas) con la Responses API en Foundry. Además del nombre y esquema de parámetros de la función, ¿qué otro elemento es fundamental incluir en la definición de la herramienta para que el modelo la use correctamente?",
+    multiple: false,
+    options: [
+      { text: "Una descripción clara en lenguaje natural de qué hace la función y cuándo debe usarse", correct: true, explanation: "El modelo decide si invocar una herramienta basándose en su descripción; una descripción clara y precisa mejora significativamente la exactitud de cuándo y cómo se invoca la función." },
+      { text: "El código fuente completo de la función en el lenguaje de programación del backend", correct: false, explanation: "El modelo no ejecuta el código directamente; solo necesita el esquema (nombre, descripción, parámetros) para decidir cuándo solicitar su ejecución, la cual se realiza en el lado de la aplicación." },
+      { text: "La URL pública del servidor donde se aloja la función", correct: false, explanation: "La API no invoca la función remotamente por sí misma; devuelve una solicitud de llamada que la aplicación debe ejecutar y luego enviar el resultado de vuelta al modelo." },
+      { text: "Una clave de API independiente para cada función", correct: false, explanation: "No se requiere una clave de API por función; la autenticación es a nivel del recurso de Foundry, no de cada herramienta definida." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/how-to/function-calling"
+  },
+  {
+    domain: "Dominio 2 - Responses API / Multimodal",
+    text: "Tu app en Python usa la OpenAI Responses API en Microsoft Foundry con un modelo multimodal desplegado. Los usuarios proporcionan dos URLs HTTPS de imágenes. Necesitas que la app devuelva una comparación en texto de las dos imágenes en una sola solicitud. ¿Qué debe incluir la solicitud?",
+    multiple: false,
+    options: [
+      { text: "Cada URL de imagen como un content part de tipo image_url en formato Chat Completions", correct: false, explanation: "Ese formato corresponde a la Chat Completions API clásica; la Responses API usa un esquema de content parts distinto ('input_image'), no 'image_url'." },
+      { text: "Cada URL de imagen enviada a un endpoint de generación de imágenes", correct: false, explanation: "Un endpoint de generación de imágenes crea imágenes nuevas; no compara ni analiza imágenes existentes." },
+      { text: "Una instrucción de texto y ambas URLs de imagen combinadas en un único valor de input_text", correct: false, explanation: "Las imágenes no deben incrustarse como texto plano dentro de 'input_text'; deben representarse como content parts de imagen independientes." },
+      { text: "Una instrucción de texto y cada URL de imagen como un content part de tipo input_image", correct: true, explanation: "La Responses API permite combinar en un mismo mensaje una instrucción de texto ('input_text') junto con múltiples content parts de tipo 'input_image', lo que permite comparar varias imágenes en una sola solicitud." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/how-to/responses"
+  },
+  {
+    domain: "Dominio 2 - Responses API / Multimodal",
+    text: "¿Cuál es una ventaja clave de la Responses API sobre la Chat Completions API tradicional en cuanto al manejo del estado de la conversación?",
+    multiple: false,
+    options: [
+      { text: "La Responses API puede referenciar una respuesta anterior mediante un identificador, evitando que la aplicación deba reenviar manualmente todo el historial de mensajes en cada solicitud", correct: true, explanation: "La Responses API introduce la capacidad de encadenar respuestas mediante un identificador de respuesta previa, simplificando la gestión de contexto conversacional sin reenviar todo el historial." },
+      { text: "La Responses API elimina por completo la necesidad de un system message", correct: false, explanation: "El system message sigue siendo relevante y soportado en la Responses API para definir comportamiento y restricciones del asistente." },
+      { text: "La Responses API no admite function calling, a diferencia de Chat Completions", correct: false, explanation: "La Responses API sí admite function calling (uso de herramientas), incluso con mejoras respecto al enfoque de Chat Completions." },
+      { text: "La Responses API solo funciona con modelos de embeddings", correct: false, explanation: "La Responses API está diseñada para modelos de generación de texto y multimodales, no está limitada a embeddings." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/how-to/responses"
+  },
+
+  /* ══════════════════════════════════════════════════════════════════
+     DOMINIO 2 · Content Safety
+  ══════════════════════════════════════════════════════════════════ */
+  {
+    domain: "Dominio 2 - Content Safety",
+    text: "Tu aplicación de Foundry necesita bloquear automáticamente respuestas del modelo que contengan contenido de violencia extrema, antes de que lleguen al usuario final. ¿Qué componente debes configurar?",
+    multiple: false,
+    options: [
+      { text: "Un filtro de Content Safety configurado sobre las salidas (completions) del modelo, con el umbral de severidad adecuado para la categoría de violencia", correct: true, explanation: "Content Safety permite configurar filtros de severidad por categoría (odio, violencia, sexual, autolesión) tanto para entradas como salidas, bloqueando contenido que exceda el umbral definido." },
+      { text: "Aumentar el valor de 'temperature' del modelo", correct: false, explanation: "Temperature controla la aleatoriedad de la generación, no filtra ni bloquea contenido dañino." },
+      { text: "Reducir el 'max_tokens' de la respuesta", correct: false, explanation: "Limitar la longitud de la respuesta no garantiza la ausencia de contenido dañino dentro de esos tokens." },
+      { text: "Cambiar el modelo a una versión de embeddings", correct: false, explanation: "Un modelo de embeddings no genera texto conversacional, por lo que no es aplicable a este escenario de filtrado de respuestas." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/content-safety/overview"
+  },
+  {
+    domain: "Dominio 2 - Content Safety",
+    text: "Para cada afirmación sobre Azure AI Content Safety, selecciona Yes si es verdadera.\n1) Prompt Shields está diseñado específicamente para detectar intentos de 'jailbreak' e inyección de instrucciones maliciosas (prompt injection).\n2) Content Safety solo puede analizar texto; no tiene capacidad de moderar imágenes.\n3) Es posible configurar distintos umbrales de severidad para diferentes categorías de daño (por ejemplo, más estricto para contenido sexual que para violencia).",
+    multiple: true,
+    options: [
+      { text: "1) Yes", correct: true, explanation: "Prompt Shields es una capacidad específica de Content Safety orientada a detectar y bloquear intentos de manipular al modelo mediante jailbreaks o inyecciones de prompt, incluyendo ataques indirectos desde documentos." },
+      { text: "2) No", correct: true, explanation: "Content Safety puede moderar tanto texto como imágenes, detectando contenido dañino en ambos tipos de medios." },
+      { text: "3) Yes", correct: true, explanation: "Content Safety permite configurar umbrales de severidad independientes por categoría de daño, adaptando la sensibilidad del filtro según el riesgo de cada categoría para el caso de uso." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/content-safety/overview"
+  },
+  {
+    domain: "Dominio 2 - Content Safety",
+    text: "Una empresa despliega un modelo generativo en Foundry para un chatbot educativo dirigido a menores de edad. ¿Qué configuración de Content Safety es la más apropiada?",
+    multiple: false,
+    options: [
+      { text: "Desactivar todos los filtros para maximizar la creatividad de las respuestas", correct: false, explanation: "Desactivar los filtros aumenta el riesgo de exponer a los usuarios (en este caso menores) a contenido dañino, lo cual contradice las prácticas de IA responsable." },
+      { text: "Configurar umbrales de severidad más estrictos (más bajos) en todas las categorías de daño relevantes, dado el público sensible", correct: true, explanation: "Para audiencias sensibles como menores, se recomienda configurar umbrales de severidad más bajos (más estrictos), bloqueando contenido incluso de severidad moderada." },
+      { text: "Aplicar Content Safety únicamente a las entradas del usuario, nunca a las respuestas del modelo", correct: false, explanation: "Es recomendable aplicar la moderación tanto a las entradas como a las salidas del modelo, ya que el modelo también podría generar contenido inapropiado por sí mismo." },
+      { text: "Usar Content Safety solo si el modelo desplegado es de código abierto", correct: false, explanation: "Content Safety es aplicable independientemente del proveedor u origen del modelo desplegado en Foundry." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/content-safety/overview"
+  },
+  {
+    domain: "Dominio 2 - Content Safety",
+    text: "¿Qué escenario describe mejor un ataque de 'prompt injection indirecto' que Prompt Shields busca mitigar?",
+    multiple: false,
+    options: [
+      { text: "Un usuario escribe directamente en el chat: 'ignora tus instrucciones anteriores'", correct: false, explanation: "Esto es un ejemplo de inyección directa (jailbreak directo), no indirecta, ya que proviene explícitamente del usuario en el chat." },
+      { text: "Un documento externo que el modelo procesa como parte de una tarea de RAG contiene texto oculto con instrucciones diseñadas para manipular el comportamiento del modelo", correct: true, explanation: "La inyección indirecta ocurre cuando instrucciones maliciosas están incrustadas en contenido externo (documentos, páginas web) que el modelo procesa, sin que el usuario las haya escrito directamente." },
+      { text: "Un usuario pregunta por el clima de mañana", correct: false, explanation: "Esta es una consulta normal y legítima, sin ninguna intención de manipulación del modelo." },
+      { text: "Un desarrollador ajusta el parámetro temperature a 0.9", correct: false, explanation: "Ajustar un parámetro de inferencia como temperature no constituye un ataque de inyección de prompt." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/content-safety/concepts/jailbreak-detection"
+  },
+
+  /* ══════════════════════════════════════════════════════════════════
+     DOMINIO 2 · Azure AI Language (servicios aplicados)
+  ══════════════════════════════════════════════════════════════════ */
+  {
+    domain: "Dominio 2 - Azure AI Language",
+    text: "Tienes una app en Python que recolecta comentarios cortos de retroalimentación de clientes. Necesitas obtener una etiqueta de sentimiento y puntajes de confianza positivo, neutral y negativo para cada comentario. La solución debe evitar entrenar un modelo personalizado. ¿Qué función de Azure AI Language debe llamar la app?",
+    multiple: false,
+    options: [
+      { text: "Análisis de sentimiento (Sentiment analysis)", correct: true, explanation: "El análisis de sentimiento preentrenado de Azure AI Language devuelve directamente una etiqueta (positivo/negativo/neutral/mixto) junto con puntajes de confianza, sin requerir entrenamiento personalizado." },
+      { text: "Detección de PII", correct: false, explanation: "La detección de PII identifica información personal sensible, no evalúa el sentimiento del texto." },
+      { text: "Detección de idioma", correct: false, explanation: "La detección de idioma identifica en qué idioma está escrito el comentario, no su sentimiento." },
+      { text: "Extracción de frases clave", correct: false, explanation: "La extracción de frases clave identifica los conceptos principales del texto, pero no calcula puntajes de sentimiento." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/language-service/sentiment-opinion-mining/overview"
+  },
+  {
+    domain: "Dominio 2 - Azure AI Language",
+    text: "Una empresa de salud necesita anonimizar automáticamente los nombres de pacientes y números de historia clínica en transcripciones de texto antes de compartirlas con un equipo de análisis externo. ¿Qué función de Azure AI Language es la más adecuada?",
+    multiple: false,
+    options: [
+      { text: "Detección y redacción de PII (Personally Identifiable Information)", correct: true, explanation: "La detección de PII identifica categorías de información sensible como nombres e identificadores, y puede generar automáticamente una versión del texto con esa información redactada/enmascarada." },
+      { text: "Extracción de frases clave", correct: false, explanation: "La extracción de frases clave identifica conceptos importantes del texto, pero no detecta ni redacta información personal sensible." },
+      { text: "Análisis de sentimiento", correct: false, explanation: "El análisis de sentimiento evalúa la polaridad emocional del texto, no identifica ni protege información personal." },
+      { text: "Traducción de documentos", correct: false, explanation: "La traducción convierte el texto a otro idioma; no está diseñada para anonimizar información sensible." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/language-service/personally-identifiable-information/overview"
+  },
+  {
+    domain: "Dominio 2 - Azure AI Language",
+    text: "¿Qué servicio de Azure AI Language se debe usar para construir un bot que responda preguntas frecuentes de soporte técnico a partir de una base de conocimiento de preguntas y respuestas predefinidas, con control total sobre las respuestas exactas que se entregan?",
+    multiple: false,
+    options: [
+      { text: "Question Answering (dentro de Azure AI Language)", correct: true, explanation: "Question Answering permite crear una base de conocimiento de pares pregunta-respuesta curados, devolviendo respuestas exactas y controladas en lugar de texto generado libremente." },
+      { text: "Análisis de sentimiento", correct: false, explanation: "El análisis de sentimiento no está diseñado para responder preguntas de soporte, solo evalúa la polaridad emocional del texto." },
+      { text: "Reconocimiento de entidades personalizado", correct: false, explanation: "El NER personalizado extrae entidades específicas del texto, no gestiona una base de conocimiento de preguntas y respuestas." },
+      { text: "Un modelo generativo sin ningún tipo de fundamentación (grounding)", correct: false, explanation: "Un modelo puramente generativo sin fundamentación puede alucinar respuestas y no ofrece el control exacto sobre las respuestas que Question Answering sí proporciona." }
     ],
     doc: "https://learn.microsoft.com/es-es/azure/ai-services/language-service/question-answering/overview"
   },
   {
-    domain: "Dominio 1 - Cargas de trabajo: Visión",
-    text: "¿Qué es el análisis de vídeo con Azure AI Vision y para qué casos de uso aplica?",
+    domain: "Dominio 2 - Azure AI Language",
+    text: "Para cada afirmación sobre Azure AI Translator, selecciona Yes si es verdadera.\n1) Azure AI Translator puede detectar automáticamente el idioma de origen del texto si no se especifica.\n2) Azure AI Translator solo admite la traducción entre inglés y español; ningún otro par de idiomas.\n3) La traducción de documentos puede preservar el formato original del archivo (como un Word o PDF) durante el proceso.",
+    multiple: true,
+    options: [
+      { text: "1) Yes", correct: true, explanation: "Azure AI Translator puede identificar automáticamente el idioma de origen del texto cuando no se especifica explícitamente." },
+      { text: "2) No", correct: true, explanation: "Azure AI Translator soporta docenas de idiomas y numerosas combinaciones de pares de traducción, no está limitado únicamente a inglés-español." },
+      { text: "3) Yes", correct: true, explanation: "La función de traducción de documentos de Azure AI Translator está diseñada para preservar el formato original del documento mientras traduce su contenido." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/translator/translator-overview"
+  },
+  {
+    domain: "Dominio 2 - Azure AI Language",
+    text: "Un equipo de e-commerce quiere clasificar automáticamente tickets de soporte entrantes en categorías personalizadas como 'problema de envío', 'producto defectuoso' o 'consulta de facturación', específicas de su negocio. ¿Qué capacidad de Azure AI Language deben usar?",
     multiple: false,
     options: [
-      { text: "Solo extrae los fotogramas clave de un vídeo para comprimirlo", correct: false, explanation: "La compresión de vídeo no es una capacidad de Azure AI Vision; el análisis de vídeo extrae información semántica." },
-      { text: "Analiza transmisiones de vídeo o archivos para detectar objetos, acciones, personas y eventos en el tiempo", correct: true, explanation: "Azure AI Vision para vídeo permite detectar objetos en movimiento, reconocer acciones, analizar afluencia de personas y extraer información semántica de secuencias de vídeo, aplicable en seguridad, retail e industria." },
-      { text: "Convierte automáticamente vídeos a texto mediante subtitulado por IA", correct: false, explanation: "El subtitulado de vídeo (transcripción del audio) lo hace Azure AI Speech; el análisis de vídeo de Vision es sobre el contenido visual." },
-      { text: "Es exclusivo para análisis de vídeos de vigilancia en entornos gubernamentales", correct: false, explanation: "Azure AI Vision para vídeo puede usarse en cualquier sector; no está limitado a entornos gubernamentales." }
+      { text: "Clasificación de texto personalizada (Custom text classification)", correct: true, explanation: "La clasificación de texto personalizada permite entrenar un modelo con las categorías específicas del negocio, algo que las categorías genéricas predefinidas no cubrirían." },
+      { text: "Detección de idioma", correct: false, explanation: "La detección de idioma identifica el idioma del texto, no clasifica el contenido en categorías de negocio personalizadas." },
+      { text: "Análisis de opiniones (opinion mining)", correct: false, explanation: "El análisis de opiniones se enfoca en identificar sentimientos hacia aspectos específicos de un producto, no en clasificar tickets en categorías de negocio." },
+      { text: "Traducción de texto", correct: false, explanation: "La traducción convierte el texto a otro idioma, no lo clasifica en categorías personalizadas." }
     ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/computer-vision/intro-to-spatial-analysis-public-preview"
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/language-service/custom-text-classification/overview"
+  },
+  {
+    domain: "Dominio 2 - Azure AI Language",
+    text: "¿Qué diferencia principal existe entre 'análisis de sentimiento' y 'minería de opiniones' (opinion mining) en Azure AI Language?",
+    multiple: false,
+    options: [
+      { text: "El análisis de sentimiento evalúa la polaridad general de un texto, mientras que la minería de opiniones identifica el sentimiento hacia aspectos específicos mencionados dentro del texto (por ejemplo, 'la pantalla' o 'la batería' de un producto)", correct: true, explanation: "La minería de opiniones (también llamada análisis de sentimiento basado en aspectos) desglosa el sentimiento por elementos específicos mencionados, a diferencia del análisis de sentimiento general que da una única polaridad para todo el texto." },
+      { text: "No hay ninguna diferencia; son el mismo servicio con nombres distintos", correct: false, explanation: "Aunque están relacionados y la minería de opiniones se activa como una opción dentro del análisis de sentimiento, ofrecen niveles de detalle distintos." },
+      { text: "La minería de opiniones solo funciona con texto en inglés", correct: false, explanation: "La minería de opiniones soporta múltiples idiomas, no está restringida únicamente al inglés." },
+      { text: "El análisis de sentimiento requiere entrenar un modelo personalizado; la minería de opiniones no", correct: false, explanation: "Ambas capacidades están disponibles como funciones preentrenadas del servicio, sin requerir entrenamiento personalizado." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/language-service/sentiment-opinion-mining/overview"
   },
 
-  /* ── DOMINIO 2 · Preguntas multi-respuesta (multiple: true) ─────── */
+  /* ══════════════════════════════════════════════════════════════════
+     DOMINIO 2 · Azure AI Vision / Custom Vision / Face aplicados
+  ══════════════════════════════════════════════════════════════════ */
   {
-    domain: "Dominio 2 - Microsoft Foundry",
-    text: "¿Cuáles de los siguientes son tipos de evaluaciones disponibles en Azure AI Foundry para medir la calidad de un modelo de IA generativa? (Selecciona todas las correctas)",
-    multiple: true,
+    domain: "Dominio 2 - Azure AI Vision Aplicado",
+    text: "Una tienda minorista quiere contar automáticamente cuántas personas entran a la tienda cada hora usando cámaras de video, identificando cada persona individual con un cuadro delimitador en cada fotograma. ¿Qué servicio y capacidad de Azure AI son los más apropiados?",
+    multiple: false,
     options: [
-      { text: "Groundedness (fundamentación en las fuentes)", correct: true, explanation: "Groundedness evalúa si las respuestas están basadas en los documentos de contexto proporcionados, detectando alucinaciones." },
-      { text: "Relevance (relevancia de la respuesta)", correct: true, explanation: "Relevance mide si la respuesta aborda adecuadamente la pregunta del usuario." },
-      { text: "Coherence (coherencia lingüística)", correct: true, explanation: "Coherence evalúa si la respuesta está bien estructurada y es fácil de leer." },
-      { text: "Carbon footprint (huella de carbono)", correct: false, explanation: "La huella de carbono no es una métrica de calidad de respuestas de IA en Foundry; es una métrica de sostenibilidad de infraestructura." }
+      { text: "Azure AI Vision, usando detección de objetos para identificar y contar personas en cada fotograma", correct: true, explanation: "La detección de objetos de Azure AI Vision puede identificar múltiples instancias de una clase (como 'persona') con sus respectivos cuadros delimitadores en cada imagen o fotograma de video." },
+      { text: "Azure AI Document Intelligence", correct: false, explanation: "Document Intelligence está diseñado para extraer datos de documentos, no para analizar video o contar personas en imágenes." },
+      { text: "Azure AI Language, usando reconocimiento de entidades", correct: false, explanation: "Azure AI Language procesa texto, no imágenes ni video, por lo que no es aplicable a este escenario." },
+      { text: "Azure AI Speech, usando reconocimiento de voz", correct: false, explanation: "Azure AI Speech procesa audio, no tiene relación con el conteo de personas en video." }
     ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-studio/how-to/evaluate-generative-ai-app"
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/computer-vision/overview-object-detection"
   },
   {
-    domain: "Dominio 2 - Microsoft Foundry",
-    text: "¿Cuáles de los siguientes modelos están disponibles en el catálogo de Azure AI Foundry? (Selecciona todos los correctos)",
-    multiple: true,
+    domain: "Dominio 2 - Azure AI Vision Aplicado",
+    text: "Un banco quiere digitalizar formularios de apertura de cuenta completados a mano, extrayendo automáticamente campos como 'nombre', 'RUT/ID' y 'firma presente (sí/no)', usando un modelo entrenado con ejemplos de sus propios formularios. ¿Qué debe usar?",
+    multiple: false,
     options: [
-      { text: "GPT-4o (OpenAI)", correct: true, explanation: "GPT-4o de OpenAI está disponible en el catálogo de Azure AI Foundry a través de Azure OpenAI Service." },
-      { text: "Llama 3 (Meta)", correct: true, explanation: "Los modelos Llama de Meta están disponibles en el catálogo de Foundry como modelos de terceros." },
-      { text: "Phi-4 (Microsoft)", correct: true, explanation: "La familia Phi de Microsoft, incluyendo Phi-4, está disponible en el catálogo de Foundry." },
-      { text: "Gemini (Google)", correct: false, explanation: "Los modelos Gemini de Google no están disponibles en el catálogo de Azure AI Foundry; se acceden a través de Google Cloud." }
+      { text: "Azure AI Document Intelligence con un modelo personalizado (custom model) entrenado con formularios de ejemplo etiquetados", correct: true, explanation: "Document Intelligence permite entrenar modelos personalizados a partir de documentos de ejemplo etiquetados, extrayendo campos específicos como los definidos por el banco, incluidos formularios manuscritos." },
+      { text: "El modelo prebuilt-receipt (recibos) sin ninguna personalización", correct: false, explanation: "El modelo prebuilt de recibos está optimizado para extraer campos típicos de boletas/recibos, no para formularios bancarios personalizados con campos distintos." },
+      { text: "Azure AI Custom Vision con clasificación de imágenes", correct: false, explanation: "Custom Vision clasifica o detecta objetos en imágenes, pero no extrae ni estructura campos de texto de formularios." },
+      { text: "Face API", correct: false, explanation: "Face API se especializa en análisis facial, no en extracción de campos de formularios." }
     ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-studio/how-to/model-catalog-overview"
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/document-intelligence/train/custom-model"
   },
   {
-    domain: "Dominio 1 - IA Responsable",
-    text: "¿Cuáles de los siguientes son principios oficiales de IA responsable de Microsoft? (Selecciona todos los correctos)",
+    domain: "Dominio 2 - Azure AI Vision Aplicado",
+    text: "Para cada afirmación sobre Azure AI Custom Vision, selecciona Yes si es verdadera.\n1) Custom Vision permite exportar un modelo entrenado para ejecutarlo sin conexión (offline) en un dispositivo edge.\n2) Es necesario contar con miles de imágenes etiquetadas por cada categoría para poder entrenar un modelo mínimamente funcional.\n3) Custom Vision puede usarse tanto para clasificación de imágenes como para detección de objetos.",
     multiple: true,
     options: [
-      { text: "Equidad (Fairness)", correct: true, explanation: "Equidad es uno de los 6 principios oficiales: los sistemas de IA deben tratar a todas las personas de manera justa." },
-      { text: "Confiabilidad y seguridad (Reliability & Safety)", correct: true, explanation: "Confiabilidad y seguridad es uno de los 6 principios: los sistemas deben funcionar de manera confiable y segura." },
-      { text: "Rentabilidad (Profitability)", correct: false, explanation: "Rentabilidad no es un principio de IA responsable de Microsoft; es un objetivo de negocio, no un principio ético." },
-      { text: "Inclusión (Inclusiveness)", correct: true, explanation: "Inclusión es uno de los 6 principios oficiales: los sistemas de IA deben beneficiar a todas las personas." }
+      { text: "1) Yes", correct: true, explanation: "Custom Vision permite exportar modelos entrenados en formatos compatibles con dispositivos edge (como ONNX, TensorFlow o CoreML) para inferencia sin conexión." },
+      { text: "2) No", correct: true, explanation: "Custom Vision puede producir modelos funcionales con un número relativamente pequeño de imágenes por categoría (decenas), aunque más ejemplos y variedad generalmente mejoran la precisión." },
+      { text: "3) Yes", correct: true, explanation: "Custom Vision soporta dos tipos de proyectos: clasificación de imágenes (etiqueta a nivel de imagen completa) y detección de objetos (ubicación de múltiples objetos)." }
     ],
-    doc: "https://learn.microsoft.com/es-es/azure/machine-learning/concept-responsible-ai"
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/custom-vision-service/overview"
   },
   {
-    domain: "Dominio 2 - Agentes de IA",
-    text: "¿Cuáles de los siguientes son herramientas (tools) que Azure AI Agent Service soporta de forma nativa? (Selecciona todas las correctas)",
-    multiple: true,
+    domain: "Dominio 2 - Azure AI Vision Aplicado",
+    text: "¿Qué caso de uso es más apropiado para la función de 'recorte inteligente' (smart cropping) de Azure AI Vision?",
+    multiple: false,
     options: [
-      { text: "Code Interpreter (ejecución de código Python)", correct: true, explanation: "Code Interpreter está integrado nativamente en Azure AI Agent Service para ejecutar código Python en entorno seguro." },
-      { text: "File Search (búsqueda en archivos subidos)", correct: true, explanation: "File Search permite al agente buscar información en documentos subidos por el usuario o el desarrollador." },
-      { text: "Bing Search (búsqueda en internet)", correct: true, explanation: "La herramienta de Bing Search permite al agente obtener información actualizada de internet." },
-      { text: "SQL Query Executor (ejecución de queries en bases de datos)", correct: false, explanation: "La ejecución directa de SQL no es una herramienta nativa de Agent Service; se puede implementar como función personalizada (function calling), pero no está integrada de forma nativa." }
+      { text: "Generar automáticamente una miniatura de una imagen que conserve el área de mayor interés visual, sin importar la relación de aspecto solicitada", correct: true, explanation: "El recorte inteligente analiza la imagen para identificar la región de mayor interés y genera recortes que la preservan, útil para adaptar imágenes a distintos tamaños de miniatura." },
+      { text: "Detectar el idioma del texto contenido en la imagen", correct: false, explanation: "La detección de idioma en imágenes corresponde a una capacidad relacionada con OCR, no con recorte inteligente." },
+      { text: "Comparar dos rostros para verificar si pertenecen a la misma persona", correct: false, explanation: "Esa es una capacidad de Face API (verificación facial), no de recorte inteligente." },
+      { text: "Entrenar un modelo personalizado de clasificación", correct: false, explanation: "El recorte inteligente es una función de análisis de imagen preentrenada, no un proceso de entrenamiento de modelos personalizados." }
     ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/agents/how-to/tools/overview"
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/computer-vision/concept-generate-thumbnails"
+  },
+  {
+    domain: "Dominio 2 - Azure AI Vision Aplicado",
+    text: "Una empresa de moderación de contenido en redes sociales necesita detectar automáticamente cuándo una imagen subida por un usuario contiene texto ofensivo superpuesto (como un meme con insultos escritos sobre la foto). ¿Qué combinación de servicios de Azure AI es la más adecuada?",
+    multiple: false,
+    options: [
+      { text: "OCR de Azure AI Vision para extraer el texto de la imagen, combinado con Azure AI Content Safety (o análisis de texto) para evaluar si ese texto extraído es ofensivo", correct: true, explanation: "Primero se debe extraer el texto embebido en la imagen mediante OCR, y luego evaluar ese texto extraído con un servicio de moderación de contenido para determinar si es ofensivo." },
+      { text: "Únicamente Face API, ya que puede detectar automáticamente el contenido ofensivo en cualquier imagen", correct: false, explanation: "Face API está especializada en análisis de rostros (detección, atributos), no en extraer ni evaluar texto superpuesto en imágenes." },
+      { text: "Únicamente Azure AI Translator", correct: false, explanation: "El Traductor convierte texto entre idiomas; no extrae texto de imágenes ni evalúa si es ofensivo." },
+      { text: "Únicamente Custom Vision entrenado para detectar 'memes'", correct: false, explanation: "Custom Vision podría clasificar el tipo de imagen, pero no está diseñado para leer y evaluar el contenido textual superpuesto de forma nativa." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/computer-vision/overview-ocr"
   },
 
-  /* ── DOMINIO 2 · Preguntas finales de repaso ─────────────────────── */
+  /* ══════════════════════════════════════════════════════════════════
+     DOMINIO 2 · Azure AI Speech
+  ══════════════════════════════════════════════════════════════════ */
   {
-    domain: "Dominio 2 - Microsoft Foundry",
-    text: "¿En qué se diferencia Azure AI Foundry de Azure AI Services?",
+    domain: "Dominio 2 - Azure AI Speech",
+    text: "Tu app usa Azure AI Speech para transcribir llamadas de soporte en tiempo real y necesitas identificar qué hablante dijo cada frase durante una conversación entre dos agentes y un cliente. ¿Qué característica debes habilitar?",
     multiple: false,
     options: [
-      { text: "Foundry es para machine learning clásico; AI Services es para IA generativa", correct: false, explanation: "Es al contrario en cuanto al enfoque: Foundry está centrado en IA generativa; AI Services incluye servicios cognitivos preentrenados como Speech, Vision y Language." },
-      { text: "Foundry es una plataforma de desarrollo de aplicaciones de IA generativa; AI Services son APIs listas para usar de capacidades de IA preentrenadas", correct: true, explanation: "Azure AI Services ofrece APIs de capacidades específicas preentrenadas (OCR, traducción, voz, etc.). Foundry es la plataforma integrada donde se orquestan esas capacidades junto con LLMs para construir aplicaciones completas de IA generativa." },
-      { text: "Foundry reemplaza completamente a AI Services; no pueden usarse juntos", correct: false, explanation: "Foundry y AI Services son complementarios; Foundry puede conectarse a los servicios de AI Services a través de Connections." },
-      { text: "AI Services es solo para Azure Government; Foundry está disponible en todas las regiones", correct: false, explanation: "Azure AI Services está disponible globalmente; esta no es la diferencia entre los dos." }
+      { text: "Speaker diarization (diarización de hablantes)", correct: true, explanation: "La diarización de hablantes segmenta el audio transcrito y etiqueta cada fragmento de texto con el hablante correspondiente, permitiendo distinguir quién dijo qué en una conversación con múltiples participantes." },
+      { text: "Pronunciation assessment", correct: false, explanation: "La evaluación de pronunciación mide qué tan bien un hablante pronuncia palabras respecto a un estándar, no identifica quién habla." },
+      { text: "Custom neural voice", correct: false, explanation: "Custom Neural Voice se usa para crear una voz sintética personalizada (texto a voz), no para identificar hablantes en una transcripción." },
+      { text: "Detección de idioma", correct: false, explanation: "La detección de idioma identifica el idioma hablado, no distingue entre distintos hablantes en la misma conversación." }
     ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-studio/what-is-ai-studio"
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/speech-service/get-started-stt-diarization"
   },
   {
-    domain: "Dominio 2 - Microsoft Foundry",
-    text: "¿Cuál es el propósito de los 'índices vectoriales' (vector indexes) en Azure AI Search al usarse con aplicaciones de IA generativa?",
+    domain: "Dominio 2 - Azure AI Speech",
+    text: "Una app de aprendizaje de idiomas necesita evaluar qué tan bien un estudiante pronuncia frases en un idioma extranjero y darle retroalimentación sobre precisión, fluidez y entonación. ¿Qué función de Azure AI Speech deben usar?",
     multiple: false,
     options: [
-      { text: "Almacenar los pesos del modelo de lenguaje para acceso rápido durante la inferencia", correct: false, explanation: "Los pesos del modelo los gestiona Azure OpenAI Service; los índices vectoriales almacenan embeddings de documentos." },
-      { text: "Almacenar embeddings de documentos para permitir búsqueda semántica por similitud, habilitando patrones RAG", correct: true, explanation: "Los índices vectoriales almacenan las representaciones vectoriales (embeddings) de los fragmentos de documentos. Al recibir una consulta, se convierte en embedding y se buscan los fragmentos más similares, que se pasan como contexto al LLM." },
-      { text: "Indexar el historial de conversaciones de los usuarios para análisis de comportamiento", correct: false, explanation: "El historial de conversaciones puede almacenarse en bases de datos; los índices vectoriales son para búsqueda semántica de documentos." },
-      { text: "Comprimir los documentos para reducir el costo de almacenamiento en Azure", correct: false, explanation: "Los embeddings vectoriales no comprimen documentos; son representaciones densas para búsqueda semántica, no para ahorro de almacenamiento." }
+      { text: "Pronunciation Assessment", correct: true, explanation: "Pronunciation Assessment evalúa la pronunciación del hablante comparándola contra un texto de referencia, proporcionando puntajes de precisión, fluidez, entonación y exhaustividad." },
+      { text: "Speaker diarization", correct: false, explanation: "La diarización identifica quién habla en un audio con múltiples participantes, no evalúa la calidad de la pronunciación." },
+      { text: "Text to Speech estándar", correct: false, explanation: "Text to Speech convierte texto en audio; no evalúa la pronunciación de un hablante humano." },
+      { text: "Traducción de voz en tiempo real", correct: false, explanation: "La traducción de voz convierte el habla de un idioma a otro, pero no proporciona una evaluación de la calidad de pronunciación del estudiante." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/speech-service/pronunciation-assessment-tool"
+  },
+  {
+    domain: "Dominio 2 - Azure AI Speech",
+    text: "Para cada afirmación sobre Azure AI Speech, selecciona Yes si es verdadera.\n1) Custom Neural Voice permite crear una voz sintética única que suena similar a la voz de un locutor específico, entrenada con grabaciones de esa persona.\n2) El servicio de reconocimiento de voz (Speech to Text) solo puede procesar audio pregrabado; no admite transcripción en streaming/tiempo real.\n3) Azure AI Speech puede traducir voz hablada en un idioma directamente a texto en otro idioma diferente.",
+    multiple: true,
+    options: [
+      { text: "1) Yes", correct: true, explanation: "Custom Neural Voice permite entrenar un modelo de voz sintética personalizado usando muestras de audio de un locutor específico, replicando características de su voz." },
+      { text: "2) No", correct: true, explanation: "Azure AI Speech soporta transcripción tanto de audio pregrabado como en streaming/tiempo real, siendo esta última clave para escenarios como subtitulado en vivo." },
+      { text: "3) Yes", correct: true, explanation: "El servicio de traducción de voz de Azure AI Speech puede tomar audio hablado en un idioma y producir directamente texto (o incluso audio) traducido a otro idioma." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/speech-service/overview"
+  },
+  {
+    domain: "Dominio 2 - Azure AI Speech",
+    text: "Una empresa de call centers necesita detectar automáticamente palabras clave sensibles (como 'cancelar cuenta' o 'reclamo legal') durante llamadas en vivo, para alertar a un supervisor en tiempo real. ¿Qué combinación de funcionalidades de Azure AI Speech es más adecuada?",
+    multiple: false,
+    options: [
+      { text: "Speech to Text en modo streaming en tiempo real, combinado con búsqueda de palabras clave sobre el texto transcrito a medida que llega", correct: true, explanation: "Al usar reconocimiento de voz en streaming, la transcripción se genera de forma continua e incremental, permitiendo analizar el texto resultante en tiempo real para detectar frases o palabras clave y generar alertas inmediatas." },
+      { text: "Text to Speech con una voz neuronal personalizada", correct: false, explanation: "Text to Speech convierte texto en audio; no es útil para detectar palabras clave en llamadas entrantes." },
+      { text: "Pronunciation Assessment", correct: false, explanation: "Esta función evalúa la calidad de pronunciación de un hablante contra un texto de referencia, no está diseñada para detección de palabras clave en llamadas de soporte." },
+      { text: "Solo el reconocimiento de voz en modo por lotes (batch), procesado 24 horas después de la llamada", correct: false, explanation: "El procesamiento por lotes no permite alertas en tiempo real durante la llamada, ya que introduce una demora significativa." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/speech-service/speech-to-text"
+  },
+
+  /* ══════════════════════════════════════════════════════════════════
+     DOMINIO 2 · Document Intelligence
+  ══════════════════════════════════════════════════════════════════ */
+  {
+    domain: "Dominio 2 - Document Intelligence",
+    text: "Para cada afirmación sobre Azure AI Document Intelligence, selecciona Yes si es verdadera.\n1) El modelo prebuilt-invoice puede extraer campos como número de factura y total sin necesidad de entrenamiento personalizado.\n2) Un modelo personalizado (custom model) puede entrenarse satisfactoriamente con un único documento de ejemplo, sin afectar su precisión.\n3) Document Intelligence puede procesar tanto documentos escaneados (imagen) como PDFs digitales nativos.",
+    multiple: true,
+    options: [
+      { text: "1) Yes", correct: true, explanation: "El modelo prebuilt-invoice está preentrenado para reconocer campos comunes de facturas (número, fecha, total, proveedor) sin requerir entrenamiento adicional." },
+      { text: "2) No", correct: true, explanation: "Aunque técnicamente se puede intentar entrenar con un solo documento, Microsoft recomienda al menos varios ejemplos (típicamente 5 o más) representativos para lograr una precisión aceptable." },
+      { text: "3) Yes", correct: true, explanation: "Document Intelligence puede procesar tanto imágenes escaneadas como archivos PDF digitales nativos, extrayendo texto y estructura en ambos casos." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/document-intelligence/overview"
+  },
+  {
+    domain: "Dominio 2 - Document Intelligence",
+    text: "Una empresa de logística procesa miles de guías de despacho con un formato de diseño (layout) que varía ligeramente entre proveedores distintos, pero siempre contiene tablas con productos y cantidades. ¿Qué modelo de Document Intelligence es el más apropiado para extraer estas tablas sin entrenar un modelo personalizado?",
+    multiple: false,
+    options: [
+      { text: "El modelo de diseño general (prebuilt-layout), que detecta estructuras como tablas, encabezados y pares clave-valor en cualquier documento", correct: true, explanation: "El modelo prebuilt-layout está diseñado para extraer estructura general de documentos (texto, tablas, pares clave-valor) sin necesidad de entrenamiento, siendo ideal cuando el diseño varía pero se necesita extraer tablas de forma genérica." },
+      { text: "El modelo prebuilt-receipt, específico para boletas de compra minoristas", correct: false, explanation: "El modelo de recibos está optimizado para el formato típico de boletas de tiendas, no para guías de despacho logísticas con estructuras de tabla variables." },
+      { text: "El modelo prebuilt-idDocument, específico para documentos de identidad", correct: false, explanation: "Este modelo está diseñado para extraer campos de documentos de identificación (pasaportes, licencias), no aplica a guías de despacho." },
+      { text: "Face API", correct: false, explanation: "Face API se especializa en análisis facial y no tiene relación con la extracción de datos de documentos de logística." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/document-intelligence/prebuilt/layout"
+  },
+  {
+    domain: "Dominio 2 - Document Intelligence",
+    text: "¿Qué tipo de modelo de Document Intelligence se recomienda cuando los documentos a procesar tienen un formato consistente y fijo definido por la propia empresa (por ejemplo, un formulario interno propietario), y se requiere extraer campos muy específicos no cubiertos por ningún modelo prediseñado?",
+    multiple: false,
+    options: [
+      { text: "Un modelo personalizado de extracción (custom extraction model), entrenado con ejemplos etiquetados del formulario propio de la empresa", correct: true, explanation: "Cuando el formato es específico de la organización y los campos no coinciden con ningún modelo prebuilt disponible, se debe entrenar un modelo personalizado con ejemplos representativos etiquetados de ese formulario." },
+      { text: "El modelo prebuilt-invoice", correct: false, explanation: "El modelo prebuilt de facturas está optimizado para campos típicos de facturación estándar, no para un formulario interno propietario con campos distintos." },
+      { text: "El modelo prebuilt-businessCard", correct: false, explanation: "Este modelo está diseñado específicamente para extraer datos de tarjetas de presentación, no para formularios internos personalizados." },
+      { text: "Azure AI Custom Vision", correct: false, explanation: "Custom Vision es para clasificación/detección de objetos en imágenes generales, no está optimizado para extracción estructurada de campos de formularios." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/document-intelligence/train/custom-model"
+  },
+  {
+    domain: "Dominio 2 - Document Intelligence",
+    text: "¿Cuál es la diferencia principal entre el modelo 'prebuilt-read' y el modelo 'prebuilt-layout' de Document Intelligence?",
+    multiple: false,
+    options: [
+      { text: "prebuilt-read extrae principalmente texto plano y líneas del documento, mientras que prebuilt-layout además identifica estructura como tablas, encabezados y pares clave-valor", correct: true, explanation: "El modelo 'read' se enfoca en extracción de texto (similar a OCR), mientras que 'layout' añade la detección de estructura del documento, incluyendo tablas y relaciones clave-valor." },
+      { text: "prebuilt-read solo funciona con documentos en inglés, mientras que prebuilt-layout admite todos los idiomas", correct: false, explanation: "Ambos modelos soportan múltiples idiomas; el idioma no es la diferencia principal entre ambos." },
+      { text: "prebuilt-layout requiere entrenamiento previo con documentos de ejemplo, mientras que prebuilt-read no lo requiere", correct: false, explanation: "Ambos son modelos preentrenados (prebuilt) que no requieren entrenamiento adicional por parte del usuario." },
+      { text: "No existe ninguna diferencia real entre ambos modelos", correct: false, explanation: "Sí existe una diferencia clara en el nivel de estructura que cada modelo extrae del documento." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/document-intelligence/overview"
+  },
+
+  /* ══════════════════════════════════════════════════════════════════
+     DOMINIO 2 · Azure AI Search / RAG
+  ══════════════════════════════════════════════════════════════════ */
+  {
+    domain: "Dominio 2 - RAG / Azure AI Search",
+    text: "Necesitas construir una solución de Retrieval-Augmented Generation (RAG) sobre documentos internos de la empresa usando Microsoft Foundry, minimizando alucinaciones y manteniendo trazabilidad de las fuentes citadas. Además del modelo generativo, ¿qué componente es esencial?",
+    multiple: false,
+    options: [
+      { text: "Un servicio de Text to Speech", correct: false, explanation: "Text to Speech convierte texto en audio; no tiene relación con la recuperación de información relevante para fundamentar respuestas." },
+      { text: "Un índice de búsqueda vectorial/semántica (como Azure AI Search) que recupere los fragmentos de documentos relevantes antes de que el modelo genere la respuesta", correct: true, explanation: "El patrón RAG combina un componente de recuperación (como Azure AI Search con búsqueda vectorial) que encuentra los fragmentos relevantes, los cuales se inyectan como contexto en el prompt para fundamentar la respuesta del modelo generativo." },
+      { text: "Un proceso de fine-tuning completo del modelo sobre todos los documentos", correct: false, explanation: "El fine-tuning completo es costoso, requiere reentrenamiento frecuente ante cambios de documentos, y no es el enfoque estándar recomendado para fundamentar respuestas con documentos dinámicos; RAG es más eficiente para este propósito." },
+      { text: "Únicamente Content Safety configurado en modo estricto", correct: false, explanation: "Content Safety modera contenido dañino, pero no recupera ni fundamenta información factual de los documentos internos." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/concepts/use-your-data"
+  },
+  {
+    domain: "Dominio 2 - RAG / Azure AI Search",
+    text: "En una arquitectura RAG con Azure AI Search y Microsoft Foundry, ¿qué representa un 'chunk' (fragmento) de documento?",
+    multiple: false,
+    options: [
+      { text: "Una porción del documento original dividida en un tamaño manejable, indexada de forma independiente para permitir búsquedas más precisas y relevantes", correct: true, explanation: "Los documentos largos se dividen en fragmentos (chunks) más pequeños antes de indexarlos, lo que permite recuperar solo las partes más relevantes para una consulta específica, en lugar de documentos completos extensos." },
+      { text: "El resultado final generado por el modelo de lenguaje", correct: false, explanation: "Esto describe la respuesta generada por el modelo, no la unidad de indexación de documentos usada en la etapa de recuperación." },
+      { text: "Un tipo de modelo de embeddings específico de Microsoft", correct: false, explanation: "'Chunk' no es un tipo de modelo, sino una unidad de segmentación de contenido dentro del proceso de indexación." },
+      { text: "Un parámetro de configuración de Content Safety", correct: false, explanation: "No está relacionado con Content Safety; es un concepto del proceso de indexación y recuperación de documentos en RAG." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/search/vector-search-how-to-chunk-documents"
+  },
+  {
+    domain: "Dominio 2 - RAG / Azure AI Search",
+    text: "Para cada afirmación sobre búsqueda vectorial en Azure AI Search aplicada a RAG, selecciona Yes si es verdadera.\n1) La búsqueda vectorial compara la similitud semántica entre la consulta y los documentos usando representaciones numéricas (embeddings), no solo coincidencias exactas de palabras clave.\n2) La búsqueda híbrida combina búsqueda por palabras clave (keyword) y búsqueda vectorial para mejorar la relevancia de los resultados.\n3) Una vez indexados los documentos en Azure AI Search, es imposible actualizar o agregar nuevos documentos sin recrear todo el índice desde cero.",
+    multiple: true,
+    options: [
+      { text: "1) Yes", correct: true, explanation: "La búsqueda vectorial utiliza embeddings para capturar el significado semántico del texto, permitiendo encontrar contenido relevante incluso cuando las palabras exactas no coinciden." },
+      { text: "2) Yes", correct: true, explanation: "La búsqueda híbrida combina la precisión léxica de la búsqueda por palabras clave con la comprensión semántica de la búsqueda vectorial, mejorando la calidad de los resultados recuperados." },
+      { text: "3) No", correct: true, explanation: "Azure AI Search permite agregar, actualizar o eliminar documentos de un índice existente de forma incremental, sin necesidad de recrear el índice completo." }
     ],
     doc: "https://learn.microsoft.com/es-es/azure/search/vector-search-overview"
   },
   {
-    domain: "Dominio 1 - IA Generativa",
-    text: "¿Cuál de las siguientes describe mejor el concepto de 'chain-of-thought prompting'?",
+    domain: "Dominio 2 - RAG / Azure AI Search",
+    text: "¿Por qué RAG (Retrieval-Augmented Generation) generalmente reduce las alucinaciones en comparación con usar un modelo generativo puro sin ningún contexto adicional?",
     multiple: false,
     options: [
-      { text: "Encadenar múltiples llamadas a diferentes modelos en secuencia", correct: false, explanation: "Encadenar llamadas a modelos es un patrón de Prompt Flow o LangChain; chain-of-thought es una técnica de razonamiento dentro de un solo modelo." },
-      { text: "Pedir al modelo que razone paso a paso antes de dar la respuesta final, mejorando la precisión en problemas complejos", correct: true, explanation: "Chain-of-thought prompting instruye al modelo a mostrar su razonamiento intermedio ('Pensemos paso a paso...') antes de la respuesta final, lo que mejora significativamente la precisión en problemas de matemáticas, lógica y razonamiento." },
-      { text: "Proporcionar una cadena de ejemplos negativos para que el modelo evite ciertos comportamientos", correct: false, explanation: "Proporcionar ejemplos negativos es una técnica diferente; chain-of-thought es sobre mostrar el razonamiento paso a paso." },
-      { text: "Un método de fine-tuning que encadena múltiples datasets de entrenamiento", correct: false, explanation: "Chain-of-thought es una técnica de prompting en inferencia, no un método de fine-tuning." }
+      { text: "Porque fundamenta las respuestas del modelo en información específica y verificable recuperada de una fuente confiable, en lugar de depender únicamente del conocimiento general aprendido durante el entrenamiento del modelo", correct: true, explanation: "Al proporcionar contexto recuperado y relevante como parte del prompt, el modelo tiene información concreta en la cual basar su respuesta, reduciendo la necesidad de 'inventar' datos que no conoce con certeza." },
+      { text: "Porque RAG elimina por completo la posibilidad de que el modelo genere texto incorrecto", correct: false, explanation: "RAG reduce significativamente el riesgo de alucinaciones, pero no las elimina por completo; el modelo aún puede malinterpretar o combinar incorrectamente la información recuperada." },
+      { text: "Porque RAG reemplaza completamente al modelo generativo por un motor de búsqueda simple", correct: false, explanation: "RAG combina recuperación de información con generación de texto; el modelo generativo sigue siendo responsable de sintetizar la respuesta final." },
+      { text: "Porque RAG aumenta automáticamente el valor de 'temperature' del modelo", correct: false, explanation: "RAG no está relacionado con ajustar el parámetro de temperature; su efecto es proporcionar contexto adicional relevante, no modificar la aleatoriedad de la generación." }
     ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/concepts/prompt-engineering"
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/concepts/use-your-data"
+  },
+
+  /* ══════════════════════════════════════════════════════════════════
+     DOMINIO 2 · Agentes en Microsoft Foundry
+  ══════════════════════════════════════════════════════════════════ */
+  {
+    domain: "Dominio 2 - Foundry Agent Service",
+    text: "¿Qué es un 'agente' en el contexto de Microsoft Foundry Agent Service?",
+    multiple: false,
+    options: [
+      { text: "Un modelo generativo configurado con instrucciones, herramientas (como funciones o recuperación de datos) y la capacidad de razonar en múltiples pasos para completar una tarea de forma más autónoma", correct: true, explanation: "Un agente combina un modelo de lenguaje con instrucciones específicas y acceso a herramientas (function calling, búsqueda de archivos, código, etc.), permitiéndole planificar y ejecutar tareas complejas de forma más autónoma que una simple llamada de chat." },
+      { text: "Un tipo de máquina virtual dedicada para hospedar modelos de Custom Vision", correct: false, explanation: "Esto describe infraestructura de cómputo, no el concepto de agente dentro de Foundry Agent Service." },
+      { text: "Un usuario humano que supervisa las respuestas del modelo en tiempo real", correct: false, explanation: "Un agente en Foundry es un componente de software automatizado, no una persona humana supervisando manualmente." },
+      { text: "Un servicio exclusivo para la generación de imágenes", correct: false, explanation: "Los agentes de Foundry no están limitados a generación de imágenes; pueden orquestar múltiples tipos de herramientas y tareas." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-foundry/agents/overview"
   },
   {
-    domain: "Dominio 2 - Seguridad en Foundry",
-    text: "¿Qué significa 'responsible AI by design' en el contexto de Azure AI Foundry?",
+    domain: "Dominio 2 - Foundry Agent Service",
+    text: "Para cada afirmación sobre el Foundry Agent Service, selecciona Yes si es verdadera.\n1) Un agente puede tener acceso a múltiples herramientas simultáneamente, como búsqueda de archivos, ejecución de código y llamado a funciones personalizadas.\n2) El Foundry Agent Service permite que un agente invoque herramientas (function calling) sin que el desarrollador defina previamente el esquema de los parámetros de la función.\n3) Es posible dar a un agente instrucciones persistentes (como un rol y objetivo) que se apliquen de forma consistente a lo largo de múltiples conversaciones.",
+    multiple: true,
+    options: [
+      { text: "1) Yes", correct: true, explanation: "Foundry Agent Service permite asociar múltiples herramientas a un mismo agente, incluyendo interpretación de código, búsqueda en archivos/índices y funciones personalizadas definidas por el desarrollador." },
+      { text: "2) No", correct: true, explanation: "El desarrollador debe definir explícitamente el esquema (nombre, descripción y parámetros) de cada función para que el agente sepa cómo y cuándo invocarla correctamente." },
+      { text: "3) Yes", correct: true, explanation: "Se pueden configurar instrucciones persistentes a nivel de agente (similares a un system message extendido) que definen su rol y comportamiento de forma consistente en distintas conversaciones." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-foundry/agents/overview"
+  },
+  {
+    domain: "Dominio 2 - Foundry Agent Service",
+    text: "Una empresa quiere que un agente de Foundry pueda ejecutar cálculos matemáticos complejos y generar gráficos a partir de datos que el usuario proporciona en la conversación. ¿Qué herramienta del Agent Service es la más adecuada para este escenario?",
     multiple: false,
     options: [
-      { text: "Que todos los modelos en Foundry son de código abierto y auditables por cualquier persona", correct: false, explanation: "El código abierto no es un requisito de responsible AI by design; muchos modelos en Foundry son propietarios." },
-      { text: "Que las herramientas de evaluación de seguridad, filtros de contenido y principios de IA responsable están integrados en la plataforma desde el inicio, no añadidos como complementos", correct: true, explanation: "Responsible AI by design significa que las salvaguardas (Content Safety, evaluaciones de seguridad, filtros de contenido, herramientas de equidad) son capacidades nativas de Foundry, no adiciones posteriores." },
-      { text: "Que los usuarios deben firmar un contrato de uso responsable antes de acceder a Foundry", correct: false, explanation: "El contrato de servicios de Azure no es lo que define responsible AI by design; se refiere a la integración de salvaguardas en la plataforma." },
-      { text: "Que Microsoft revisa manualmente cada respuesta generada por los modelos antes de enviarla al usuario", correct: false, explanation: "Microsoft no revisa manualmente cada respuesta; responsible AI by design se refiere a la integración de herramientas y filtros automáticos en la plataforma." }
+      { text: "Code Interpreter", correct: true, explanation: "Code Interpreter permite que el agente escriba y ejecute código (por ejemplo, Python) en un entorno aislado para realizar cálculos, análisis de datos y generar visualizaciones como gráficos." },
+      { text: "File search únicamente", correct: false, explanation: "File search está diseñada para recuperar información relevante de documentos indexados, no para ejecutar cálculos o generar gráficos dinámicamente." },
+      { text: "Content Safety", correct: false, explanation: "Content Safety modera contenido dañino; no tiene capacidad de ejecutar código ni realizar cálculos matemáticos." },
+      { text: "Custom Neural Voice", correct: false, explanation: "Custom Neural Voice genera voz sintética personalizada; no está relacionado con cálculos matemáticos ni generación de gráficos." }
     ],
-    doc: "https://learn.microsoft.com/es-es/azure/ai-studio/concepts/responsible-use-of-ai-overview"
-  }
+    doc: "https://learn.microsoft.com/es-es/azure/ai-foundry/agents/how-to/tools/code-interpreter"
+  },
 
-]; // fin de QUESTIONS
+  /* ══════════════════════════════════════════════════════════════════
+     DOMINIO 2 · Evaluación, monitoreo y operaciones (LLMOps)
+  ══════════════════════════════════════════════════════════════════ */
+  {
+    domain: "Dominio 2 - Evaluación y Operaciones",
+    text: "Antes de desplegar en producción una nueva versión de un prompt para un asistente generativo, un equipo quiere medir de forma sistemática y cuantitativa métricas como 'fundamentación' (groundedness), 'relevancia' y 'coherencia' de las respuestas. ¿Qué herramienta de Microsoft Foundry es la más apropiada?",
+    multiple: false,
+    options: [
+      { text: "Las herramientas de evaluación (Evaluation) de Foundry, que permiten ejecutar evaluadores automáticos e incluso asistidos por IA sobre un conjunto de datos de prueba", correct: true, explanation: "Foundry incluye capacidades de evaluación que permiten correr métricas estandarizadas (groundedness, relevance, coherence, fluency, entre otras) sobre un conjunto de prueba, comparando versiones de prompts o modelos de forma sistemática." },
+      { text: "Azure Key Vault", correct: false, explanation: "Key Vault gestiona secretos y claves de forma segura; no tiene capacidades de evaluación de calidad de respuestas generativas." },
+      { text: "Azure AI Custom Vision", correct: false, explanation: "Custom Vision es para modelos de visión por computadora, no para evaluar la calidad de respuestas de texto generativo." },
+      { text: "El panel de facturación de Azure", correct: false, explanation: "El panel de facturación muestra información de costos y consumo, no métricas de calidad de las respuestas del modelo." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-foundry/how-to/evaluate-generative-ai-app"
+  },
+  {
+    domain: "Dominio 2 - Evaluación y Operaciones",
+    text: "¿Qué mide específicamente la métrica de evaluación 'groundedness' (fundamentación) en una aplicación RAG construida en Foundry?",
+    multiple: false,
+    options: [
+      { text: "Qué tan bien la respuesta generada por el modelo está respaldada por, y es consistente con, la información recuperada de las fuentes de datos proporcionadas", correct: true, explanation: "Groundedness evalúa si las afirmaciones de la respuesta del modelo pueden verificarse o rastrearse hasta el contenido fuente recuperado, identificando posibles alucinaciones no respaldadas por los datos." },
+      { text: "La velocidad (latencia) con la que el modelo genera una respuesta", correct: false, explanation: "La latencia es una métrica de rendimiento operativo, no una métrica de calidad relacionada con la veracidad de la respuesta." },
+      { text: "El costo en tokens de cada solicitud", correct: false, explanation: "El costo en tokens es una métrica financiera/operativa, no está relacionada con qué tan fundamentada está la respuesta en los datos fuente." },
+      { text: "El idioma detectado de la respuesta generada", correct: false, explanation: "El idioma de la respuesta no tiene relación con el concepto de fundamentación (groundedness)." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-foundry/concepts/evaluation-metrics-built-in"
+  },
+  {
+    domain: "Dominio 2 - Evaluación y Operaciones",
+    text: "Para cada afirmación sobre monitoreo de aplicaciones generativas en producción con Microsoft Foundry, selecciona Yes si es verdadera.\n1) Es una buena práctica registrar (log) las solicitudes y respuestas del modelo para poder auditar su comportamiento a lo largo del tiempo.\n2) Una vez desplegado un modelo, su rendimiento y calidad de respuestas se garantiza automáticamente para siempre, sin necesidad de monitoreo continuo.\n3) El monitoreo continuo puede ayudar a detectar cuándo aumentan las tasas de contenido bloqueado por Content Safety, lo cual podría indicar un cambio en el comportamiento de los usuarios o intentos de abuso.",
+    multiple: true,
+    options: [
+      { text: "1) Yes", correct: true, explanation: "Registrar las interacciones (con las debidas consideraciones de privacidad) permite auditar el comportamiento del sistema, identificar problemas y respaldar la responsabilidad (accountability)." },
+      { text: "2) No", correct: true, explanation: "El rendimiento y la calidad no están garantizados de forma permanente: cambios en el comportamiento de los usuarios, en los datos, o incluso actualizaciones del modelo base pueden afectar la calidad, por lo que se requiere monitoreo continuo." },
+      { text: "3) Yes", correct: true, explanation: "Un aumento inusual en las tasas de bloqueo de Content Safety puede ser una señal temprana de intentos de abuso, ataques de prompt injection, o cambios en el uso legítimo que ameritan investigación." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-foundry/concepts/observability"
+  },
+  {
+    domain: "Dominio 2 - Evaluación y Operaciones",
+    text: "Un equipo necesita comparar el desempeño de dos versiones distintas de un prompt (v1 y v2) para el mismo modelo, usando el mismo conjunto de preguntas de prueba, antes de decidir cuál llevar a producción. ¿Qué enfoque es el más adecuado en Microsoft Foundry?",
+    multiple: false,
+    options: [
+      { text: "Ejecutar una evaluación (evaluation run) para cada versión del prompt sobre el mismo dataset de prueba y comparar las métricas resultantes lado a lado", correct: true, explanation: "Foundry permite ejecutar evaluaciones sistemáticas sobre un conjunto de datos de prueba fijo para cada variante del prompt, generando métricas comparables que facilitan una decisión basada en datos." },
+      { text: "Preguntar manualmente a cinco compañeros de trabajo cuál versión les gusta más, sin ningún dataset de prueba estructurado", correct: false, explanation: "Aunque la retroalimentación humana puede ser un complemento útil, no sustituye una evaluación sistemática y repetible sobre un conjunto de prueba definido, que es más rigurosa y escalable." },
+      { text: "Desplegar ambas versiones directamente a todos los usuarios en producción sin ninguna prueba previa", correct: false, explanation: "Desplegar sin pruebas previas expone a los usuarios finales a riesgos de baja calidad o comportamiento indeseado que debería detectarse antes con evaluaciones controladas." },
+      { text: "Eliminar el system message en ambas versiones para simplificar la comparación", correct: false, explanation: "Eliminar el system message cambiaría fundamentalmente el comportamiento del asistente en ambas versiones, invalidando una comparación justa entre los prompts que se desean evaluar." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-foundry/how-to/evaluate-generative-ai-app"
+  },
+
+  /* ══════════════════════════════════════════════════════════════════
+     DOMINIO 2 · Seguridad, identidad y gobernanza en Foundry
+  ══════════════════════════════════════════════════════════════════ */
+  {
+    domain: "Dominio 2 - Seguridad y Gobernanza",
+    text: "Una empresa necesita que su aplicación se autentique contra un recurso de Microsoft Foundry sin almacenar claves de API en el código fuente ni en archivos de configuración. ¿Qué mecanismo de autenticación es el más recomendado?",
+    multiple: false,
+    options: [
+      { text: "Microsoft Entra ID (identidad administrada) para autenticación basada en tokens, en lugar de claves de API estáticas", correct: true, explanation: "El uso de identidades administradas de Microsoft Entra ID permite autenticar la aplicación sin necesidad de almacenar ni rotar manualmente claves de API, siguiendo las mejores prácticas de seguridad de Azure." },
+      { text: "Escribir la clave de API directamente en el código fuente para simplificar el desarrollo", correct: false, explanation: "Almacenar claves directamente en el código fuente es una práctica insegura que expone credenciales sensibles, especialmente si el código se comparte o versiona en un repositorio." },
+      { text: "Compartir la misma clave de API entre todos los desarrolladores del equipo por un canal de chat no cifrado", correct: false, explanation: "Compartir claves por canales no seguros aumenta el riesgo de exposición y filtración de credenciales sensibles." },
+      { text: "Deshabilitar la autenticación en el recurso de Foundry", correct: false, explanation: "Deshabilitar la autenticación expondría el recurso sin ninguna protección, lo cual es contrario a las prácticas de seguridad recomendadas." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/how-to/managed-identity"
+  },
+  {
+    domain: "Dominio 2 - Seguridad y Gobernanza",
+    text: "Para cada afirmación sobre seguridad de red en Microsoft Foundry, selecciona Yes si es verdadera.\n1) Es posible restringir el acceso a un recurso de Foundry mediante endpoints privados (private endpoints), evitando exposición directa a internet público.\n2) Una vez que un recurso de Foundry está desplegado, no es posible modificar sus reglas de firewall o restricciones de red.\n3) El uso de una red virtual (VNet) puede ayudar a aislar el tráfico entre la aplicación y el recurso de Foundry dentro de un perímetro de red controlado.",
+    multiple: true,
+    options: [
+      { text: "1) Yes", correct: true, explanation: "Los endpoints privados permiten que el tráfico hacia el recurso de Foundry se mantenga dentro de la red privada de Azure, sin pasar por internet público, reduciendo la superficie de ataque." },
+      { text: "2) No", correct: true, explanation: "Las reglas de firewall y restricciones de red de un recurso de Foundry se pueden modificar después del despliegue según cambien los requisitos de seguridad de la organización." },
+      { text: "3) Yes", correct: true, explanation: "Integrar el recurso con una red virtual (VNet) permite controlar y aislar el tráfico de red entre la aplicación cliente y el servicio, como parte de una arquitectura de seguridad de defensa en profundidad." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/cognitive-services-virtual-networks"
+  },
+  {
+    domain: "Dominio 2 - Seguridad y Gobernanza",
+    text: "Una organización quiere asegurarse de que solo ciertos miembros del equipo puedan desplegar nuevos modelos en un proyecto de Foundry, mientras que otros solo puedan consultar el playground sin realizar cambios. ¿Qué mecanismo de Azure debe usarse?",
+    multiple: false,
+    options: [
+      { text: "Control de acceso basado en roles (RBAC), asignando roles específicos con distintos niveles de permisos a cada grupo de usuarios", correct: true, explanation: "RBAC en Azure permite asignar roles predefinidos o personalizados que otorgan distintos niveles de permisos (como administrador, colaborador o lector) a diferentes usuarios o grupos sobre un recurso o proyecto de Foundry." },
+      { text: "Crear una cuenta de Azure separada para cada empleado con la misma clave de API compartida", correct: false, explanation: "Compartir la misma clave de API no permite diferenciar niveles de permisos entre usuarios ni aplicar un control granular de acceso." },
+      { text: "Desactivar la autenticación multifactor para simplificar el acceso", correct: false, explanation: "Desactivar la autenticación multifactor reduce la seguridad general y no está relacionado con diferenciar permisos entre usuarios." },
+      { text: "Usar Content Safety para restringir quién puede acceder al proyecto", correct: false, explanation: "Content Safety modera el contenido de las solicitudes y respuestas; no gestiona permisos de acceso de usuarios a los recursos." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/role-based-access-control/overview"
+  },
+
+  /* ══════════════════════════════════════════════════════════════════
+     DOMINIO 2 · Miscelánea de completar espacio (dropdown style)
+  ══════════════════════════════════════════════════════════════════ */
+  {
+    domain: "Dominio 2 - Foundry Fundamentos",
+    text: "Completa el espacio: En Microsoft Foundry, un mensaje de sistema (system message) se usa para ___.",
+    multiple: false,
+    options: [
+      { text: "reemplazar los controles de seguridad de Content Safety", correct: false, explanation: "El system message no reemplaza ni desactiva los controles de seguridad; Content Safety opera de forma independiente sobre entradas y salidas." },
+      { text: "cambiar los datos de entrenamiento del modelo base", correct: false, explanation: "El system message no modifica los pesos ni los datos con los que el modelo fue entrenado; solo influye en el comportamiento durante la inferencia." },
+      { text: "guiar el rol, el estilo y los límites de comportamiento del asistente durante la conversación", correct: true, explanation: "El system message establece instrucciones de alto nivel que guían cómo debe comportarse el modelo: su rol, tono, restricciones y alcance, aplicándose de forma consistente en la conversación." },
+      { text: "evaluar las respuestas después de que fueron generadas", correct: false, explanation: "La evaluación posterior a la generación corresponde a herramientas de evaluación (Evaluation) o a Content Safety sobre la salida, no al propósito del system message." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/concepts/system-message"
+  },
+  {
+    domain: "Dominio 1 - IA Generativa",
+    text: "Completa el espacio: El proceso de 'grounding' (fundamentación) en aplicaciones de IA generativa consiste en ___.",
+    multiple: false,
+    options: [
+      { text: "aumentar la temperatura del modelo al máximo valor posible", correct: false, explanation: "Aumentar la temperatura incrementa la aleatoriedad de las respuestas; no tiene relación con fundamentar las respuestas en datos reales." },
+      { text: "basar las respuestas del modelo en información específica y verificable, típicamente recuperada de una fuente de datos externa confiable", correct: true, explanation: "El grounding conecta las respuestas generativas con datos reales y verificables (como documentos internos recuperados vía RAG), reduciendo el riesgo de alucinaciones." },
+      { text: "eliminar por completo el uso de prompts del sistema", correct: false, explanation: "El grounding no elimina el uso de system messages; de hecho, suele combinarse con ellos para indicar al modelo cómo usar el contexto proporcionado." },
+      { text: "convertir el modelo generativo en un modelo de clasificación de imágenes", correct: false, explanation: "El grounding no cambia el tipo de modelo ni su modalidad; es una técnica para mejorar la precisión factual de las respuestas generadas." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/openai/concepts/use-your-data"
+  },
+  {
+    domain: "Dominio 1 - Fundamentos de ML",
+    text: "Completa el espacio: En un problema de clasificación binaria, la métrica 'recall' mide ___.",
+    multiple: false,
+    options: [
+      { text: "la proporción de todos los casos positivos reales que el modelo logró identificar correctamente", correct: true, explanation: "Recall (sensibilidad) mide qué proporción de los verdaderos positivos reales fue correctamente detectada por el modelo, es decir, cuántos casos positivos no se 'escaparon' sin detectar." },
+      { text: "el tiempo que tarda el modelo en generar una predicción", correct: false, explanation: "El tiempo de predicción corresponde a la latencia del modelo, no a la métrica de recall." },
+      { text: "la cantidad de parámetros que tiene el modelo entrenado", correct: false, explanation: "La cantidad de parámetros es una característica de la arquitectura del modelo, no una métrica de evaluación de clasificación." },
+      { text: "el porcentaje de datos usados para el conjunto de entrenamiento", correct: false, explanation: "Esto se refiere a la proporción de la división de datos (train/test split), no a una métrica de evaluación como recall." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/training/modules/fundamentals-machine-learning/"
+  },
+  {
+    domain: "Dominio 2 - Content Safety",
+    text: "Completa el espacio: En Azure AI Content Safety, un umbral de severidad más bajo (más estricto) configurado para una categoría de daño hace que el sistema ___.",
+    multiple: false,
+    options: [
+      { text: "bloquee o marque contenido incluso con niveles de severidad relativamente bajos dentro de esa categoría", correct: true, explanation: "Un umbral más bajo (más estricto) reduce la tolerancia del sistema, provocando que se filtre contenido incluso cuando su severidad detectada es baja o moderada dentro de esa categoría." },
+      { text: "permita más contenido dañino de esa categoría pasar sin ser bloqueado", correct: false, explanation: "Esto describe el efecto de un umbral más alto (más permisivo), no de uno más bajo/estricto." },
+      { text: "aumente automáticamente el costo por token de las solicitudes", correct: false, explanation: "Los umbrales de severidad de Content Safety no afectan directamente el costo por token de las solicitudes al modelo generativo." },
+      { text: "desactive por completo el filtrado en todas las demás categorías", correct: false, explanation: "El umbral se configura de forma independiente por categoría; ajustar uno no desactiva el filtrado en las demás categorías." }
+    ],
+    doc: "https://learn.microsoft.com/es-es/azure/ai-services/content-safety/concepts/harm-categories"
+  },
+
+];
+
+/* Total de preguntas en el banco: */
+console.log(`Total de preguntas: ${QUESTIONS.length}`);
+
+export default QUESTIONS;
